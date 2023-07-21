@@ -5,5 +5,6 @@
     <color name="principal">#323142</color>
     <color name="texto">#E2C185</color>
     <color name="oculto">#6C6C6C</color>
+    <color name="boton">#181824</color>
 
 </resources>

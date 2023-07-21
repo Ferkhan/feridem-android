@@ -27,6 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="172dp"
         android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/encabezado"
         app:srcCompat="@drawable/logo_alargado" />
@@ -35,28 +36,30 @@
         android:id="@+id/correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/margenInicioRegistro"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/inter"
         android:text="Correo electrónico"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoInicioSesion"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/ingresarCorreo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
+        android:layout_marginStart="@dimen/margenInicioRegistro"
+        android:layout_marginEnd="@dimen/margenInicioRegistro"
         android:ems="10"
-        android:hint="Ingrese su correo"
+        android:hint="Ingresa tu correo"
         android:inputType="textEmailAddress"
         android:textColor="@color/ingresoDatos"
         android:textColorHint="@color/oculto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/entradaDatos"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correo" />
 
@@ -64,28 +67,30 @@
         android:id="@+id/contrasenia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/margenInicioRegistro"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/inter"
         android:text="Contraseña"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingresarCorreo"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/ingresarContrasenia"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/margenInicioRegistro"
+        android:layout_marginStart="@dimen/margenInicioRegistro"
         android:ems="10"
-        android:hint="Ingrese su contraseña"
+        android:hint="Ingresa tu contraseña"
         android:inputType="textPassword"
         android:textColor="@color/ingresoDatos"
         android:textColorHint="@color/oculto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/entradaDatos"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contrasenia" />
 
@@ -98,10 +103,10 @@
         android:fontFamily="@font/inter"
         android:text="¿No tienes una cuenta?"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/botonIniciarSesion"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -111,7 +116,7 @@
         android:fontFamily="@font/inter"
         android:text="Regístrate"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noCuenta"
@@ -119,14 +124,14 @@
 
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/botonIniciarSesion"
+        android:layout_width="@dimen/dimensionBoton"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#181824"
+        android:backgroundTint="@color/boton"
         android:text="Iniciar Sesión"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicio_registro"
+        android:textSize="@dimen/textoBoton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingresarContrasenia" />
