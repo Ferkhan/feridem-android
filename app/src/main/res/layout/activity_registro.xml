@@ -194,30 +194,49 @@
         app:layout_constraintTop_toBottomOf="@+id/ingresarConfirmarContrasenia" />
 
 
+    <!--    <TextView-->
+    <!--        android:id="@+id/registrarse"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fontFamily="@font/inter"-->
+    <!--        android:text="Inicia Sesión"-->
+    <!--        android:textColor="@color/texto"-->
+    <!--        android:textSize="@dimen/inicioRegistro"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/noCuenta"-->
+    <!--        tools:ignore="MissingConstraints" />-->
+
     <TextView
         android:id="@+id/noCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/inter"
         android:text="¿Ya tienes una cuenta?"
         android:textColor="@color/texto"
         android:textSize="@dimen/inicioRegistro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonRegistrarse"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.151" />
 
-    <TextView
-        android:id="@+id/registrarse"
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter"
+        android:backgroundTint="@color/principal"
         android:text="Inicia Sesión"
         android:textColor="@color/texto"
         android:textSize="@dimen/inicioRegistro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noCuenta"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
