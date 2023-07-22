@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="inicioRegistro">18sp</dimen>
+    <dimen name="textoInicioRegistro">18sp</dimen>
     <dimen name="feridem">35sp</dimen>
     <dimen name="entradaDatos">15sp</dimen>
     <dimen name="margenInicioRegistro">30sp</dimen>

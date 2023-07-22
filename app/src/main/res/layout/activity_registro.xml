@@ -11,43 +11,32 @@
         android:id="@+id/encabezado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:fontFamily="@font/abril_fatface"
         android:text="FERIDEM"
         android:textColor="@color/texto"
         android:textSize="@dimen/feridem"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/nombreCompleto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/textoInicioRegistro"
         android:layout_marginTop="30dp"
-        android:fontFamily="@font/inter"
         android:text="Nombre completo"
-        android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encabezado"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/encabezado" />
 
     <EditText
         android:id="@+id/ingresarNombreCompleto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/ingresoInicioRegistro"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/margenInicioRegistro"
         android:ems="10"
         android:hint="Ingresa tu nombre"
         android:inputType="text"
-        android:textColor="@color/ingresoDatos"
-        android:textColorHint="@color/oculto"
-        android:textSize="@dimen/entradaDatos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreCompleto" />
@@ -55,31 +44,19 @@
 
     <TextView
         android:id="@+id/correo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/textoInicioRegistro"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/inter"
         android:text="Correo electrónico"
-        android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingresarNombreCompleto"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/ingresarNombreCompleto" />
 
     <EditText
         android:id="@+id/ingresarCorreo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/ingresoInicioRegistro"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/margenInicioRegistro"
         android:ems="10"
         android:hint="Ingresa tu correo"
         android:inputType="textEmailAddress"
-        android:textColor="@color/ingresoDatos"
-        android:textColorHint="@color/oculto"
-        android:textSize="@dimen/entradaDatos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correo" />
@@ -87,31 +64,19 @@
 
     <TextView
         android:id="@+id/numeroCelular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/textoInicioRegistro"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/inter"
         android:text="Número de celular"
-        android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingresarCorreo"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/ingresarCorreo" />
 
     <EditText
         android:id="@+id/ingresarNumeroCelular"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/ingresoInicioRegistro"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/margenInicioRegistro"
         android:ems="10"
         android:hint="Ingresa tu celular"
         android:inputType="number"
-        android:textColor="@color/ingresoDatos"
-        android:textColorHint="@color/oculto"
-        android:textSize="@dimen/entradaDatos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numeroCelular" />
@@ -119,62 +84,38 @@
 
     <TextView
         android:id="@+id/contrasenia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/textoInicioRegistro"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/inter"
         android:text="Contraseña"
-        android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingresarNumeroCelular"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/ingresarNumeroCelular" />
 
     <EditText
         android:id="@+id/ingresarContrasenia"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        style="@style/ingresoInicioRegistro"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="Ingresa tu contraseña"
         android:inputType="textPassword"
-        android:textColor="@color/ingresoDatos"
-        android:textColorHint="@color/oculto"
-        android:textSize="@dimen/entradaDatos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contrasenia" />
 
     <TextView
         android:id="@+id/confirmarContrasenia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/textoInicioRegistro"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/inter"
         android:text="Confirmar contraseña"
-        android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingresarContrasenia"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/ingresarContrasenia" />
 
     <EditText
         android:id="@+id/ingresarConfirmarContrasenia"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margenInicioRegistro"
+        style="@style/ingresoInicioRegistro"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/margenInicioRegistro"
         android:ems="10"
         android:hint="Vuelve a ingresar tu contraseña"
         android:inputType="textPassword"
-        android:textColor="@color/ingresoDatos"
-        android:textColorHint="@color/oculto"
-        android:textSize="@dimen/entradaDatos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmarContrasenia" />
@@ -193,20 +134,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingresarConfirmarContrasenia" />
 
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/registrarse"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:fontFamily="@font/inter"-->
-    <!--        android:text="Inicia Sesión"-->
-    <!--        android:textColor="@color/texto"-->
-    <!--        android:textSize="@dimen/inicioRegistro"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/noCuenta"-->
-    <!--        tools:ignore="MissingConstraints" />-->
-
     <TextView
         android:id="@+id/noCuenta"
         android:layout_width="wrap_content"
@@ -215,7 +142,7 @@
         android:fontFamily="@font/inter"
         android:text="¿Ya tienes una cuenta?"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
+        android:textSize="@dimen/textoInicioRegistro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -229,9 +156,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/principal"
+        android:fontFamily="@font/inter_bold"
         android:text="Inicia Sesión"
         android:textColor="@color/texto"
-        android:textSize="@dimen/inicioRegistro"
+        android:textSize="@dimen/textoInicioRegistro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
