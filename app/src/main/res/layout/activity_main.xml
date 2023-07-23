@@ -95,6 +95,21 @@
         app:layout_constraintTop_toBottomOf="@+id/contrasenia" />
 
 
+
+    <Button
+        android:id="@+id/botonIniciarSesion"
+        android:layout_width="@dimen/dimensionBoton"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/boton"
+        android:text="Iniciar Sesión"
+        android:textColor="@color/texto"
+        android:textSize="@dimen/textoBoton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingresarContrasenia" />
+
+
     <TextView
         android:id="@+id/noCuenta"
         android:layout_width="wrap_content"
@@ -109,32 +124,20 @@
         app:layout_constraintTop_toBottomOf="@+id/botonIniciarSesion"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/registrarse"
+    <Button
+        android:id="@+id/botonRegistrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter"
+        android:backgroundTint="@color/principal"
+        android:fontFamily="@font/inter_bold"
         android:text="Regístrate"
         android:textColor="@color/texto"
         android:textSize="@dimen/textoInicioRegistro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noCuenta"
-        tools:ignore="MissingConstraints" />
-
-
-    <Button
-        android:id="@+id/botonIniciarSesion"
-        android:layout_width="@dimen/dimensionBoton"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/boton"
-        android:text="Iniciar Sesión"
-        android:textColor="@color/texto"
-        android:textSize="@dimen/textoBoton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingresarContrasenia" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

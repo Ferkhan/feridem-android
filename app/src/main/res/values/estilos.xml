@@ -7,7 +7,9 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">@dimen/textoInicioRegistro</item>
         <item name="android:textColor">@color/texto</item>
-        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>
+<!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
+<!--        <item name="android:layout_marginTop">10dp</item>-->
+
     </style>
 
     <style name="ingresoInicioRegistro">
@@ -17,7 +19,8 @@
         <item name="android:textSize">@dimen/entradaDatos</item>
         <item name="android:textColor">@color/ingresoDatos</item>
         <item name="android:textColorHint">@color/oculto</item>
-        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>
-        <item name="android:layout_marginEnd">@dimen/margenInicioRegistro</item>
+<!--        <item name="android:layout_marginTop">5dp</item>-->
+<!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
+<!--        <item name="android:layout_marginEnd">@dimen/margenInicioRegistro</item>-->
     </style>
 </resources>
