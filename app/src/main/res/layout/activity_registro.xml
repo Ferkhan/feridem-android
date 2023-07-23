@@ -22,139 +22,87 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.075" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@id/lineaGuia2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/lineaGuia1">
 
-
         <TextView
             android:id="@+id/nombreCompleto"
             style="@style/textoInicioRegistro"
-            android:text="Nombre completo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0" />
+            android:text="Nombre completo" />
 
         <EditText
             android:id="@+id/ingresarNombreCompleto"
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Ingresa tu nombre"
-            android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.075" />
-
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/correo"
             style="@style/textoInicioRegistro"
-            android:text="Correo electrónico"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
+            android:text="Correo electrónico" />
 
         <EditText
             android:id="@+id/ingresarCorreo"
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Ingresa tu correo"
-            android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.275" />
-
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/numeroCelular"
             style="@style/textoInicioRegistro"
-            android:text="Número de celular"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4" />
+            android:text="Número de celular" />
 
         <EditText
             android:id="@+id/ingresarNumeroCelular"
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Ingresa tu celular"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.475" />
-
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/contrasenia"
             style="@style/textoInicioRegistro"
-            android:text="Contraseña"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            android:text="Contraseña" />
 
         <EditText
             android:id="@+id/ingresarContrasenia"
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Ingresa tu contraseña"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.675" />
+            android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/confirmarContrasenia"
             style="@style/textoInicioRegistro"
-            android:text="Confirmar contraseña"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.8" />
+            android:text="Confirmar contraseña" />
 
         <EditText
             android:id="@+id/ingresarConfirmarContrasenia"
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Vuelve a ingresar tu contraseña"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.875" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:inputType="textPassword" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/botonRegistrarse"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/boton"
+        style="@style/botonPrincipal"
         android:text="Registrarte"
         android:textColor="@color/texto"
-        android:textSize="@dimen/textoBoton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.84" />
 
     <TextView
         android:id="@+id/noCuenta"
@@ -192,7 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.13" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/lineaGuia2"
