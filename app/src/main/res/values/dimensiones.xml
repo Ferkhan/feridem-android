@@ -2,7 +2,7 @@
 <resources>
     <dimen name="textoInicioRegistro">18sp</dimen>
     <dimen name="feridem">35sp</dimen>
-    <dimen name="entradaDatos">15sp</dimen>
+    <dimen name="entradaDatos">16sp</dimen>
     <dimen name="margenInicioRegistro">30sp</dimen>
     <dimen name="textoBoton">23sp</dimen>
     <dimen name="dimensionBoton">250dp</dimen>
