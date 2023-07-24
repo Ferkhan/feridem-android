@@ -13,10 +13,11 @@
         android:theme="@style/Theme.Feridem"
         tools:targetApi="31">
         <activity
+            android:name=".BarraNavegacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistroActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
