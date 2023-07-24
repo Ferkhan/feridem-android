@@ -3,6 +3,7 @@
     <style name="Base.Theme.Feridem" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/principal</item>
         <item name="colorPrimaryVariant">@color/principal</item>
+        <item name="android:navigationBarColor">@color/principal</item>
     </style>
 
     <style name="Theme.Feridem" parent="Base.Theme.Feridem" />

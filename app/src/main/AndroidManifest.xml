@@ -17,7 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".RegistroActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

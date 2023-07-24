@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/principal"
+    android:background="@color/secundario"
     tools:context=".PerfilFragment">
 
     <TextView
-
         style="@style/textoInicioRegistro"
         android:textSize="30sp"
         android:text="Configuración del perfil del usuario"
