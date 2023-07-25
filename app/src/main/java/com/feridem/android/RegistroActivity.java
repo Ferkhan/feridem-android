@@ -51,7 +51,7 @@ public class RegistroActivity extends AppCompatActivity {
                 ValidarDatos.campoLleno(ingresarCelular,contexto) &&
                 ValidarDatos.campoLleno(ingresarContrasenia, contexto) &&
                 ValidarDatos.campoLleno(confirmarContrasenia, contexto))
-            if (ValidarDatos.confirmarContrasenia(ingresarContrasenia, ingresarContrasenia, this))
+            if (ValidarDatos.confirmarContrasenia(ingresarContrasenia, confirmarContrasenia, this))
                 startActivity(siguiente);
     }
 }
