@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegistroActivity extends AppCompatActivity {
     private Button botonIniciarSesion;
@@ -18,6 +20,7 @@ public class RegistroActivity extends AppCompatActivity {
                      ingresarContrasenia,
                      confirmarContrasenia;
     private Context contexto;
+//    private TextView texto;
 
 
     @Override
@@ -28,6 +31,7 @@ public class RegistroActivity extends AppCompatActivity {
         inicializarRecursos();
         botonIniciarSesion.setOnClickListener(this::irIniciarSesion);
         botonRegistrarse.setOnClickListener(this::irPrincipal);
+//        texto.setOnClickListener(this::mensaje);
     }
 
     private void inicializarRecursos() {
@@ -39,10 +43,10 @@ public class RegistroActivity extends AppCompatActivity {
         ingresarCelular = findViewById(R.id.ingresarNumeroCelular);
         ingresarContrasenia = findViewById(R.id.ingresarContrasenia);
         confirmarContrasenia = findViewById(R.id.ingresarConfirmarContrasenia);
+//        texto = findViewById(R.id.nombreCompleto);
     }
-    private void irIniciarSesion(View vista) {
-        onBackPressed();
-    }
+
+    private void irIniciarSesion(View vista) { onBackPressed(); }
 
     private void irPrincipal(View view) {
         Intent siguiente = new Intent(contexto, BarraNavegacionActivity.class);
@@ -54,4 +58,8 @@ public class RegistroActivity extends AppCompatActivity {
             if (ValidarDatos.confirmarContrasenia(ingresarContrasenia, confirmarContrasenia, this))
                 startActivity(siguiente);
     }
+
+//    private void mensaje(View view) {
+//        Toast.makeText(this,"Hola papito", Toast.LENGTH_SHORT).show();
+//    }
 }

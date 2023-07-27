@@ -7,6 +7,10 @@
     android:background="@color/secundario"
     tools:context=".HabitacionFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/superior"
         android:layout_width="0dp"
@@ -120,6 +124,7 @@
                 app:cardCornerRadius="30dp" />
         </LinearLayout>
     </ScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
