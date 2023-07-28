@@ -3,6 +3,7 @@ package com.feridem.android.interfazusuario;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -19,6 +20,8 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     private static final ReservacionFragment rf = new ReservacionFragment();
     private static final PerfilFragment pf = new PerfilFragment();
     static BottomNavigationView bn;
+    FragmentManager gestorFragmento;
+    Fragment fragmentoActual;
 //    ActivityMainBinding binding;
 
     @Override
@@ -32,6 +35,19 @@ public class BarraNavegacionActivity extends AppCompatActivity {
 
     }
 
+//    @Override
+//    public void onBackPressed() {
+//        gestorFragmento = getSupportFragmentManager();
+//        fragmentoActual = getSupportFragmentManager().findFragmentById(R.id.fragmento_contenedor);
+//        if (fragmentoActual instanceof HabitacionFragment) {
+//            finish();
+//        } else {
+//            gestorFragmento.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//        }
+////        cargarFragmento(hf);
+////        bn.setSelectedItemId(R.id.habitacion);
+//    }
+
     private final NavigationBarView.OnItemSelectedListener itemSeleccionado = new NavigationBarView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -43,18 +59,6 @@ public class BarraNavegacionActivity extends AppCompatActivity {
                 cargarFragmento(pf);
             }
             return true;
-//            switch (item.getItemId()) {
-//                case R.id.habitacion:
-//                    cargarFragmento(new HabitacionFragment());
-//                    break;
-//                case R.id.reservacion:
-//                    cargarFragmento(new ReservacionFragment());
-//                    break;
-//                case R.id.perfil:
-//                    cargarFragmento(new PerfilFragment());
-//                    break;
-//            }
-//            return true;
         }
     };
 

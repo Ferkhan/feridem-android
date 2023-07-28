@@ -2,6 +2,8 @@ package com.feridem.android.interfazusuario;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,13 +18,8 @@ import com.feridem.android.R;
  * create an instance of this fragment.
  */
 public class HabitacionFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -38,7 +35,6 @@ public class HabitacionFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment HabitacionFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static HabitacionFragment newInstance(String param1, String param2) {
         HabitacionFragment fragment = new HabitacionFragment();
         Bundle args = new Bundle();
@@ -63,4 +59,16 @@ public class HabitacionFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_habitacion, container, false);
     }
+
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//
+//        // Agregar el fragmento a la pila de retroceso (back stack)
+//        requireActivity().getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.fragmento_contenedor, this)
+//                .addToBackStack(null)
+//                .commit();
+//    }
 }
