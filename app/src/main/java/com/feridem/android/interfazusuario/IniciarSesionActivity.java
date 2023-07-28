@@ -11,7 +11,7 @@ import android.widget.EditText;
 import com.feridem.android.R;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
-public class MainActivity extends AppCompatActivity {
+public class IniciarSesionActivity extends AppCompatActivity {
     private EditText ingresarCorreo,
                      ingresarContrasenia;
     private Button botonRegistrarse;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_iniciar_sesion);
 
         inicializarRecursos();
 
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void irPrincipal(View view) {
         Intent siguiente = new Intent(this, BarraNavegacionActivity.class);
-        if (ValidarDatos.campoLleno(ingresarCorreo, this) &&
-                ValidarDatos.campoLleno(ingresarContrasenia, this))
+        if (ValidarDatos.campoLleno(this, ingresarCorreo) &&
+                ValidarDatos.campoLleno(this, ingresarContrasenia))
             startActivity(siguiente);
     }
 

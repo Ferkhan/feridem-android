@@ -21,7 +21,7 @@
             android:exported="true"
             android:screenOrientation="locked" />
         <activity
-            android:name=".interfazusuario.MainActivity"
+            android:name=".interfazusuario.IniciarSesionActivity"
             android:exported="true"
             android:screenOrientation="locked">
             <intent-filter>

@@ -2,7 +2,6 @@ package com.feridem.android.interfazusuario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,7 @@ public class RegistroActivity extends AppCompatActivity {
                      ingresarCelular,
                      ingresarContrasenia,
                      confirmarContrasenia;
-    private Context contexto;
+
 //    private TextView texto;
 
 
@@ -35,29 +34,37 @@ public class RegistroActivity extends AppCompatActivity {
 //        texto.setOnClickListener(this::mensaje);
     }
 
-    private void inicializarRecursos() {
-        contexto = this;
-        botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
-        botonRegistrarse = findViewById(R.id.botonRegistrarse);
-        ingresarNombre = findViewById(R.id.ingresarNombreCompleto);
-        ingresarCorreo = findViewById(R.id.ingresarCorreo);
-        ingresarCelular = findViewById(R.id.ingresarNumeroCelular);
-        ingresarContrasenia = findViewById(R.id.ingresarContrasenia);
-        confirmarContrasenia = findViewById(R.id.ingresarConfirmarContrasenia);
+     private void inicializarRecursos() {
+        botonIniciarSesion =    findViewById(R.id.botonIniciarSesion);
+        botonRegistrarse =      findViewById(R.id.botonRegistrarse);
+        ingresarNombre =        findViewById(R.id.ingresarNombreCompleto);
+        ingresarCorreo =        findViewById(R.id.ingresarCorreo);
+        ingresarCelular =       findViewById(R.id.ingresarNumeroCelular);
+        ingresarContrasenia =   findViewById(R.id.ingresarContrasenia);
+        confirmarContrasenia =  findViewById(R.id.ingresarConfirmarContrasenia);
 //        texto = findViewById(R.id.nombreCompleto);
     }
 
     private void irIniciarSesion(View vista) { onBackPressed(); }
 
     private void irPrincipal(View view) {
-        Intent siguiente = new Intent(contexto, BarraNavegacionActivity.class);
-        if (ValidarDatos.campoLleno(ingresarNombre, contexto) &&
-                ValidarDatos.campoLleno(ingresarCorreo, contexto) &&
-                ValidarDatos.campoLleno(ingresarCelular,contexto) &&
-                ValidarDatos.campoLleno(ingresarContrasenia, contexto) &&
-                ValidarDatos.campoLleno(confirmarContrasenia, contexto))
-            if (ValidarDatos.confirmarContrasenia(ingresarContrasenia, confirmarContrasenia, this))
-                startActivity(siguiente);
+        if (!ValidarDatos.campoLleno(this, ingresarNombre) ||
+                !ValidarDatos.campoLleno(this, ingresarCorreo) ||
+                !ValidarDatos.campoLleno(this, ingresarCelular) ||
+                !ValidarDatos.campoLleno(this, ingresarContrasenia) ||
+                !ValidarDatos.campoLleno(this, confirmarContrasenia))
+            return;
+
+        if (!ValidarDatos.longitudTextoMaxMin(this, ingresarNombre, "El nombre", 3, 25) ||
+                !ValidarDatos.validarCorreo(this, ingresarCorreo) ||
+                !ValidarDatos.longitudCelular(this, ingresarCelular, 10) ||
+                !ValidarDatos.longitudTextoMaxMin(this, ingresarContrasenia, "La contraseña", 5, 15) ||
+                !ValidarDatos.confirmarContrasenia(this, ingresarContrasenia, confirmarContrasenia))
+            return;
+
+        Intent siguiente = new Intent(this, BarraNavegacionActivity.class);
+        startActivity(siguiente);
+
     }
 
 //    private void mensaje(View view) {

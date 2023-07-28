@@ -35,8 +35,7 @@
         <TextView
             android:id="@+id/nombreCompleto"
             style="@style/textoInicioRegistro"
-            android:clickable="true"
-            android:text="Nombre completo" />
+            android:text="Nombre y apellido" />
 
         <EditText
             android:id="@+id/ingresarNombreCompleto"
