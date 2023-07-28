@@ -20,14 +20,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/principal"
-        app:itemIconTint="@color/texto"
-        app:itemTextColor="@color/texto"
-        app:labelVisibilityMode="selected"
+        app:itemIconSize="40dp"
+        app:itemIconTint="@drawable/selector_color_item"
+        app:itemTextColor="@drawable/selector_color_item"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:itemIconSize="40dp"
-        app:menu="@menu/menu_navegacion"
-        />
+        app:menu="@menu/menu_navegacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

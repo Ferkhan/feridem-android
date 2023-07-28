@@ -44,24 +44,17 @@ public class ValidarDatos {
      * @param tipoDato
      * @param longitudMax
      * @param longitudMin
-     * @return
+     * @return true si es si la longitud del texto se encuentra en el rango indicado
      */
     public static boolean longitudTextoMaxMin(Context contexto, EditText ingresarTexto, String tipoDato, int longitudMin, int longitudMax) {
         String texto = ingresarTexto.getText().toString();
-        String mensajeMax = tipoDato + " no debe exceder los " + longitudMax + " caracteres";
-        String mensajeMin = tipoDato + " debe tener al menos " + longitudMin + " caracteres";
+        String mensaje = tipoDato + ((texto.length() > longitudMax)? " no debe exceder los " + longitudMax + " caracteres" : " debe tener al menos " + longitudMin + " caracteres");
 
-        if (texto.length() > longitudMax) {
-            Toast.makeText(contexto, mensajeMax, Toast.LENGTH_SHORT).show();
-            return false;
-        }
+        if (texto.length() <= longitudMax && texto.length() >= longitudMin)
+            return true;
 
-        if (texto.length() < longitudMin) {
-            Toast.makeText(contexto, mensajeMin, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        return true;
+        Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     /**
@@ -73,9 +66,9 @@ public class ValidarDatos {
      */
     public static boolean longitudCelular(Context contexto, EditText ingresarCelular, int cantNumeros) {
         String numCelular = ingresarCelular.getText().toString();
-        String mensaje = "El número de celular debe tener " + cantNumeros + " dígitos";
+        String mensaje = "El número de celular no es válido";
 
-        if (numCelular.length() == cantNumeros)
+        if (numCelular.length() == cantNumeros && numCelular.substring(0, 2).equals("09"))
             return true;
 
         Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();

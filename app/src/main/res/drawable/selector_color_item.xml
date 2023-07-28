@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado para cuando el ítem está seleccionado -->
+    <item android:color="@color/secundario" android:state_checked="true" />
+    <!-- Estado para cuando el ítem no está seleccionado -->
+    <item android:color="@color/barraNavegacion" />
+</selector>

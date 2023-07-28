@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    &lt;!&ndash; Estado para cuando el ítem está seleccionado &ndash;&gt;-->
+<!--    <item android:drawable="@color/secundario" android:state_checked="true" />-->
+<!--    &lt;!&ndash; Estado para cuando el ítem no está seleccionado &ndash;&gt;-->
+<!--    <item android:drawable="@color/barraNavegacion" android:state_enabled="true" />-->
+    <!-- Estado para cuando el ítem está seleccionado -->
+    <item android:drawable="@android:color/transparent" android:state_checked="true" />
+    <!-- Estado para cuando el ítem no está seleccionado -->
+    <item android:drawable="@color/secundario" android:state_enabled="true" />
+</selector>

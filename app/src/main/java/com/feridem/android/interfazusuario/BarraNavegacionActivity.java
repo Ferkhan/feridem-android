@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -35,18 +37,21 @@ public class BarraNavegacionActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        gestorFragmento = getSupportFragmentManager();
-//        fragmentoActual = getSupportFragmentManager().findFragmentById(R.id.fragmento_contenedor);
-//        if (fragmentoActual instanceof HabitacionFragment) {
-//            finish();
-//        } else {
-//            gestorFragmento.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//        }
-////        cargarFragmento(hf);
-////        bn.setSelectedItemId(R.id.habitacion);
-//    }
+    @Override
+    public void onBackPressed() {
+        gestorFragmento = getSupportFragmentManager();
+        fragmentoActual = getSupportFragmentManager().findFragmentById(R.id.fragmento_contenedor);
+        if (fragmentoActual instanceof HabitacionFragment) {
+//            moveTaskToBack(true);
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else {
+            cargarFragmento(hf);
+            bn.setSelectedItemId(R.id.habitacion);
+        }
+    }
 
     private final NavigationBarView.OnItemSelectedListener itemSeleccionado = new NavigationBarView.OnItemSelectedListener() {
         @Override
@@ -63,7 +68,28 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     };
 
     private void cargarFragmento (Fragment fragmento) {
+        int colorSeleccionado = getResources().getColor(R.color.secundario, null);
+        int colorNoSeleccionado = getResources().getColor(R.color.barraNavegacion, null);
         FragmentTransaction transaccion = getSupportFragmentManager().beginTransaction();
+
+//
+//        // Establecer el color del texto del ítem seleccionado
+//        bn.setItemTextColor(ColorStateList.valueOf(colorSeleccionado));
+//
+//        // Establecer el color del ícono del ítem seleccionado
+//        bn.setItemIconTintList(ColorStateList.valueOf(colorSeleccionado));
+
+        // Establecer el color del texto de los ítems no seleccionados
+//        int[][] states = new int[][]{
+//                new int[]{android.R.attr.state_checked},
+//                new int[]{-android.R.attr.state_checked}
+//        };
+//        int[] colors = new int[]{colorSeleccionado, colorNoSeleccionado};
+//        ColorStateList colorStateList = new ColorStateList(states, colors);
+//        bn.setItemTextColor(colorStateList);
+//
+//        // Establecer el color del ícono de los ítems no seleccionados
+//        bn.setItemIconTintList(colorStateList);
         transaccion.replace(R.id.fragmento_contenedor,fragmento);
         transaccion.commit();
     }

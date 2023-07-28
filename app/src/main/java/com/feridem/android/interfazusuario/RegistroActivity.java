@@ -62,8 +62,8 @@ public class RegistroActivity extends AppCompatActivity {
                 !ValidarDatos.confirmarContrasenia(this, ingresarContrasenia, confirmarContrasenia))
             return;
 
-        Intent siguiente = new Intent(this, BarraNavegacionActivity.class);
-        startActivity(siguiente);
+        Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
+        startActivity(siguienteActivity);
 
     }
 

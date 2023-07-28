@@ -3,10 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="ingresoDatos">#FFFFFFFF</color>
     <color name="principal">#323142</color>
-    <color name="secundario">#504E79</color>
-    <color name="texto">#E2C185</color>
-    <color name="oculto">#6C6C6C</color>
+    <color name="variacionPrincipal">#504E79</color>
+    <color name="secundario">#E2C185</color>
+    <color name="textoOculto">#6C6C6C</color>
     <color name="boton">#181824</color>
     <color name="trasparente">#00000000</color>
+    <color name="barraNavegacion">#B1B1B1</color>
 
 </resources>
