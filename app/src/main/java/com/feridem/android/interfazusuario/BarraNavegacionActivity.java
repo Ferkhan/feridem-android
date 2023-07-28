@@ -1,4 +1,4 @@
-package com.feridem.android;
+package com.feridem.android.interfazusuario;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 //import com.feridem.android.databinding.ActivityMainBinding;
+import com.feridem.android.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -16,7 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class BarraNavegacionActivity extends AppCompatActivity {
     private static final HabitacionFragment  hf = new HabitacionFragment();
     private static final ReservacionFragment rf = new ReservacionFragment();
-    private static final PerfilFragment      pf = new PerfilFragment();
+    private static final PerfilFragment pf = new PerfilFragment();
     static BottomNavigationView bn;
 //    ActivityMainBinding binding;
 

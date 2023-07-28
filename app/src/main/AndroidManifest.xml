@@ -13,15 +13,15 @@
         android:theme="@style/Theme.Feridem"
         tools:targetApi="31">
         <activity
-            android:name=".BarraNavegacionActivity"
+            android:name=".interfazusuario.BarraNavegacionActivity"
             android:exported="false"
             android:screenOrientation="locked" />
         <activity
-            android:name=".RegistroActivity"
+            android:name=".interfazusuario.RegistroActivity"
             android:exported="true"
             android:screenOrientation="locked" />
         <activity
-            android:name=".MainActivity"
+            android:name=".interfazusuario.MainActivity"
             android:exported="true"
             android:screenOrientation="locked">
             <intent-filter>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/secundario"
     android:padding="@dimen/margenInicioRegistro"
-    tools:context=".ReservacionFragment">
+    tools:context=".interfazusuario.ReservacionFragment">
 
     <TextView
         style="@style/textoInicioRegistro"

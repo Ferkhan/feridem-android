@@ -1,4 +1,4 @@
-package com.feridem.android;
+package com.feridem.android.interfazusuario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.feridem.android.R;
+import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {
     private Button botonIniciarSesion;

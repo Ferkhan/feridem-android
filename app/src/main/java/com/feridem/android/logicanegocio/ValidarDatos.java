@@ -1,4 +1,4 @@
-package com.feridem.android;
+package com.feridem.android.logicanegocio;
 
 import android.content.Context;
 import android.widget.EditText;

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/secundario"
-    tools:context=".PerfilFragment">
+    tools:context=".interfazusuario.PerfilFragment">
 
     <TextView
         style="@style/textoInicioRegistro"
