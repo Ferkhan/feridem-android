@@ -3,12 +3,15 @@ package com.feridem.android.interfazusuario;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.GestorBaseDatos;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -63,7 +66,14 @@ public class RegistroActivity extends AppCompatActivity {
             return;
 
         Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
-        startActivity(siguienteActivity);
+        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(this);
+        SQLiteDatabase baseDatos = gestorBaseDatos.getWritableDatabase();
+        if (baseDatos != null) {
+            Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();
+            startActivity(siguienteActivity);
+        } else {
+            Toast.makeText(this, "EROR al intentar crear la cuenta", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

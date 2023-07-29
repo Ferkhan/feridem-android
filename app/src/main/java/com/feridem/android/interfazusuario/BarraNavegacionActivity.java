@@ -68,28 +68,7 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     };
 
     private void cargarFragmento (Fragment fragmento) {
-        int colorSeleccionado = getResources().getColor(R.color.secundario, null);
-        int colorNoSeleccionado = getResources().getColor(R.color.barraNavegacion, null);
         FragmentTransaction transaccion = getSupportFragmentManager().beginTransaction();
-
-//
-//        // Establecer el color del texto del ítem seleccionado
-//        bn.setItemTextColor(ColorStateList.valueOf(colorSeleccionado));
-//
-//        // Establecer el color del ícono del ítem seleccionado
-//        bn.setItemIconTintList(ColorStateList.valueOf(colorSeleccionado));
-
-        // Establecer el color del texto de los ítems no seleccionados
-//        int[][] states = new int[][]{
-//                new int[]{android.R.attr.state_checked},
-//                new int[]{-android.R.attr.state_checked}
-//        };
-//        int[] colors = new int[]{colorSeleccionado, colorNoSeleccionado};
-//        ColorStateList colorStateList = new ColorStateList(states, colors);
-//        bn.setItemTextColor(colorStateList);
-//
-//        // Establecer el color del ícono de los ítems no seleccionados
-//        bn.setItemIconTintList(colorStateList);
         transaccion.replace(R.id.fragmento_contenedor,fragmento);
         transaccion.commit();
     }
