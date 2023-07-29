@@ -32,6 +32,10 @@
         <item name="android:backgroundTint">@color/boton</item>
         <item name="android:textSize">@dimen/textoBoton</item>
 
+    </style>
 
+    <style name="texto_barra_navegacion">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
     </style>
 </resources>

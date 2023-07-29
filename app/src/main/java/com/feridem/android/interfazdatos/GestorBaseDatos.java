@@ -10,10 +10,10 @@ import androidx.annotation.Nullable;
 public class GestorBaseDatos extends SQLiteOpenHelper {
     private static final int BASEDATOS_VERSION = 1;
     private static final String BASEDATOS_NOMBRE = "feridem.db";
-    private static final String TABLA_USUARIOS = "usuarios";
+    protected static final String TABLA_USUARIOS = "usuarios";
 
-    public GestorBaseDatos(@Nullable Context context) {
-        super(context, BASEDATOS_NOMBRE, null, BASEDATOS_VERSION);
+    public GestorBaseDatos(@Nullable Context contexto) {
+        super(contexto, BASEDATOS_NOMBRE, null, BASEDATOS_VERSION);
     }
 
     @Override
@@ -21,7 +21,7 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLA_USUARIOS + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT NOT NULL," +
-                "telefono TEXT NOT NULL," +
+                "celular TEXT NOT NULL," +
                 "correo TEXT NOT NULL," +
                 "contrasenia TEXT NOT NULL)");
     }

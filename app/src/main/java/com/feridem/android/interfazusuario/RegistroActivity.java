@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.BDUsuarios;
 import com.feridem.android.interfazdatos.GestorBaseDatos;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
@@ -66,13 +67,15 @@ public class RegistroActivity extends AppCompatActivity {
             return;
 
         Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
-        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(this);
-        SQLiteDatabase baseDatos = gestorBaseDatos.getWritableDatabase();
-        if (baseDatos != null) {
+        BDUsuarios datosUsuarios = new BDUsuarios(this);
+        long id = datosUsuarios.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
+                                      ingresarCelular.getText().toString(), ingresarContrasenia.getText().toString());
+
+        if (id > 0) {
             Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();
             startActivity(siguienteActivity);
         } else {
-            Toast.makeText(this, "EROR al intentar crear la cuenta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR al intentar crear la cuenta", Toast.LENGTH_SHORT).show();
         }
 
     }

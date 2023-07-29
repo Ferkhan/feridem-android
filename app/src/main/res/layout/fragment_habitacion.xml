@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ingresoDatos"
+    android:background="@color/variacionPrincipal"
     tools:context=".interfazusuario.HabitacionFragment">
 
     <androidx.recyclerview.widget.RecyclerView
