@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 
 //import com.feridem.android.databinding.ActivityMainBinding;
 import com.feridem.android.R;
@@ -21,9 +22,11 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     private static final HabitacionFragment  hf = new HabitacionFragment();
     private static final ReservacionFragment rf = new ReservacionFragment();
     private static final PerfilFragment pf = new PerfilFragment();
+    private static final CamaraFragment cf = new CamaraFragment();
     static BottomNavigationView bn;
     FragmentManager gestorFragmento;
     Fragment fragmentoActual;
+    Button botonEscanear;
 //    ActivityMainBinding binding;
 
     @Override
@@ -34,6 +37,7 @@ public class BarraNavegacionActivity extends AppCompatActivity {
         cargarFragmento(hf);
         bn = findViewById(R.id.barraNavegacion);
         bn.setOnItemSelectedListener(itemSeleccionado);
+
 
     }
 
@@ -63,11 +67,13 @@ public class BarraNavegacionActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.perfil) {
                 cargarFragmento(pf);
             } else if (item.getItemId() == R.id.camara) {
-                cargarFragmento(pf);
+                cargarFragmento(cf);
             }
             return true;
         }
     };
+
+
 
     private void cargarFragmento (Fragment fragmento) {
         FragmentTransaction transaccion = getSupportFragmentManager().beginTransaction();

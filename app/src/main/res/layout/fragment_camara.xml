@@ -5,18 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/variacionPrincipal"
-    android:padding="@dimen/margenInicioRegistro"
     tools:context=".interfazusuario.CamaraFragment">
 
-    <TextView
-        style="@style/textoInicioRegistro"
-        android:text="Camara para escanear QR"
-        android:textSize="30sp"
+    <LinearLayout
+        android:id="@+id/encabezado"
+        style="@style/fondo_encabezado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textAlignment="center"
-        />
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            style="@style/texto_encabezado"
+            android:text="Escanear QR" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/encabezado"
+        android:padding="@dimen/margenInicioRegistro">
+
+        <TextView
+            style="@style/textoInicioRegistro"
+            android:text="Camara para escanear QR"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.011" />
+
+        <Button
+            android:id="@+id/botonEscanear"
+            style="@style/botonPrincipal"
+            android:text="Escanear QR"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
