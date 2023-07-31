@@ -3,7 +3,6 @@ package com.feridem.android.interfazusuario;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.BDUsuarios;
-import com.feridem.android.interfazdatos.GestorBaseDatos;
+import com.feridem.android.interfazdatos.BaseUsuarios;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -67,7 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
             return;
 
         Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
-        BDUsuarios datosUsuarios = new BDUsuarios(this);
+        BaseUsuarios datosUsuarios = new BaseUsuarios(this);
         long id = datosUsuarios.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
                                       ingresarCelular.getText().toString(), ingresarContrasenia.getText().toString());
 

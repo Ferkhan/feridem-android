@@ -21,8 +21,8 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLA_USUARIOS + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT NOT NULL," +
-                "celular TEXT NOT NULL," +
                 "correo TEXT NOT NULL," +
+                "celular TEXT NOT NULL," +
                 "contrasenia TEXT NOT NULL)");
     }
 

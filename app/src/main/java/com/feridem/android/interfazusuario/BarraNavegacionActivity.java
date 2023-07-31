@@ -62,6 +62,8 @@ public class BarraNavegacionActivity extends AppCompatActivity {
                 cargarFragmento(rf);
             } else if (item.getItemId() == R.id.perfil) {
                 cargarFragmento(pf);
+            } else if (item.getItemId() == R.id.camara) {
+                cargarFragmento(pf);
             }
             return true;
         }

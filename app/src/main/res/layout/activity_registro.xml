@@ -66,7 +66,8 @@
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Ingresa tu celular"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="10" />
 
         <TextView
             android:id="@+id/contrasenia"
