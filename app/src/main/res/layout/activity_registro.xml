@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/principal"
     android:paddingHorizontal="@dimen/margenInicioRegistro"
-    tools:context=".RegistroActivity">
+    tools:context=".interfazusuario.RegistroActivity">
 
     <TextView
         android:id="@+id/encabezado"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/abril_fatface"
         android:text="FERIDEM"
-        android:textColor="@color/texto"
+        android:textColor="@color/secundario"
         android:textSize="@dimen/feridem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +35,7 @@
         <TextView
             android:id="@+id/nombreCompleto"
             style="@style/textoInicioRegistro"
-            android:clickable="true"
-            android:text="Nombre completo" />
+            android:text="Nombre y apellido" />
 
         <EditText
             android:id="@+id/ingresarNombreCompleto"
@@ -67,7 +66,8 @@
             style="@style/ingresoInicioRegistro"
             android:ems="10"
             android:hint="Ingresa tu celular"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="10" />
 
         <TextView
             android:id="@+id/contrasenia"
@@ -98,7 +98,7 @@
         android:id="@+id/botonRegistrarse"
         style="@style/botonPrincipal"
         android:text="Registrarte"
-        android:textColor="@color/texto"
+        android:textColor="@color/secundario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter"
         android:text="¿Ya tienes una cuenta?"
-        android:textColor="@color/texto"
+        android:textColor="@color/secundario"
         android:textSize="@dimen/textoInicioRegistro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
         android:backgroundTint="@color/principal"
         android:fontFamily="@font/inter_bold"
         android:text="Inicia Sesión"
-        android:textColor="@color/texto"
+        android:textColor="@color/secundario"
         android:textSize="@dimen/textoInicioRegistro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

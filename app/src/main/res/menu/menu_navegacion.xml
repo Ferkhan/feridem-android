@@ -9,6 +9,10 @@
         android:title="Reservacion"
         android:icon="@drawable/ic_menu_reservacion"/>
     <item
+        android:id="@+id/camara"
+        android:title="Camara"
+        android:icon="@drawable/ic_menu_camara"/>
+    <item
         android:id="@+id/perfil"
         android:title="Perfil"
         android:icon="@drawable/ic_menu_perfil_usuario"/>

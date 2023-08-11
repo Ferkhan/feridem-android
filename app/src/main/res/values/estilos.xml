@@ -6,7 +6,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">@dimen/textoInicioRegistro</item>
-        <item name="android:textColor">@color/texto</item>
+        <item name="android:textColor">@color/secundario</item>
         <item name="android:layout_weight">1</item>
 <!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
         <item name="android:layout_marginTop">20dp</item>
@@ -19,7 +19,7 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">@dimen/entradaDatos</item>
         <item name="android:textColor">@color/ingresoDatos</item>
-        <item name="android:textColorHint">@color/oculto</item>
+        <item name="android:textColorHint">@color/textoOculto</item>
         <item name="android:layout_weight">1</item>
 <!--        <item name="android:layout_marginTop">5dp</item>-->
 <!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
@@ -30,8 +30,31 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/boton</item>
+        <item name="android:textColor">@color/secundario</item>
         <item name="android:textSize">@dimen/textoBoton</item>
 
+    </style>
 
+    <style name="texto_barra_navegacion">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <style name="fondo_encabezado">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:background">@color/principal</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <style name="texto_encabezado">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:fontFamily">@font/abril_fatface</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>

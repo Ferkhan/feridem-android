@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BarraNavegacionActivity">
+    tools:context=".interfazusuario.BarraNavegacionActivity">
 
     <FrameLayout
         android:id="@+id/fragmento_contenedor"
@@ -18,16 +18,16 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/barraNavegacion"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/principal"
-        app:itemIconTint="@color/texto"
-        app:itemTextColor="@color/texto"
-        app:labelVisibilityMode="selected"
+        style="@style/Widget.Design.BottomNavigationView"
+        app:itemIconTint="@drawable/selector_color_item"
+        app:itemTextColor="@drawable/selector_color_item"
+        app:itemIconSize="40dp"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:itemIconSize="40dp"
-        app:menu="@menu/menu_navegacion"
-        />
+        app:menu="@menu/menu_navegacion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

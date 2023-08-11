@@ -4,18 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secundario"
-    android:padding="@dimen/margenInicioRegistro"
-    tools:context=".ReservacionFragment">
+    android:background="@color/variacionPrincipal"
+    tools:context=".interfazusuario.ReservacionFragment">
 
-    <TextView
-        style="@style/textoInicioRegistro"
-        android:text="Listado de las habitaciones reservadas"
-        android:textSize="30sp"
+    <LinearLayout
+        android:id="@+id/encabezado"
+        style="@style/fondo_encabezado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintVertical_bias="0">
+
+        <TextView
+            style="@style/texto_encabezado"
+            android:text="Reservaciones" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/margenInicioRegistro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/encabezado">
+
+        <TextView
+            style="@style/textoInicioRegistro"
+            android:text="Listado de las habitaciones reservadas"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
