@@ -11,6 +11,8 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
     private static final int BASEDATOS_VERSION = 1;
     private static final String BASEDATOS_NOMBRE = "feridem.db";
     protected static final String TABLA_USUARIOS = "usuarios";
+    protected static final String TABLA_HABITACIONES = "habitaciones";
+    protected static final String TABLA_HOTELES = "hoteles";
 
     public GestorBaseDatos(@Nullable Context contexto) {
         super(contexto, BASEDATOS_NOMBRE, null, BASEDATOS_VERSION);
