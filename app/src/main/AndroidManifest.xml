@@ -18,28 +18,32 @@
         <activity
             android:name=".interfazusuario.BarraNavegacionActivity"
             android:exported="true"
-            android:screenOrientation="locked"
-            tools:replace="screenOrientation"
-            >
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation">
 
+
+        </activity>
+        <activity
+            android:name=".interfazusuario.RegistroActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" >
+
+        </activity>
+        <activity
+            android:name=".interfazusuario.IniciarSesionActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".interfazusuario.RegistroActivity"
-            android:exported="true"
-            android:screenOrientation="locked" >
 
-        </activity>
         <activity
-            android:name=".interfazusuario.IniciarSesionActivity"
-            android:exported="true"
-            android:screenOrientation="locked">
-
-        </activity>
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
     </application>
 
 </manifest>

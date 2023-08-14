@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.feridem.android.R;
 import com.feridem.android.interfazdatos.BaseUsuarios;
-import com.feridem.android.interfazdatos.GestorBaseDatos;
 import com.feridem.android.interfazdatos.Usuarios;
 import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.ValidarInicarSesion;
@@ -20,13 +18,14 @@ import java.util.ArrayList;
 
 public class IniciarSesionActivity extends AppCompatActivity {
     private EditText ingresarCorreo,
-                     ingresarContrasenia;
+            ingresarContrasenia;
     private Button botonRegistrarse;
     private Button botonIniciarSesion;
     private ValidarInicarSesion validarInicarSesion;
 
     private ArrayList<Usuarios> listaUsuarios;
     private BaseUsuarios baseUsuarios;
+    private boolean activarHacks = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
         botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
         baseUsuarios = new BaseUsuarios(this);
     }
+
     private void irRegistro(View view) {
         Intent siguiente = new Intent(this, RegistroActivity.class);
         startActivity(siguiente);
@@ -53,6 +53,11 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     private void irPrincipal(View view) {
         Intent siguiente = new Intent(this, BarraNavegacionActivity.class);
+
+        // -------------------Hacks-------------------
+        if (activarHacks) startActivity(siguiente);
+        // -------------------------------------------
+
         if (!ValidarDatos.campoLleno(this, ingresarCorreo) &&
                 !ValidarDatos.campoLleno(this, ingresarContrasenia))
             return;

@@ -47,7 +47,6 @@ public class CamaraFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment CamaraFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static CamaraFragment newInstance(String param1, String param2) {
         CamaraFragment fragment = new CamaraFragment();
         Bundle args = new Bundle();
@@ -76,7 +75,6 @@ public class CamaraFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_camara, container, false);
 
         botonEscanear = vista.findViewById(R.id.botonEscanear);
-
         botonEscanear.setOnClickListener(this::escanearCodigo);
 
         return vista;
@@ -87,16 +85,14 @@ public class CamaraFragment extends Fragment {
                 if(result.getContents() == null) {
                     Toast.makeText(getContext(), "Escaner cancelado", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getContext(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Escaneado: " + result.getContents(), Toast.LENGTH_LONG).show();
                 }
             });
-
-
 
     private void escanearCodigo(View vista) {
         ScanOptions integrador = new ScanOptions();
         integrador.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-        integrador.setPrompt("Lector QR");
+        integrador.setPrompt("Escanea tu código QR");
         integrador.setCameraId(0);
         integrador.setBeepEnabled(true);
         integrador.setBarcodeImageEnabled(true);
