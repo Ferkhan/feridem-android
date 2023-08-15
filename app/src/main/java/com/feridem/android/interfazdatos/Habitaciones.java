@@ -8,6 +8,8 @@ public class Habitaciones {
     private String descripcionLarga;
     private int precio;
     private String hotel;
+    private String imagen;
+
 
     public int getId() {
         return id;
@@ -55,5 +57,13 @@ public class Habitaciones {
 
     public void setHotel(String hotel) {
         this.hotel = hotel;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
