@@ -31,10 +31,10 @@ public class BaseHabitaciones extends GestorBaseDatos {
                 habitacion = new Habitaciones();
                 habitacion.setId(cursorHabitaciones.getInt(0));
                 habitacion.setNombre(cursorHabitaciones.getString(1));
-                habitacion.setDescripcionCorta(cursorHabitaciones.getString(2));
-                habitacion.setDescripcionLarga(cursorHabitaciones.getString(3));
+                habitacion.setDescripcion(cursorHabitaciones.getString(2));
                 habitacion.setPrecio(cursorHabitaciones.getInt(4));
                 habitacion.setHotel(cursorHabitaciones.getString(5));
+                habitacion.setImagen(cursorHabitaciones.getString(6));
                 listaHabitaciones.add(habitacion);
             } while (cursorHabitaciones.moveToNext());
         }

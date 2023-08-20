@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
@@ -19,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="225dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/finlandia_habitacion_doble" />
+            android:src="@drawable/finlandia_habitacion_doble"
+            android:contentDescription="Imagen" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
                     android:text="Nombre de la Habitacion"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/nombre_hotel"
@@ -47,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:text="Nombre del Hotel"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/direccion_habitacion"
@@ -55,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:text="Dirección de la Habitacion"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -79,14 +81,14 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
                     android:text="$500"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:text="Por noche"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 

@@ -1,14 +1,22 @@
 package com.feridem.android.interfazdatos;
 
 public class Habitaciones {
-    private int id;
+    private int id = 10;
     private String nombre;
-
-    private String descripcionCorta;
-    private String descripcionLarga;
+    private String descripcion = "hola";
     private int precio;
     private String hotel;
     private String imagen;
+    private String direccion;
+    public Habitaciones(String nombre, int precio, String hotel, String direccion, String imagen) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.hotel = hotel;
+        this.direccion = direccion;
+        this.imagen = imagen;
+    }
+
+    public Habitaciones() {}
 
 
     public int getId() {
@@ -27,20 +35,12 @@ public class Habitaciones {
         this.nombre = nombre;
     }
 
-    public String getDescripcionCorta() {
-        return descripcionCorta;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripcionCorta(String descripcionCorta) {
-        this.descripcionCorta = descripcionCorta;
-    }
-
-    public String getDescripcionLarga() {
-        return descripcionLarga;
-    }
-
-    public void setDescripcionLarga(String descripcionLarga) {
-        this.descripcionLarga = descripcionLarga;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getPrecio() {
@@ -66,4 +66,14 @@ public class Habitaciones {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+
 }

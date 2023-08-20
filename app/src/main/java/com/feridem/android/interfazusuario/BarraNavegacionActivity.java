@@ -5,17 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 
 //import com.feridem.android.databinding.ActivityMainBinding;
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.Habitaciones;
+import com.feridem.android.logicanegocio.AdaptadorLista;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 
 public class BarraNavegacionActivity extends AppCompatActivity {
@@ -27,6 +35,8 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     FragmentManager gestorFragmento;
     Fragment fragmentoActual;
     Button botonEscanear;
+    ArrayList<Habitaciones> listaHabitaciones = new ArrayList<>();
+    Context contexto = this;
 //    ActivityMainBinding binding;
 
     @Override
@@ -35,9 +45,15 @@ public class BarraNavegacionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_barra_navegacion);
 
         cargarFragmento(hf);
+
+        inicializarRecursos();
+
+
+    }
+
+    private void inicializarRecursos() {
         bn = findViewById(R.id.barraNavegacion);
         bn.setOnItemSelectedListener(itemSeleccionado);
-
 
     }
 

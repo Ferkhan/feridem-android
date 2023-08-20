@@ -3,7 +3,6 @@ package com.feridem.android.interfazdatos;
 public class Usuarios {
     private int id;
     private String nombre;
-
     private String correo;
     private String celular;
     private String contrasenia;

@@ -2,15 +2,21 @@ package com.feridem.android.interfazusuario;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.Habitaciones;
+import com.feridem.android.logicanegocio.AdaptadorLista;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +28,7 @@ public class HabitacionFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    ArrayList<Habitaciones> listaHabitaciones = new ArrayList<>();
 
     public HabitacionFragment() {
         // Required empty public constructor
@@ -41,23 +48,36 @@ public class HabitacionFragment extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        listaHabitaciones.add(new Habitaciones("Cama doble", 300, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
+        listaHabitaciones.add(new Habitaciones("Suite Presidencial", 700, "Hotel Finlandia", "Av.Finlandia", "finlandia_habitacion_doble"));
+        listaHabitaciones.add(new Habitaciones("Cama simple deluxe", 355, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
+        listaHabitaciones.add(new Habitaciones("Cama doble acolchada", 100, "Hotel David", "Centro Histórico", "finlandia_habitacion_doble"));
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_habitacion, container, false);
+        View vista = inflater.inflate(R.layout.fragment_habitacion, container, false);
+
+        AdaptadorLista adaptadorLista = new AdaptadorLista(listaHabitaciones, getContext());
+        RecyclerView recyclerView = vista.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adaptadorLista);
+
+        return vista;
     }
 
 //    @Override
