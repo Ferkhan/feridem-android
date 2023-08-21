@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.Habitaciones;
+import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
 import com.feridem.android.logicanegocio.AdaptadorLista;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class HabitacionFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-    ArrayList<Habitaciones> listaHabitaciones = new ArrayList<>();
+    ArrayList<Habitacion> listaHabitaciones = new ArrayList<>();
 
     public HabitacionFragment() {
         // Required empty public constructor
@@ -57,10 +56,10 @@ public class HabitacionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        listaHabitaciones.add(new Habitaciones("Cama doble", 300, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
-        listaHabitaciones.add(new Habitaciones("Suite Presidencial", 700, "Hotel Finlandia", "Av.Finlandia", "finlandia_habitacion_doble"));
-        listaHabitaciones.add(new Habitaciones("Cama simple deluxe", 355, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
-        listaHabitaciones.add(new Habitaciones("Cama doble acolchada", 100, "Hotel David", "Centro Histórico", "finlandia_habitacion_doble"));
+        listaHabitaciones.add(new Habitacion("Cama doble", 300, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
+        listaHabitaciones.add(new Habitacion("Suite Presidencial", 700, "Hotel Finlandia", "Av.Finlandia", "finlandia_habitacion_doble"));
+        listaHabitaciones.add(new Habitacion("Cama simple deluxe", 355, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
+        listaHabitaciones.add(new Habitacion("Cama doble acolchada", 100, "Hotel David", "Centro Histórico", "finlandia_habitacion_doble"));
 
 
     }

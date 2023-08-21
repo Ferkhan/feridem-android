@@ -1,10 +1,12 @@
-package com.feridem.android.interfazdatos;
+package com.feridem.android.interfazdatos.basedatos;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
+
+import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
 
 import java.util.ArrayList;
 
@@ -16,19 +18,19 @@ public class BaseHabitaciones extends GestorBaseDatos {
         this.contexto = contexto;
     }
 
-    public ArrayList<Habitaciones> leerHabitaciones() {
+    public ArrayList<Habitacion> leerHabitaciones() {
         GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
         SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
 
-        ArrayList<Habitaciones> listaHabitaciones = new ArrayList<>();
-        Habitaciones habitacion;
+        ArrayList<Habitacion> listaHabitaciones = new ArrayList<>();
+        Habitacion habitacion;
         Cursor cursorHabitaciones;
 
-        cursorHabitaciones = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_USUARIOS, null);
+        cursorHabitaciones = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
 
         if (cursorHabitaciones.moveToFirst()) {
             do {
-                habitacion = new Habitaciones();
+                habitacion = new Habitacion();
                 habitacion.setId(cursorHabitaciones.getInt(0));
                 habitacion.setNombre(cursorHabitaciones.getString(1));
                 habitacion.setDescripcion(cursorHabitaciones.getString(2));

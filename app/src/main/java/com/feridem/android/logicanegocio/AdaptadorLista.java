@@ -1,8 +1,6 @@
 package com.feridem.android.logicanegocio;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.Habitaciones;
+import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
 
 
 import java.util.ArrayList;
 
 public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHolder> {
-    private ArrayList<Habitaciones> listaHabitaciones;
+    private ArrayList<Habitacion> listaHabitaciones;
     private LayoutInflater infladorLayout;
     private Context contexto;
 
-    public AdaptadorLista(ArrayList<Habitaciones> listaHabitaciones, Context contexto) {
+    public AdaptadorLista(ArrayList<Habitacion> listaHabitaciones, Context contexto) {
         this.contexto = contexto;
         this.infladorLayout = LayoutInflater.from(contexto);
         this.listaHabitaciones = listaHabitaciones;
@@ -42,7 +40,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
     }
 
 
-    public void setHabitaciones(ArrayList<Habitaciones> habitaciones ) { listaHabitaciones = habitaciones; }
+    public void setHabitaciones(ArrayList<Habitacion> habitaciones ) { listaHabitaciones = habitaciones; }
 
 
     @Override
@@ -64,7 +62,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
         }
 
 
-        void bindData(Habitaciones item) {
+        void bindData(Habitacion item) {
             int imagenResource = contexto.getResources().getIdentifier(item.getImagen(), "drawable", contexto.getPackageName());
             String formatoPrecio = "$" + item.getPrecio();
             imagenHabitacion.setImageResource(imagenResource);

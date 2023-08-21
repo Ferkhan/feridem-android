@@ -1,6 +1,6 @@
-package com.feridem.android.interfazdatos;
+package com.feridem.android.interfazdatos.modeloentidad;
 
-public class Habitaciones {
+public class Habitacion {
     private int id = 10;
     private String nombre;
     private String descripcion = "hola";
@@ -8,7 +8,7 @@ public class Habitaciones {
     private String hotel;
     private String imagen;
     private String direccion;
-    public Habitaciones(String nombre, int precio, String hotel, String direccion, String imagen) {
+    public Habitacion(String nombre, int precio, String hotel, String direccion, String imagen) {
         this.nombre = nombre;
         this.precio = precio;
         this.hotel = hotel;
@@ -16,7 +16,7 @@ public class Habitaciones {
         this.imagen = imagen;
     }
 
-    public Habitaciones() {}
+    public Habitacion() {}
 
 
     public int getId() {

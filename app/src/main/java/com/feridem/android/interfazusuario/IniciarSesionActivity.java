@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.BaseUsuarios;
-import com.feridem.android.interfazdatos.Usuarios;
+import com.feridem.android.interfazdatos.basedatos.BaseUsuarios;
+import com.feridem.android.interfazdatos.modeloentidad.Usuario;
 import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.ValidarInicarSesion;
 
@@ -23,7 +23,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private Button botonIniciarSesion;
     private ValidarInicarSesion validarInicarSesion;
 
-    private ArrayList<Usuarios> listaUsuarios;
+    private ArrayList<Usuario> listaUsuarios;
     private BaseUsuarios baseUsuarios;
     private boolean activarHacks = true;
 

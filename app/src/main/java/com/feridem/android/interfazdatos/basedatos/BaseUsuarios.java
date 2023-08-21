@@ -1,4 +1,4 @@
-package com.feridem.android.interfazdatos;
+package com.feridem.android.interfazdatos.basedatos;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.feridem.android.interfazdatos.modeloentidad.Usuario;
 
 import java.util.ArrayList;
 
@@ -37,31 +39,31 @@ public class BaseUsuarios extends GestorBaseDatos {
             valores.put("correo", correo);
             valores.put("celular", celular);
             valores.put("contrasenia", contrasenia);
-            id = baseDatos.insert(TABLA_USUARIOS, null, valores);
+            id = baseDatos.insert(TABLA_USUARIO, null, valores);
         } catch (Exception e) {
             Log.i("mensaje error", e.toString());
         }
         return id;
     }
 
-    public ArrayList<Usuarios> leerUsuarios() {
+    public ArrayList<Usuario> leerUsuarios() {
         GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
         SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
 
-        ArrayList<Usuarios> listaUsuarios = new ArrayList<>();
-        Usuarios usuario;
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        Usuario usuario;
         Cursor cursorUsuarios;
 
-        cursorUsuarios = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_USUARIOS, null);
+        cursorUsuarios = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
 
         if (cursorUsuarios.moveToFirst()) {
             do {
-                usuario = new Usuarios();
+                usuario = new Usuario();
                 usuario.setId(cursorUsuarios.getInt(0));
                 usuario.setNombre(cursorUsuarios.getString(1));
                 usuario.setCorreo(cursorUsuarios.getString(2));
                 usuario.setCelular(cursorUsuarios.getString(3));
-                usuario.setContrasenia(cursorUsuarios.getString(4));
+                usuario.setContrasena(cursorUsuarios.getString(4));
                 listaUsuarios.add(usuario);
             } while (cursorUsuarios.moveToNext());
         }

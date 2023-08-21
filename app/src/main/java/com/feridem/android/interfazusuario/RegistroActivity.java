@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.BaseUsuarios;
+import com.feridem.android.interfazdatos.basedatos.BaseUsuarios;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {

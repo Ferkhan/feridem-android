@@ -2,22 +2,22 @@ package com.feridem.android.logicanegocio;
 
 import android.widget.Toast;
 
-import com.feridem.android.interfazdatos.Usuarios;
+import com.feridem.android.interfazdatos.modeloentidad.Usuario;
 import android.content.Context;
 import java.util.ArrayList;
 
 public class ValidarInicarSesion {
 
-    ArrayList<Usuarios> listaUsuarios;
+    ArrayList<Usuario> listaUsuarios;
     Context contexto;
-    public ValidarInicarSesion(Context contexto, ArrayList<Usuarios> listaUsuarios) {
+    public ValidarInicarSesion(Context contexto, ArrayList<Usuario> listaUsuarios) {
         this.contexto = contexto;
         this.listaUsuarios = listaUsuarios;
     }
 
     public boolean validarCuentaUsuario(String ingresarCorreo, String ingresarContrasenia) {
-        for (Usuarios usuario : listaUsuarios)
-            if ((ingresarCorreo.equals(usuario.getCorreo())) && ingresarContrasenia.equals(usuario.getContrasenia())) {
+        for (Usuario usuario : listaUsuarios)
+            if ((ingresarCorreo.equals(usuario.getCorreo())) && ingresarContrasenia.equals(usuario.getContrasena())) {
                 Toast.makeText(contexto, "¡Saludos, " + usuario.getNombre() + "!", Toast.LENGTH_SHORT).show();
                 return true;
             }
