@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.basedatos.GestorHabitacion;
 import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
 import com.feridem.android.logicanegocio.AdaptadorLista;
 
@@ -56,10 +57,8 @@ public class HabitacionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        listaHabitaciones.add(new Habitacion("Cama doble", 300, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
-        listaHabitaciones.add(new Habitacion("Suite Presidencial", 700, "Hotel Finlandia", "Av.Finlandia", "finlandia_habitacion_doble"));
-        listaHabitaciones.add(new Habitacion("Cama simple deluxe", 355, "Hotel Hilton Colon", "Av.Amazonas", "hilton_habitacion_deluxe_cama_grande"));
-        listaHabitaciones.add(new Habitacion("Cama doble acolchada", 100, "Hotel David", "Centro Histórico", "finlandia_habitacion_doble"));
+        GestorHabitacion gestorHabitacion = new GestorHabitacion(getContext());
+        listaHabitaciones = gestorHabitacion.leerHabitaciones();
 
 
     }

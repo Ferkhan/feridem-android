@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.basedatos.GestorHotel;
 import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
+import com.feridem.android.interfazdatos.modeloentidad.Hotel;
 
 
 import java.util.ArrayList;
@@ -20,11 +22,12 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
     private ArrayList<Habitacion> listaHabitaciones;
     private LayoutInflater infladorLayout;
     private Context contexto;
-
+    private GestorHotel gestorHotel;
     public AdaptadorLista(ArrayList<Habitacion> listaHabitaciones, Context contexto) {
         this.contexto = contexto;
         this.infladorLayout = LayoutInflater.from(contexto);
         this.listaHabitaciones = listaHabitaciones;
+        this.gestorHotel = new GestorHotel(contexto);
     }
 
     @NonNull
@@ -64,12 +67,18 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
 
         void bindData(Habitacion item) {
             int imagenResource = contexto.getResources().getIdentifier(item.getImagen(), "drawable", contexto.getPackageName());
-            String formatoPrecio = "$" + item.getPrecio();
+            String formatoPrecio = "$" + item.getPrecioNoche();
+            ArrayList<Hotel> listaHoteles = gestorHotel.leerHoteles();
+
             imagenHabitacion.setImageResource(imagenResource);
             nombreHabitacion.setText(item.getNombre());
-            nombreHotel.setText(item.getHotel());
             precioHabitacion.setText(formatoPrecio);
-            direccionHotel.setText(item.getDireccion());
+            for (Hotel hotel : listaHoteles) {
+                if (item.getIdHotel() == hotel.getId()) {
+                    nombreHotel.setText(hotel.getNombre());
+                    direccionHotel.setText(hotel.getDireccion());
+                }
+            }
         }
     }
 

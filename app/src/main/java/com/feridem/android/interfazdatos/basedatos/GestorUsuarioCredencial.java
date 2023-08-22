@@ -44,6 +44,7 @@ public class GestorUsuarioCredencial extends GestorBaseDatos{
 
         return id;
     }
+
     public ArrayList<UsuarioCredencial> leerCredenciales() {
         GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
         SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();

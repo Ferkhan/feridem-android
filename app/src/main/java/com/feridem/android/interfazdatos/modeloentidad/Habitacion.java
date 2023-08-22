@@ -1,23 +1,17 @@
 package com.feridem.android.interfazdatos.modeloentidad;
 
+import java.util.Date;
+
 public class Habitacion {
-    private int id = 10;
+    private int id;
+    private int idHotel;
     private String nombre;
-    private String descripcion = "hola";
-    private int precio;
-    private String hotel;
+    private String descripcion;
+    private int precioNoche;
     private String imagen;
-    private String direccion;
-    public Habitacion(String nombre, int precio, String hotel, String direccion, String imagen) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.hotel = hotel;
-        this.direccion = direccion;
-        this.imagen = imagen;
-    }
-
-    public Habitacion() {}
-
+    private int estado;
+    private Date fechaIngreso;
+    private Date fechaModificacion;
 
     public int getId() {
         return id;
@@ -43,20 +37,12 @@ public class Habitacion {
         this.descripcion = descripcion;
     }
 
-    public int getPrecio() {
-        return precio;
+    public int getPrecioNoche() {
+        return precioNoche;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
-
-    public String getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(String hotel) {
-        this.hotel = hotel;
+    public void setPrecioNoche(int precioNoche) {
+        this.precioNoche = precioNoche;
     }
 
     public String getImagen() {
@@ -67,13 +53,35 @@ public class Habitacion {
         this.imagen = imagen;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public Date getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
+    public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
 
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+
+    public int getIdHotel() {
+        return idHotel;
+    }
+
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 }
