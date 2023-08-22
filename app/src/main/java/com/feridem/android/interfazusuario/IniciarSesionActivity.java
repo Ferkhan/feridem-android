@@ -9,23 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.basedatos.BaseUsuarios;
-import com.feridem.android.interfazdatos.modeloentidad.Usuario;
 import com.feridem.android.logicanegocio.ValidarDatos;
-import com.feridem.android.logicanegocio.ValidarInicarSesion;
-
-import java.util.ArrayList;
+import com.feridem.android.logicanegocio.ValidarIniciarSesion;
 
 public class IniciarSesionActivity extends AppCompatActivity {
-    private EditText ingresarCorreo,
-            ingresarContrasenia;
+    private EditText ingresarCorreo;
+    private EditText ingresarContrasena;
     private Button botonRegistrarse;
     private Button botonIniciarSesion;
-    private ValidarInicarSesion validarInicarSesion;
+    private ValidarIniciarSesion validarIniciarSesion;
 
-    private ArrayList<Usuario> listaUsuarios;
-    private BaseUsuarios baseUsuarios;
-    private boolean activarHacks = true;
+    private boolean activarHacks = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +34,10 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     private void inicializarRecursos() {
         ingresarCorreo = findViewById(R.id.ingresarCorreo);
-        ingresarContrasenia = findViewById(R.id.ingresarContrasenia);
+        ingresarContrasena = findViewById(R.id.ingresarContrasenia);
         botonRegistrarse = findViewById(R.id.botonRegistrarse);
         botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
-        baseUsuarios = new BaseUsuarios(this);
+
     }
 
     private void irRegistro(View view) {
@@ -59,15 +53,16 @@ public class IniciarSesionActivity extends AppCompatActivity {
         // -------------------------------------------
 
         if (!ValidarDatos.campoLleno(this, ingresarCorreo) &&
-                !ValidarDatos.campoLleno(this, ingresarContrasenia))
+                !ValidarDatos.campoLleno(this, ingresarContrasena))
             return;
 
-        listaUsuarios = baseUsuarios.leerUsuarios();
-        validarInicarSesion = new ValidarInicarSesion(this, listaUsuarios);
 
-        if (!validarInicarSesion.validarCuentaUsuario(ingresarCorreo.getText().toString(), ingresarContrasenia.getText().toString()))
+        validarIniciarSesion = new ValidarIniciarSesion(this);
+
+        if (!validarIniciarSesion.validarCuentaUsuario(ingresarCorreo.getText().toString(), ingresarContrasena.getText().toString()))
             return;
         startActivity(siguiente);
+        finish();
     }
 
 

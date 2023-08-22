@@ -14,7 +14,7 @@ public class ValidarDatos {
      */
     public static boolean campoLleno(Context contexto, EditText ingresar) {
         String textoIngresar = ingresar.getText().toString();
-        if (textoIngresar.length() == 0) {
+        if (textoIngresar.trim().length() == 0) {
             Toast.makeText(contexto, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
             return false;
         }

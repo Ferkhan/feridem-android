@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Usuario {
     private int id;
-    private int rol;
+    private int idRol;
     private String nombre;
     private String correo;
     private String celular;
@@ -43,12 +43,12 @@ public class Usuario {
         this.celular = celular;
     }
 
-    public int getRol() {
-        return rol;
+    public int getIdRol() {
+        return idRol;
     }
 
-    public void setRol(int rol) {
-        this.rol = rol;
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
     public int getEstado() {

@@ -10,10 +10,10 @@ import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
 
 import java.util.ArrayList;
 
-public class BaseHabitaciones extends GestorBaseDatos {
+public class GestorHabitacion extends GestorBaseDatos {
     Context contexto;
 
-    public BaseHabitaciones(@Nullable Context contexto) {
+    public GestorHabitacion(@Nullable Context contexto) {
         super(contexto);
         this.contexto = contexto;
     }
@@ -26,7 +26,7 @@ public class BaseHabitaciones extends GestorBaseDatos {
         Habitacion habitacion;
         Cursor cursorHabitaciones;
 
-        cursorHabitaciones = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
+        cursorHabitaciones = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_HABITACION, null);
 
         if (cursorHabitaciones.moveToFirst()) {
             do {

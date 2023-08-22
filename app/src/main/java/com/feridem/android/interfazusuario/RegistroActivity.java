@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.basedatos.BaseUsuarios;
+import com.feridem.android.interfazdatos.basedatos.GestorUsuario;
+import com.feridem.android.interfazdatos.basedatos.GestorUsuarioCredencial;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -33,10 +34,9 @@ public class RegistroActivity extends AppCompatActivity {
         inicializarRecursos();
         botonIniciarSesion.setOnClickListener(this::irIniciarSesion);
         botonRegistrarse.setOnClickListener(this::irPrincipal);
-//        texto.setOnClickListener(this::mensaje);
     }
 
-     private void inicializarRecursos() {
+    private void inicializarRecursos() {
         botonIniciarSesion =    findViewById(R.id.botonIniciarSesion);
         botonRegistrarse =      findViewById(R.id.botonRegistrarse);
         ingresarNombre =        findViewById(R.id.ingresarNombreCompleto);
@@ -44,10 +44,11 @@ public class RegistroActivity extends AppCompatActivity {
         ingresarCelular =       findViewById(R.id.ingresarNumeroCelular);
         ingresarContrasenia =   findViewById(R.id.ingresarContrasenia);
         confirmarContrasenia =  findViewById(R.id.ingresarConfirmarContrasenia);
-//        texto = findViewById(R.id.nombreCompleto);
     }
 
-    private void irIniciarSesion(View vista) { onBackPressed(); }
+    private void irIniciarSesion(View vista) {
+        onBackPressed();
+    }
 
     private void irPrincipal(View view) {
         if (!ValidarDatos.campoLleno(this, ingresarNombre) ||
@@ -65,11 +66,12 @@ public class RegistroActivity extends AppCompatActivity {
             return;
 
         Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
-        BaseUsuarios datosUsuarios = new BaseUsuarios(this);
-        long id = datosUsuarios.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
-                                      ingresarCelular.getText().toString(), ingresarContrasenia.getText().toString());
-
-        if (id > 0) {
+        GestorUsuario gestorUsuario = new GestorUsuario(this);
+        GestorUsuarioCredencial gestorUsuarioCredencial = new GestorUsuarioCredencial(this);
+        long idUsuario = gestorUsuario.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
+                                      ingresarCelular.getText().toString());
+//        long idCredencial = gestorUsuarioCredencial.insertarCredencial(ingresarContrasenia.getText().toString());
+        if (idUsuario > 0) {
             Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();
             startActivity(siguienteActivity);
         } else {
@@ -77,8 +79,4 @@ public class RegistroActivity extends AppCompatActivity {
         }
 
     }
-
-//    private void mensaje(View view) {
-//        Toast.makeText(this,"Hola papito", Toast.LENGTH_SHORT).show();
-//    }
 }

@@ -7,7 +7,7 @@ public class UsuarioCredencial {
     private String contrasena;
     private int estado;
     private Date fechaIngreso;
-    private Date fechaModifiacion;
+    private Date fechaModificacion;
 
     public int getId() {
         return id;
@@ -41,11 +41,11 @@ public class UsuarioCredencial {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public Date getFechaModifiacion() {
-        return fechaModifiacion;
+    public Date getFechaModificacion() {
+        return fechaModificacion;
     }
 
-    public void setFechaModifiacion(Date fechaModifiacion) {
-        this.fechaModifiacion = fechaModifiacion;
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
     }
 }
