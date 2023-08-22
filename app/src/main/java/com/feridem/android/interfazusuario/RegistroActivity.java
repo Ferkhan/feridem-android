@@ -70,8 +70,9 @@ public class RegistroActivity extends AppCompatActivity {
         GestorUsuarioCredencial gestorUsuarioCredencial = new GestorUsuarioCredencial(this);
         long idUsuario = gestorUsuario.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
                                       ingresarCelular.getText().toString());
-//        long idCredencial = gestorUsuarioCredencial.insertarCredencial(ingresarContrasenia.getText().toString());
-        if (idUsuario > 0) {
+        long idCredencial = gestorUsuarioCredencial.insertarCredencial((int)idUsuario, ingresarContrasenia.getText().toString());
+
+        if (idUsuario > 0 && idCredencial >= 0) {
             Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();
             startActivity(siguienteActivity);
         } else {

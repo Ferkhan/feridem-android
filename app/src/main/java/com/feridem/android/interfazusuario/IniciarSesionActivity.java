@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.feridem.android.R;
+import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.ValidarIniciarSesion;
 
@@ -30,6 +32,8 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
         botonRegistrarse.setOnClickListener(this::irRegistro);
         botonIniciarSesion.setOnClickListener(this::irPrincipal);
+
+
     }
 
     private void inicializarRecursos() {
@@ -38,6 +42,18 @@ public class IniciarSesionActivity extends AppCompatActivity {
         botonRegistrarse = findViewById(R.id.botonRegistrarse);
         botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
 
+        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(this);
+        try{
+            gestorBaseDatos.comprobarBaseDatos();
+        } catch (Exception e) {
+            Log.i("mensaje feridem", e.getMessage());
+        }
+        try {
+            gestorBaseDatos.openDatabase();
+        } catch (Exception e) {
+            Log.i("mensaje feridem", e.getMessage());
+
+        }
     }
 
     private void irRegistro(View view) {

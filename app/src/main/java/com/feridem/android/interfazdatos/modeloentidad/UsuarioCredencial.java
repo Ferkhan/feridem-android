@@ -1,6 +1,6 @@
 package com.feridem.android.interfazdatos.modeloentidad;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class UsuarioCredencial {
     private int id;

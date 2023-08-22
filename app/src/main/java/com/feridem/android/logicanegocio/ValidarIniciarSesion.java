@@ -1,5 +1,6 @@
 package com.feridem.android.logicanegocio;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.feridem.android.interfazdatos.basedatos.GestorUsuario;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 public class ValidarIniciarSesion {
 
-    Context contexto;
+    private Context contexto;
     private GestorUsuario gestorUsuario;
     private GestorUsuarioCredencial gestorCredencial;
     public ValidarIniciarSesion(Context contexto) {
@@ -22,13 +23,13 @@ public class ValidarIniciarSesion {
 
     }
 
-    public boolean validarCuentaUsuario(String ingresarCorreo, String ingresarContrasenia) {
+    public boolean validarCuentaUsuario(String ingresarCorreo, String ingresarContrasena) {
         ArrayList<Usuario> listaUsuarios = gestorUsuario.leerUsuarios();
         ArrayList<UsuarioCredencial> listaCredenciales = gestorCredencial.leerCredenciales();
         for (Usuario usuario : listaUsuarios)
             if (ingresarCorreo.equals(usuario.getCorreo())) {
                 for (UsuarioCredencial credencial : listaCredenciales)
-                    if (usuario.getId() == credencial.getId() && ingresarContrasenia.equals(credencial.getContrasena())) {
+                    if (usuario.getId() == credencial.getId() && ingresarContrasena.equals(credencial.getContrasena())) {
                         Toast.makeText(contexto, "¡Saludos, " + usuario.getNombre() + "!", Toast.LENGTH_SHORT).show();
                         return true;
                     }

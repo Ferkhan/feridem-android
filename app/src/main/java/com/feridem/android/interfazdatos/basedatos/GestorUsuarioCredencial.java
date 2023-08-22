@@ -1,15 +1,17 @@
 package com.feridem.android.interfazdatos.basedatos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.feridem.android.interfazdatos.modeloentidad.Usuario;
 import com.feridem.android.interfazdatos.modeloentidad.UsuarioCredencial;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,9 +25,25 @@ public class GestorUsuarioCredencial extends GestorBaseDatos{
         this.contexto = contexto;
     }
 
-//    public long insertarCredencial(int id) {
-//
-//    }
+    public long insertarCredencial(int idUsuario, String contrasena) {
+        long id = 0;
+
+        try{
+            GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
+            SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
+            ContentValues valoresInsertar = new ContentValues();
+
+            valoresInsertar.put("IdUsuario", idUsuario);
+            valoresInsertar.put("Contrasena", contrasena);
+            valoresInsertar.put("Estado", 1);
+            id = sqLiteDatabase.insert(TABLA_USUARIO_CREDENCIAL, null, valoresInsertar);
+        } catch (Exception e) {
+            Log.i("mensaje feridem", e.toString());
+        }
+        Log.i("mensaje feridem", String.valueOf(id));
+
+        return id;
+    }
     public ArrayList<UsuarioCredencial> leerCredenciales() {
         GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
         SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
@@ -42,9 +60,9 @@ public class GestorUsuarioCredencial extends GestorBaseDatos{
                 usuarioCredencial.setContrasena(cursorCredenciales.getString(1));
                 usuarioCredencial.setEstado(cursorCredenciales.getInt(2));
                 try {
-                    usuarioCredencial.setFechaIngreso((Date) formatoFecha.parse(cursorCredenciales.getString(6)));
-                    usuarioCredencial.setFechaModificacion((Date) formatoFecha.parse(cursorCredenciales.getString(7)));
-                } catch (ParseException e) {e.printStackTrace();}
+                    usuarioCredencial.setFechaIngreso(formatoFecha.parse(cursorCredenciales.getString(3)));
+                    usuarioCredencial.setFechaModificacion(formatoFecha.parse(cursorCredenciales.getString(4)));
+                } catch (ParseException e) {Log.i("mensaje feridem", e.getMessage());}
 
                 listaCredenciales.add(usuarioCredencial);
             } while (cursorCredenciales.moveToNext());

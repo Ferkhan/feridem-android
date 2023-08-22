@@ -10,10 +10,10 @@ import androidx.annotation.Nullable;
 
 import com.feridem.android.interfazdatos.modeloentidad.Usuario;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class GestorUsuario extends GestorBaseDatos {
     private Context contexto;
@@ -35,20 +35,18 @@ public class GestorUsuario extends GestorBaseDatos {
         long id = 0;
         try{
             GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
-            SQLiteDatabase baseDatos = gestorBaseDatos.getWritableDatabase();
-            ContentValues valores = new ContentValues();
-            Log.i("mensaje error", "empezando a emparejar");
+            SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
+            ContentValues valoresInsertar = new ContentValues();
 
-            valores.put("Nombre", nombre);
-            valores.put("Correo", correo);
-            valores.put("Celular", celular);
-            valores.put("Estado", 1);
-            id = baseDatos.insert(TABLA_USUARIO, null, valores);
-            Log.i("mensaje error", "ha terminado de emparejar");
+            valoresInsertar.put("IdRol", 1);
+            valoresInsertar.put("Nombre", nombre);
+            valoresInsertar.put("Correo", correo);
+            valoresInsertar.put("Celular", celular);
+            valoresInsertar.put("Estado", 1);
+            id = sqLiteDatabase.insert(TABLA_USUARIO, null, valoresInsertar);
         } catch (Exception e) {
-            Log.i("mensaje error", e.toString());
+            Log.i("mensaje feridem", e.toString());
         }
-        Log.i("mensaje error", String.valueOf(id));
         return id;
     }
 
@@ -60,7 +58,6 @@ public class GestorUsuario extends GestorBaseDatos {
         listaUsuarios = new ArrayList<>();
         Usuario usuario;
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
         if (cursorUsuarios.moveToFirst()) {
             do {
                 usuario = new Usuario();
@@ -71,9 +68,9 @@ public class GestorUsuario extends GestorBaseDatos {
                 usuario.setCelular(cursorUsuarios.getString(4));
                 usuario.setEstado(cursorUsuarios.getInt(5));
                 try {
-                    usuario.setFechaRegistro((Date) formatoFecha.parse(cursorUsuarios.getString(6)));
-                    usuario.setFechaModificacion((Date) formatoFecha.parse(cursorUsuarios.getString(7)));
-                } catch (ParseException e) {e.printStackTrace();}
+                    usuario.setFechaRegistro(formatoFecha.parse(cursorUsuarios.getString(6)));
+                    usuario.setFechaModificacion(formatoFecha.parse(cursorUsuarios.getString(7)));
+                } catch (ParseException e) {Log.i("mensaje feridem", "otro error");}
 
                 listaUsuarios.add(usuario);
             } while (cursorUsuarios.moveToNext());
