@@ -38,7 +38,7 @@ public class GestorHabitacion extends GestorBaseDatos {
                 habitacion.setIdHotel(cursorHabitaciones.getInt(1));
                 habitacion.setNombre(cursorHabitaciones.getString(2));
                 habitacion.setDescripcion(cursorHabitaciones.getString(3));
-                habitacion.setPrecioNoche(cursorHabitaciones.getInt(4));
+                habitacion.setPrecioNoche(cursorHabitaciones.getDouble(4));
                 habitacion.setImagen(cursorHabitaciones.getString(5));
                 habitacion.setEstado(cursorHabitaciones.getInt(6));
                 try {

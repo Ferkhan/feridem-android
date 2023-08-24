@@ -5,95 +5,52 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.basedatos.GestorHotel;
 import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
-import com.feridem.android.interfazdatos.modeloentidad.Hotel;
 import com.feridem.android.interfazusuario.HabitacionDetallesActivity;
-
 
 import java.util.ArrayList;
 
-public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHolder> {
+public class AdaptadorLista extends RecyclerView.Adapter<HabitacionesVistaSoporte> {
     private ArrayList<Habitacion> listaHabitaciones;
     private LayoutInflater infladorLayout;
     private Context contexto;
-    private GestorHotel gestorHotel;
 
     public AdaptadorLista(ArrayList<Habitacion> listaHabitaciones, Context contexto) {
         this.contexto = contexto;
         this.infladorLayout = LayoutInflater.from(contexto);
         this.listaHabitaciones = listaHabitaciones;
-        this.gestorHotel = new GestorHotel(contexto);
     }
 
     @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista = infladorLayout.inflate(R.layout.lista_habitaciones, null);
-        return new ViewHolder(vista);
+    public HabitacionesVistaSoporte onCreateViewHolder(@NonNull ViewGroup padre, int tipoVista) {
+        View vista = infladorLayout.inflate(R.layout.lista_habitaciones, padre, false);
+        return new HabitacionesVistaSoporte(vista, contexto);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.bindData(listaHabitaciones.get(position));
-        holder.habitacionTarjeta.setOnClickListener(this::irSiguiente);
-
+    public void onBindViewHolder(@NonNull HabitacionesVistaSoporte soporte, final int posicion) {
+        soporte.desplegar(listaHabitaciones.get(posicion));
+        soporte.habitacionTarjeta.setOnClickListener(vista -> seleccionarHabitacion(posicion));
+//        soporte.habitacionTarjeta.setOnClickListener(this::);
     }
 
-    public void irSiguiente (View vista) {
-        Intent siguiente = new Intent(contexto, HabitacionDetallesActivity.class);
-        contexto.startActivity(siguiente);
+    private void seleccionarHabitacion (int posicion) {
+        Intent intencion = new Intent(contexto, HabitacionDetallesActivity.class);
+        Toast.makeText(contexto, "Habitacion seleccioada: " + posicion, Toast.LENGTH_SHORT).show();
+        intencion.putExtra("habitacion_seleccionada", listaHabitaciones.get(posicion));
+        contexto.startActivity(intencion);
+        //        notifyDataSetChanged();
     }
-
-
-
-    public void setHabitaciones(ArrayList<Habitacion> habitaciones ) { listaHabitaciones = habitaciones; }
-
 
     @Override
     public int getItemCount() {
         return listaHabitaciones.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public CardView habitacionTarjeta;
-        ImageView imagenHabitacion;
-        TextView nombreHabitacion, nombreHotel, direccionHotel, precioHabitacion;
-
-        ViewHolder(View vistaItem) {
-            super(vistaItem);
-            nombreHabitacion    = vistaItem.findViewById(R.id.nombre_habitacion);
-            nombreHotel         = vistaItem.findViewById(R.id.nombre_hotel);
-            direccionHotel      = vistaItem.findViewById(R.id.direccion_habitacion);
-            imagenHabitacion    = vistaItem.findViewById(R.id.imagen_habitacion);
-            precioHabitacion    = vistaItem.findViewById(R.id.precio_habitacion);
-            habitacionTarjeta = itemView.findViewById(R.id.habitacion_tarjeta);
-        }
-
-
-        void bindData(Habitacion item) {
-            int imagenResource = contexto.getResources().getIdentifier(item.getImagen(), "drawable", contexto.getPackageName());
-            String formatoPrecio = "$" + item.getPrecioNoche();
-            ArrayList<Hotel> listaHoteles = gestorHotel.leerHoteles();
-
-            imagenHabitacion.setImageResource(imagenResource);
-            nombreHabitacion.setText(item.getNombre());
-            precioHabitacion.setText(formatoPrecio);
-            for (Hotel hotel : listaHoteles) {
-                if (item.getIdHotel() == hotel.getId()) {
-                    nombreHotel.setText(hotel.getNombre());
-                    direccionHotel.setText(hotel.getDireccion());
-                }
-            }
-        }
-    }
-
-}
+ }

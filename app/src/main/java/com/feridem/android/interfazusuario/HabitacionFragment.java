@@ -69,8 +69,8 @@ public class HabitacionFragment extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_habitacion, container, false);
 
-        AdaptadorLista adaptadorLista = new AdaptadorLista(listaHabitaciones, getContext());
         RecyclerView recyclerView = vista.findViewById(R.id.recyclerView);
+        AdaptadorLista adaptadorLista = new AdaptadorLista(listaHabitaciones, getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adaptadorLista);

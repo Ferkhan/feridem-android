@@ -1,5 +1,10 @@
 package com.feridem.android.interfazdatos.modeloentidad;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 public class Habitacion {
@@ -7,7 +12,7 @@ public class Habitacion {
     private int idHotel;
     private String nombre;
     private String descripcion;
-    private int precioNoche;
+    private double precioNoche;
     private String imagen;
     private int estado;
     private Date fechaIngreso;
@@ -37,11 +42,11 @@ public class Habitacion {
         this.descripcion = descripcion;
     }
 
-    public int getPrecioNoche() {
+    public double getPrecioNoche() {
         return precioNoche;
     }
 
-    public void setPrecioNoche(int precioNoche) {
+    public void setPrecioNoche(double precioNoche) {
         this.precioNoche = precioNoche;
     }
 
@@ -84,4 +89,5 @@ public class Habitacion {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
 }

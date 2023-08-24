@@ -71,7 +71,6 @@ public class GestorUsuario extends GestorBaseDatos {
                     usuario.setFechaRegistro(formatoFecha.parse(cursorUsuarios.getString(6)));
                     usuario.setFechaModificacion(formatoFecha.parse(cursorUsuarios.getString(7)));
                 } catch (ParseException e) {Log.i("mensaje feridem", "otro error");}
-
                 listaUsuarios.add(usuario);
             } while (cursorUsuarios.moveToNext());
         }
