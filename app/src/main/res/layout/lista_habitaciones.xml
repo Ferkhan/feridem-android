@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
+    android:id="@+id/habitacion_tarjeta"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
     android:backgroundTint="@color/secundario"
+    android:clickable="true"
     app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
+    app:cardElevation="10dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -18,10 +19,10 @@
         <ImageView
             android:id="@+id/imagen_habitacion"
             android:layout_width="match_parent"
-            android:layout_height="225dp"
+            android:layout_height="200dp"
+            android:contentDescription="Imagen"
             android:scaleType="centerCrop"
-            android:src="@drawable/finlandia_habitacion_doble"
-            android:contentDescription="Imagen" />
+            android:src="@drawable/finlandia_habitacion_doble" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,9 +32,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="5"
-                android:orientation="vertical"
-                android:layout_margin="15dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nombre_habitacion"
@@ -41,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
                     android:text="Nombre de la Habitacion"
-                    android:textSize="18sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/nombre_hotel"
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:text="Nombre del Hotel"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/direccion_habitacion"
@@ -57,23 +58,23 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:text="Dirección de la Habitacion"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
             <View
                 android:layout_width="1.5dp"
                 android:layout_height="match_parent"
-                android:layout_marginVertical="5dp"
-                android:background="@color/black" />
+                android:layout_marginVertical="20dp"
+                android:background="#AE8C50" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_margin="15dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/precio_habitacion"
@@ -88,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
                     android:text="Por noche"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 

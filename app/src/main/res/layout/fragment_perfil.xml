@@ -18,7 +18,7 @@
 
         <TextView
             style="@style/texto_encabezado"
-            android:text="Perfil del usuario" />
+            android:text="Perfil" />
 
     </LinearLayout>
 

@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class GestorHabitacion extends GestorBaseDatos {
-    private Context contexto;
+    private final Context contexto;
 
     public GestorHabitacion(@Nullable Context contexto) {
         super(contexto);
@@ -24,7 +24,6 @@ public class GestorHabitacion extends GestorBaseDatos {
     public ArrayList<Habitacion> leerHabitaciones() {
         GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
         SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
-
         ArrayList<Habitacion> listaHabitaciones = new ArrayList<>();
         Habitacion habitacion;
         Cursor cursorHabitaciones;

@@ -1,6 +1,7 @@
 package com.feridem.android.logicanegocio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
 import com.feridem.android.interfazdatos.basedatos.GestorHotel;
 import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
 import com.feridem.android.interfazdatos.modeloentidad.Hotel;
+import com.feridem.android.interfazusuario.HabitacionDetallesActivity;
 
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
     private LayoutInflater infladorLayout;
     private Context contexto;
     private GestorHotel gestorHotel;
+
     public AdaptadorLista(ArrayList<Habitacion> listaHabitaciones, Context contexto) {
         this.contexto = contexto;
         this.infladorLayout = LayoutInflater.from(contexto);
@@ -40,7 +44,15 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.bindData(listaHabitaciones.get(position));
+        holder.habitacionTarjeta.setOnClickListener(this::irSiguiente);
+
     }
+
+    public void irSiguiente (View vista) {
+        Intent siguiente = new Intent(contexto, HabitacionDetallesActivity.class);
+        contexto.startActivity(siguiente);
+    }
+
 
 
     public void setHabitaciones(ArrayList<Habitacion> habitaciones ) { listaHabitaciones = habitaciones; }
@@ -52,6 +64,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        public CardView habitacionTarjeta;
         ImageView imagenHabitacion;
         TextView nombreHabitacion, nombreHotel, direccionHotel, precioHabitacion;
 
@@ -62,6 +75,7 @@ public class AdaptadorLista extends RecyclerView.Adapter<AdaptadorLista.ViewHold
             direccionHotel      = vistaItem.findViewById(R.id.direccion_habitacion);
             imagenHabitacion    = vistaItem.findViewById(R.id.imagen_habitacion);
             precioHabitacion    = vistaItem.findViewById(R.id.precio_habitacion);
+            habitacionTarjeta = itemView.findViewById(R.id.habitacion_tarjeta);
         }
 
 
