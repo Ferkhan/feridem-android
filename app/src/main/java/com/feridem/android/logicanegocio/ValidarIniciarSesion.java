@@ -1,12 +1,11 @@
 package com.feridem.android.logicanegocio;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.feridem.android.interfazdatos.basedatos.GestorUsuario;
 import com.feridem.android.interfazdatos.basedatos.GestorUsuarioCredencial;
-import com.feridem.android.interfazdatos.modeloentidad.Usuario;
-import com.feridem.android.interfazdatos.modeloentidad.UsuarioCredencial;
+import com.feridem.android.logicanegocio.entidades.Usuario;
+import com.feridem.android.logicanegocio.entidades.UsuarioCredencial;
 
 import android.content.Context;
 import java.util.ArrayList;

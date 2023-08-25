@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.feridem.android.R;
 import com.feridem.android.interfazdatos.basedatos.GestorHabitacion;
-import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
+import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.logicanegocio.AdaptadorLista;
 
 import java.util.ArrayList;

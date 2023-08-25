@@ -1,4 +1,4 @@
-package com.feridem.android.interfazdatos.modeloentidad;
+package com.feridem.android.logicanegocio.entidades;
 
 import android.os.Parcel;
 import android.os.Parcelable;

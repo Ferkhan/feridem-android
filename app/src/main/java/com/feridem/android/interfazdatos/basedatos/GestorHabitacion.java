@@ -7,7 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
+import com.feridem.android.logicanegocio.entidades.Habitacion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

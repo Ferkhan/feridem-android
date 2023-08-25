@@ -14,7 +14,7 @@ import android.widget.Button;
 
 //import com.feridem.android.databinding.ActivityMainBinding;
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
+import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

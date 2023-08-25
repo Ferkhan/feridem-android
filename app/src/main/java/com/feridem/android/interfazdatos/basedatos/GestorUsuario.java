@@ -8,12 +8,11 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.feridem.android.interfazdatos.modeloentidad.Usuario;
+import com.feridem.android.logicanegocio.entidades.Usuario;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class GestorUsuario extends GestorBaseDatos {
     private Context contexto;

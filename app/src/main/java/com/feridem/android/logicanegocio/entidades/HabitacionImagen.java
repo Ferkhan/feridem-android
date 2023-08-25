@@ -1,10 +1,10 @@
-package com.feridem.android.interfazdatos.modeloentidad;
+package com.feridem.android.logicanegocio.entidades;
 
 import java.sql.Date;
 
-public class UsuarioRol {
+public class HabitacionImagen {
     private int id;
-    private int idRolPadre;
+    private int idHabitacion;
     private int nombre;
     private int estado;
     private Date fechaIngreso;
@@ -18,12 +18,12 @@ public class UsuarioRol {
         this.id = id;
     }
 
-    public int getIdRolPadre() {
-        return idRolPadre;
+    public int getIdHabitacion() {
+        return idHabitacion;
     }
 
-    public void setIdRolPadre(int idRolPadre) {
-        this.idRolPadre = idRolPadre;
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
     }
 
     public int getNombre() {

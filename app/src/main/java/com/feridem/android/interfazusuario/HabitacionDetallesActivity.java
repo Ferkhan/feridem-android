@@ -3,21 +3,17 @@ package com.feridem.android.interfazusuario;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.interfazdatos.basedatos.GestorHabitacion;
 import com.feridem.android.interfazdatos.basedatos.GestorHotel;
-import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
-import com.feridem.android.interfazdatos.modeloentidad.Hotel;
+import com.feridem.android.logicanegocio.entidades.Habitacion;
+import com.feridem.android.logicanegocio.entidades.Hotel;
 
 import java.util.ArrayList;
 import java.util.Calendar;

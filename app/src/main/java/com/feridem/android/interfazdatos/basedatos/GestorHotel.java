@@ -7,7 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.feridem.android.interfazdatos.modeloentidad.Hotel;
+import com.feridem.android.logicanegocio.entidades.Hotel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

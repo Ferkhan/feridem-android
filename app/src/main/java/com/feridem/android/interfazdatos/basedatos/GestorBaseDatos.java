@@ -23,36 +23,32 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
     protected static final String TABLA_USUARIO_ROL = "USUARIO_ROL";
     protected static final String TABLA_HABITACION = "HABITACION";
     private Context contexto;
-    private String rutaBD;
+    private String rutaBaseDatos;
 
     public GestorBaseDatos(@Nullable Context contexto) {
         super(contexto, BASEDATOS_NOMBRE, null, BASEDATOS_VERSION);
         this.contexto = contexto;
-        this.rutaBD = contexto.getDatabasePath(BASEDATOS_NOMBRE).getPath();
+        this.rutaBaseDatos = contexto.getDatabasePath(BASEDATOS_NOMBRE).getPath();
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//        sqLiteDatabase.execSQL("CREATE TABLE " + TABLA_USUARIO + "(" +
-//                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-//                "nombre TEXT NOT NULL," +
-//                "correo TEXT NOT NULL," +
-//                "celular TEXT NOT NULL," +
-//                "contrasenia TEXT NOT NULL)");
-//        Log.i("mensaje error", "CREANDO base datos");
-//        if (!existeBaseDatos()) {
-//             Si la base de datos no existe, la copiamos desde assets
-//            copiarBaseDatos();
-//            Log.i("mensaje error", "NO existe base datos");
-//        }
+        try{
+            comprobarBaseDatos();
+        } catch (Exception e) {
+            Log.i("mensaje feridem", e.getMessage());
+        }
+        try {
+            abrirBaseDatos();
+        } catch (Exception e) {
+            Log.i("mensaje feridem", e.getMessage());
+        }
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE " + TABLA_USUARIO);
-        onCreate(sqLiteDatabase);
-    }
-    public void openDatabase() {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) { }
+
+    public void abrirBaseDatos() {
         String outputPath = contexto.getDatabasePath(BASEDATOS_NOMBRE).getPath();
         SQLiteDatabase.openDatabase(outputPath, null, 0);
     }
@@ -61,7 +57,7 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
         this.getReadableDatabase();
         try {
             InputStream inputStream = contexto.getAssets().open(BASEDATOS_NOMBRE);
-            OutputStream outputStream = new FileOutputStream(rutaBD);
+            OutputStream outputStream = new FileOutputStream(rutaBaseDatos);
             byte[] buffer = new byte[1024];
             int length;
             while ((length = inputStream.read(buffer)) > 0) {
@@ -74,13 +70,13 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
     public void comprobarBaseDatos() {
-        SQLiteDatabase checkDB = null;
+        SQLiteDatabase sqliteBaseDatos = null;
         try {
-            checkDB = SQLiteDatabase.openDatabase(rutaBD, null, 0);
+            sqliteBaseDatos = SQLiteDatabase.openDatabase(rutaBaseDatos, null, 0);
         } catch (Exception e) {
             Log.i("mensaje feridem", e.getMessage());
         }
-        if (checkDB != null) {
+        if (sqliteBaseDatos != null) {
             Log.i("mensaje feridem", "BASE de datos existente");
         } else {
             copiarBaseDatos();

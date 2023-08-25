@@ -49,7 +49,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
             Log.i("mensaje feridem", e.getMessage());
         }
         try {
-            gestorBaseDatos.openDatabase();
+            gestorBaseDatos.abrirBaseDatos();
         } catch (Exception e) {
             Log.i("mensaje feridem", e.getMessage());
 

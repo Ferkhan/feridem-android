@@ -10,9 +10,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.interfazdatos.basedatos.GestorHotel;
-import com.feridem.android.interfazdatos.modeloentidad.Habitacion;
+import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.modeloentidad.Hotel;
+import com.feridem.android.logicanegocio.entidades.Hotel;
 
 import java.util.ArrayList;
 

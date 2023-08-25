@@ -8,10 +8,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.feridem.android.interfazdatos.modeloentidad.Usuario;
-import com.feridem.android.interfazdatos.modeloentidad.UsuarioCredencial;
+import com.feridem.android.logicanegocio.entidades.UsuarioCredencial;
 
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
