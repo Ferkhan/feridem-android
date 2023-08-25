@@ -15,8 +15,8 @@ import com.feridem.android.logicanegocio.fachada.HotelBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.logicanegocio.entidades.Hotel;
 
-import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class HabitacionDetallesActivity extends AppCompatActivity {
     private ImageView imagen;
@@ -75,8 +75,8 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         int posicion = getIntent().getIntExtra("habitacion_seleccionada", 0);
         HabitacionBL habitacionBL = new HabitacionBL(this);
         HotelBL hotelBL = new HotelBL(this);
-        ArrayList<Habitacion> listaHabitaciones = habitacionBL.leerHabitaciones();
-        ArrayList<Hotel> listaHoteles = hotelBL.leerHoteles();
+        List<Habitacion> listaHabitaciones = habitacionBL.obtenerRegistrosActivos();
+        List<Hotel> listaHoteles = hotelBL.obtenerRegistrosActivos();
         Habitacion habitacionSeleccionada = listaHabitaciones.get(posicion);
         int imagenResource = getResources().getIdentifier(habitacionSeleccionada.getImagen(), "drawable", getPackageName());
 

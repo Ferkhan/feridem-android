@@ -1,6 +1,7 @@
 package com.feridem.android.interfazdatos.basedatos;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -82,5 +83,14 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
             copiarBaseDatos();
         }
     }
+
+    protected Cursor obtenerConsulta(String consultaSQL, String[] valores) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(consultaSQL, valores);
+
+        return cursor;
+    }
+
+    // public abstract Cursor obtenerRegistrosActivos();
 
 }

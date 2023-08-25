@@ -16,6 +16,7 @@ import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.logicanegocio.AdaptadorLista;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,7 +29,7 @@ public class HabitacionFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-    ArrayList<Habitacion> listaHabitaciones = new ArrayList<>();
+    List<Habitacion> listaHabitaciones = new ArrayList<>();
 
     public HabitacionFragment() {
         // Required empty public constructor
@@ -58,7 +59,7 @@ public class HabitacionFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         HabitacionBL habitacionBL = new HabitacionBL(getContext());
-        listaHabitaciones = habitacionBL.leerHabitaciones();
+        listaHabitaciones = habitacionBL.obtenerRegistrosActivos();
 
 
     }

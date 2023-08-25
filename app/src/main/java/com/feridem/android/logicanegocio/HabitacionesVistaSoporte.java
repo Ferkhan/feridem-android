@@ -1,7 +1,6 @@
 package com.feridem.android.logicanegocio;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.R;
 import com.feridem.android.logicanegocio.entidades.Hotel;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
     private final Context contexto;
@@ -38,16 +37,12 @@ public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
     public void desplegar(Habitacion habitacion) {
         int imagenResource = contexto.getResources().getIdentifier(habitacion.getImagen(), "drawable", contexto.getPackageName());
         String formatoPrecio = String.format("$%.0f", habitacion.getPrecioNoche());
-        ArrayList<Hotel> listaHoteles = hotelBL.leerHoteles();
+        Hotel hotel = hotelBL.obtenerPorId(habitacion.getIdHotel());
 
         imagenHabitacion.setImageResource(imagenResource);
-        Log.i("mensaje feridem", imagenResource + ":");
         nombreHabitacion.setText(habitacion.getNombre());
         precioHabitacion.setText(formatoPrecio);
-        for (Hotel hotel : listaHoteles)
-            if (habitacion.getIdHotel() == hotel.getId()) {
-                nombreHotel.setText(hotel.getNombre());
-                direccionHotel.setText(hotel.getDireccion());
-            }
+        nombreHotel.setText(hotel.getNombre());
+        direccionHotel.setText(hotel.getDireccion());
     }
 }

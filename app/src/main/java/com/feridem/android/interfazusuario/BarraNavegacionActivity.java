@@ -30,7 +30,6 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     FragmentManager gestorFragmento;
     Fragment fragmentoActual;
     Button botonEscanear;
-    ArrayList<Habitacion> listaHabitaciones = new ArrayList<>();
     Context contexto = this;
 //    ActivityMainBinding binding;
 
