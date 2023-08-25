@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.feridem.android.interfazdatos.basedatos.GestorHotel;
+import com.feridem.android.logicanegocio.fachada.HotelBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.R;
 import com.feridem.android.logicanegocio.entidades.Hotel;
@@ -21,7 +21,7 @@ public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
     protected CardView habitacionTarjeta;
     private final ImageView imagenHabitacion;
     private TextView nombreHabitacion, nombreHotel, direccionHotel, precioHabitacion;
-    private GestorHotel gestorHotel;
+    private HotelBL hotelBL;
 
     public HabitacionesVistaSoporte(View vistaItem, Context contexto) {
         super(vistaItem);
@@ -32,13 +32,13 @@ public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
         imagenHabitacion    = vistaItem.findViewById(R.id.imagen_habitacion);
         precioHabitacion    = vistaItem.findViewById(R.id.precio_habitacion);
         habitacionTarjeta   = vistaItem.findViewById(R.id.habitacion_tarjeta);
-        gestorHotel = new GestorHotel(contexto);
+        hotelBL = new HotelBL(contexto);
     }
 
     public void desplegar(Habitacion habitacion) {
         int imagenResource = contexto.getResources().getIdentifier(habitacion.getImagen(), "drawable", contexto.getPackageName());
         String formatoPrecio = String.format("$%.0f", habitacion.getPrecioNoche());
-        ArrayList<Hotel> listaHoteles = gestorHotel.leerHoteles();
+        ArrayList<Hotel> listaHoteles = hotelBL.leerHoteles();
 
         imagenHabitacion.setImageResource(imagenResource);
         Log.i("mensaje feridem", imagenResource + ":");

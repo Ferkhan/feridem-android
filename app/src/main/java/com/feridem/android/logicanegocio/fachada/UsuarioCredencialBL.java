@@ -1,4 +1,4 @@
-package com.feridem.android.interfazdatos.basedatos;
+package com.feridem.android.logicanegocio.fachada;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,17 +8,18 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.logicanegocio.entidades.UsuarioCredencial;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class GestorUsuarioCredencial extends GestorBaseDatos{
+public class UsuarioCredencialBL extends GestorBaseDatos {
     private Context contexto;
     private ArrayList<UsuarioCredencial> listaCredenciales;
 
-    public GestorUsuarioCredencial(@Nullable Context contexto) {
+    public UsuarioCredencialBL(@Nullable Context contexto) {
         super(contexto);
         this.contexto = contexto;
     }

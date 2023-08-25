@@ -2,8 +2,8 @@ package com.feridem.android.logicanegocio;
 
 import android.widget.Toast;
 
-import com.feridem.android.interfazdatos.basedatos.GestorUsuario;
-import com.feridem.android.interfazdatos.basedatos.GestorUsuarioCredencial;
+import com.feridem.android.logicanegocio.fachada.UsuarioBL;
+import com.feridem.android.logicanegocio.fachada.UsuarioCredencialBL;
 import com.feridem.android.logicanegocio.entidades.Usuario;
 import com.feridem.android.logicanegocio.entidades.UsuarioCredencial;
 
@@ -13,17 +13,17 @@ import java.util.ArrayList;
 public class ValidarIniciarSesion {
 
     private Context contexto;
-    private GestorUsuario gestorUsuario;
-    private GestorUsuarioCredencial gestorCredencial;
+    private UsuarioBL usuarioBL;
+    private UsuarioCredencialBL gestorCredencial;
     public ValidarIniciarSesion(Context contexto) {
         this.contexto = contexto;
-        this.gestorUsuario = new GestorUsuario(contexto);
-        this.gestorCredencial = new GestorUsuarioCredencial(contexto);
+        this.usuarioBL = new UsuarioBL(contexto);
+        this.gestorCredencial = new UsuarioCredencialBL(contexto);
 
     }
 
     public boolean validarCuentaUsuario(String ingresarCorreo, String ingresarContrasena) {
-        ArrayList<Usuario> listaUsuarios = gestorUsuario.leerUsuarios();
+        ArrayList<Usuario> listaUsuarios = usuarioBL.leerUsuarios();
         ArrayList<UsuarioCredencial> listaCredenciales = gestorCredencial.leerCredenciales();
         for (Usuario usuario : listaUsuarios)
             if (ingresarCorreo.equals(usuario.getCorreo())) {

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.basedatos.GestorHabitacion;
+import com.feridem.android.logicanegocio.fachada.HabitacionBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.logicanegocio.AdaptadorLista;
 
@@ -57,8 +57,8 @@ public class HabitacionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        GestorHabitacion gestorHabitacion = new GestorHabitacion(getContext());
-        listaHabitaciones = gestorHabitacion.leerHabitaciones();
+        HabitacionBL habitacionBL = new HabitacionBL(getContext());
+        listaHabitaciones = habitacionBL.leerHabitaciones();
 
 
     }

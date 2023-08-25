@@ -22,7 +22,7 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
     protected static final String TABLA_REGISTRO_SESION = "REGISTRO_SESION";
     protected static final String TABLA_USUARIO_ROL = "USUARIO_ROL";
     protected static final String TABLA_HABITACION = "HABITACION";
-    private Context contexto;
+    protected Context contexto;
     private String rutaBaseDatos;
 
     public GestorBaseDatos(@Nullable Context contexto) {

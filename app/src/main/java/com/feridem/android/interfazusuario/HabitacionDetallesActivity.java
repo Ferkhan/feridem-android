@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.basedatos.GestorHabitacion;
-import com.feridem.android.interfazdatos.basedatos.GestorHotel;
+import com.feridem.android.logicanegocio.fachada.HabitacionBL;
+import com.feridem.android.logicanegocio.fachada.HotelBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.logicanegocio.entidades.Hotel;
 
@@ -73,10 +73,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
 
     private void establecerDatos() {
         int posicion = getIntent().getIntExtra("habitacion_seleccionada", 0);
-        GestorHabitacion gestorHabitacion = new GestorHabitacion(this);
-        GestorHotel gestorHotel = new GestorHotel(this);
-        ArrayList<Habitacion> listaHabitaciones = gestorHabitacion.leerHabitaciones();
-        ArrayList<Hotel> listaHoteles = gestorHotel.leerHoteles();
+        HabitacionBL habitacionBL = new HabitacionBL(this);
+        HotelBL hotelBL = new HotelBL(this);
+        ArrayList<Habitacion> listaHabitaciones = habitacionBL.leerHabitaciones();
+        ArrayList<Hotel> listaHoteles = hotelBL.leerHoteles();
         Habitacion habitacionSeleccionada = listaHabitaciones.get(posicion);
         int imagenResource = getResources().getIdentifier(habitacionSeleccionada.getImagen(), "drawable", getPackageName());
 

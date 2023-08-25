@@ -20,8 +20,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private Button botonRegistrarse;
     private Button botonIniciarSesion;
     private ValidarIniciarSesion validarIniciarSesion;
-
-    private boolean activarHacks = false;
+    private boolean activarHacks = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

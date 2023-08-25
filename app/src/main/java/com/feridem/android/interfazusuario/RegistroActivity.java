@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
-import com.feridem.android.interfazdatos.basedatos.GestorUsuario;
-import com.feridem.android.interfazdatos.basedatos.GestorUsuarioCredencial;
+import com.feridem.android.logicanegocio.fachada.UsuarioBL;
+import com.feridem.android.logicanegocio.fachada.UsuarioCredencialBL;
 import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {
@@ -66,11 +66,11 @@ public class RegistroActivity extends AppCompatActivity {
             return;
 
         Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
-        GestorUsuario gestorUsuario = new GestorUsuario(this);
-        GestorUsuarioCredencial gestorUsuarioCredencial = new GestorUsuarioCredencial(this);
-        long idUsuario = gestorUsuario.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
+        UsuarioBL usuarioBL = new UsuarioBL(this);
+        UsuarioCredencialBL usuarioCredencialBL = new UsuarioCredencialBL(this);
+        long idUsuario = usuarioBL.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
                                       ingresarCelular.getText().toString());
-        long idCredencial = gestorUsuarioCredencial.insertarCredencial((int)idUsuario, ingresarContrasenia.getText().toString());
+        long idCredencial = usuarioCredencialBL.insertarCredencial((int)idUsuario, ingresarContrasenia.getText().toString());
 
         if (idUsuario > 0 && idCredencial >= 0) {
             Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();

@@ -1,4 +1,4 @@
-package com.feridem.android.interfazdatos.basedatos;
+package com.feridem.android.logicanegocio.fachada;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,18 +7,17 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class GestorHabitacion extends GestorBaseDatos {
-    private final Context contexto;
+public class HabitacionBL extends GestorBaseDatos {
 
-    public GestorHabitacion(@Nullable Context contexto) {
+    public HabitacionBL(@Nullable Context contexto) {
         super(contexto);
-        this.contexto = contexto;
     }
 
     public ArrayList<Habitacion> leerHabitaciones() {
