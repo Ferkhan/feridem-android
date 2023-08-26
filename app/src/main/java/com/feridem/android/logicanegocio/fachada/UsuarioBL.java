@@ -12,15 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioBL extends GestorBL{
+    private Usuario usuario;
     private UsuarioDAC usuarioDAC;
 
     public UsuarioBL(Context contexto) {
         super(contexto);
-        this.usuarioDAC = new UsuarioDAC(contexto);
+        usuarioDAC = new UsuarioDAC(contexto);
+        usuario = new Usuario();
     }
 
     public List<Usuario> obtenerRegistrosActivos() throws AppException {
-        Usuario usuario;
         List<Usuario> listaUsuarios = new ArrayList<>();
         cursorConsulta = usuarioDAC.leerRegistrosActivos();
 
@@ -48,7 +49,6 @@ public class UsuarioBL extends GestorBL{
     }
 
     public Usuario obtenerPorId(int idUsuario) throws AppException {
-        Usuario usuario = new Usuario();
         cursorConsulta = usuarioDAC.leerPorId(idUsuario);
 
         if (cursorConsulta.moveToFirst()) {

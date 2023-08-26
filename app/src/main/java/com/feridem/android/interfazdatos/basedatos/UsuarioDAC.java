@@ -38,7 +38,6 @@ public class UsuarioDAC extends GestorBaseDatos {
         valoresContenido.put("Nombre", nombre);
         valoresContenido.put("Correo", correo);
         valoresContenido.put("Celular", celular);
-        valoresContenido.put("Estado", 1);
         return getWritableDatabase().insert(TABLA_USUARIO, null, valoresContenido);
     }
 }

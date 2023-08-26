@@ -31,8 +31,8 @@ public class UsuarioCredencialBL extends GestorBL {
                 usuarioCredencial.setContrasena(cursorConsulta.getString(1));
                 usuarioCredencial.setEstado(cursorConsulta.getInt(2));
                 try {
-                    usuarioCredencial.setFechaRegistro(formatoFecha.parse(cursorConsulta.getString(3)));
-                    usuarioCredencial.setFechaModificacion(formatoFecha.parse(cursorConsulta.getString(4)));
+                    usuarioCredencial.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(3)));
+                    usuarioCredencial.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(4)));
                 } catch (ParseException error) {
                     throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
                 }

@@ -39,7 +39,6 @@ public class UsuarioCredencialDAC extends GestorBaseDatos {
             valoresContenido = new ContentValues();
             valoresContenido.put("IdUsuario", idUsuario);
             valoresContenido.put("Contrasena", contrasena);
-            valoresContenido.put("Estado", 1);
             return getWritableDatabase().insert(TABLA_USUARIO_CREDENCIAL, null, valoresContenido);
         } catch (SQLException error) {
             throw new AppException(error, getClass(), "insertarRegistro()");
