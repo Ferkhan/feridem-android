@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.fachada.HabitacionBL;
 import com.feridem.android.logicanegocio.fachada.HotelBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
@@ -37,7 +38,12 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         inicializarRecursos();
         fechaEntrada.setOnClickListener(vista -> seleccionarFecha(fechaEntrada));
         fechaSalida.setOnClickListener(vista -> seleccionarFecha(fechaSalida));
-        establecerDatos();
+
+        try {
+            establecerDatos();
+        } catch (AppException error) {
+            throw new RuntimeException(error);
+        }
     }
 
 
@@ -71,13 +77,13 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         seleccionarFecha.show();
     }
 
-    private void establecerDatos() {
+    private void establecerDatos() throws AppException {
         int posicion = getIntent().getIntExtra("habitacion_seleccionada", 0);
         HabitacionBL habitacionBL = new HabitacionBL(this);
         HotelBL hotelBL = new HotelBL(this);
         List<Habitacion> listaHabitaciones = habitacionBL.obtenerRegistrosActivos();
-        List<Hotel> listaHoteles = hotelBL.obtenerRegistrosActivos();
         Habitacion habitacionSeleccionada = listaHabitaciones.get(posicion);
+        Hotel hotel = hotelBL.obtenerPorId(habitacionSeleccionada.getIdHotel());
         int imagenResource = getResources().getIdentifier(habitacionSeleccionada.getImagen(), "drawable", getPackageName());
 
         imagen.setImageResource(imagenResource);
@@ -85,11 +91,8 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         precioNoche.setText(String.format("$%.0f", habitacionSeleccionada.getPrecioNoche()));
         descripcion.setText(habitacionSeleccionada.getDescripcion());
 //        totalNoches.setText("");
-        for (Hotel hotel : listaHoteles)
-            if (habitacionSeleccionada.getIdHotel() == hotel.getId()) {
-                nombreHotel.setText(hotel.getNombre());
-                direccion.setText(hotel.getDireccion());
-            }
+        nombreHotel.setText(hotel.getNombre());
+        direccion.setText(hotel.getDireccion());
     }
 
 }

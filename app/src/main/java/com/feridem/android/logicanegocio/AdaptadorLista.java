@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.interfazusuario.HabitacionDetallesActivity;
 
@@ -35,7 +36,11 @@ public class AdaptadorLista extends RecyclerView.Adapter<HabitacionesVistaSoport
 
     @Override
     public void onBindViewHolder(@NonNull HabitacionesVistaSoporte soporte, final int posicion) {
-        soporte.desplegar(listaHabitaciones.get(posicion));
+        try {
+            soporte.desplegar(listaHabitaciones.get(posicion));
+        } catch (AppException error) {
+            throw new RuntimeException(error);
+        }
         soporte.habitacionTarjeta.setOnClickListener(vista -> seleccionarHabitacion(posicion));
     }
 

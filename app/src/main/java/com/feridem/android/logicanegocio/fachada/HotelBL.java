@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.interfazdatos.basedatos.HotelDAC;
 import com.feridem.android.logicanegocio.entidades.Hotel;
@@ -15,63 +16,66 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelBL extends GestorBaseDatos {
+public class HotelBL extends GestorBL {
 
-
-    private SimpleDateFormat formatoFechaHora = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-    public HotelBL(@Nullable Context contexto) {
+    private HotelDAC hotelDAC;
+    public HotelBL(Context contexto) {
         super(contexto);
+        hotelDAC = new HotelDAC(contexto);
     }
 
-    public List<Hotel> obtenerRegistrosActivos() {
-        List<Hotel> listaHoteles = new ArrayList<>();
+    public List<Hotel> obtenerRegistrosActivos() throws AppException {
         Hotel hotel;
-        HotelDAC hotelDAC = new HotelDAC(contexto);
-        Cursor cursorHoteles = hotelDAC.leerRegistrosActivos();
+        List<Hotel> listaHoteles = new ArrayList<>();
+        cursorConsulta = hotelDAC.leerRegistrosActivos();
 
-        if (cursorHoteles.moveToFirst()) {
+        if (cursorConsulta.moveToFirst()) {
             do {
                 hotel = new Hotel();
-                hotel.setId(cursorHoteles.getInt(0));
-                hotel.setNombre(cursorHoteles.getString(1));
-                hotel.setCiudad(cursorHoteles.getString(2));
-                hotel.setDireccion(cursorHoteles.getString(3));
-                hotel.setLatitud(cursorHoteles.getDouble(4));
-                hotel.setLongitud(cursorHoteles.getDouble(5));
-                hotel.setEstado(cursorHoteles.getInt(6));
+                hotel.setId(cursorConsulta.getInt(0));
+                hotel.setNombre(cursorConsulta.getString(1));
+                hotel.setCiudad(cursorConsulta.getString(2));
+                hotel.setDireccion(cursorConsulta.getString(3));
+                hotel.setLatitud(cursorConsulta.getDouble(4));
+                hotel.setLongitud(cursorConsulta.getDouble(5));
+                hotel.setEstado(cursorConsulta.getInt(6));
                 try {
-                    hotel.setFechaIngreso(formatoFechaHora.parse(cursorHoteles.getString(7)));
-                    hotel.setFechaModificacion(formatoFechaHora.parse(cursorHoteles.getString(8)));
-                } catch (ParseException e) {
-                    Log.i("mensaje feridem", e.getMessage());}
+                    hotel.setFechaIngreso(formatoFechaHora.parse(cursorConsulta.getString(7)));
+                    hotel.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(8)));
+                } catch (ParseException error) {
+                    throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
+                }
                 listaHoteles.add(hotel);
-            } while (cursorHoteles.moveToNext());
+            } while (cursorConsulta.moveToNext());
         }
-        cursorHoteles.close();
+
+        cursorConsulta.close();
         return listaHoteles;
     }
 
-    public Hotel obtenerPorId(int IdHotel) {
+    public Hotel obtenerPorId(int idHotel) throws AppException {
         Hotel hotel = new Hotel();
-        HotelDAC habitacionDAC = new HotelDAC(contexto);
-        Cursor cursorHoteles = habitacionDAC.leerPorId(IdHotel);
-        if (cursorHoteles.moveToFirst()) {
+        cursorConsulta = hotelDAC.leerPorId(idHotel);
+
+        if (cursorConsulta.moveToFirst()) {
             hotel = new Hotel();
-            hotel.setId(cursorHoteles.getInt(0));
-            hotel.setNombre(cursorHoteles.getString(1));
-            hotel.setCiudad(cursorHoteles.getString(2));
-            hotel.setDireccion(cursorHoteles.getString(3));
-            hotel.setLatitud(cursorHoteles.getDouble(4));
-            hotel.setLongitud(cursorHoteles.getDouble(5));
-            hotel.setEstado(cursorHoteles.getInt(6));
+            hotel.setId(cursorConsulta.getInt(0));
+            hotel.setNombre(cursorConsulta.getString(1));
+            hotel.setCiudad(cursorConsulta.getString(2));
+            hotel.setDireccion(cursorConsulta.getString(3));
+            hotel.setLatitud(cursorConsulta.getDouble(4));
+            hotel.setLongitud(cursorConsulta.getDouble(5));
+            hotel.setEstado(cursorConsulta.getInt(6));
             try {
-                hotel.setFechaIngreso(formatoFechaHora.parse(cursorHoteles.getString(7)));
-                hotel.setFechaModificacion(formatoFechaHora.parse(cursorHoteles.getString(8)));
-            } catch (ParseException e) {
-                Log.i("mensaje feridem", e.getMessage());
+                hotel.setFechaIngreso(formatoFechaHora.parse(cursorConsulta.getString(7)));
+                hotel.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(8)));
+            } catch (ParseException error) {
+                throw new AppException(error, getClass(), "obtenerPorId()");
             }
         }
+
         return hotel;
     }
+
+
 }

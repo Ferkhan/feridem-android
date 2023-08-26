@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.fachada.HotelBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.R;
@@ -34,7 +35,7 @@ public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
         hotelBL = new HotelBL(contexto);
     }
 
-    public void desplegar(Habitacion habitacion) {
+    public void desplegar(Habitacion habitacion) throws AppException {
         int imagenResource = contexto.getResources().getIdentifier(habitacion.getImagen(), "drawable", contexto.getPackageName());
         String formatoPrecio = String.format("$%.0f", habitacion.getPrecioNoche());
         Hotel hotel = hotelBL.obtenerPorId(habitacion.getIdHotel());

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.ValidarIniciarSesion;
@@ -41,18 +42,18 @@ public class IniciarSesionActivity extends AppCompatActivity {
         botonRegistrarse = findViewById(R.id.botonRegistrarse);
         botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
 
-        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(this);
-        try{
-            gestorBaseDatos.comprobarBaseDatos();
-        } catch (Exception e) {
-            Log.i("mensaje feridem", e.getMessage());
-        }
-        try {
-            gestorBaseDatos.abrirBaseDatos();
-        } catch (Exception e) {
-            Log.i("mensaje feridem", e.getMessage());
-
-        }
+//        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(this);
+//        try{
+//            gestorBaseDatos.comprobarBaseDatos();
+//        } catch (Exception e) {
+//            Log.i("mensaje feridem", e.getMessage());
+//        }
+//        try {
+//            gestorBaseDatos.abrirBaseDatos();
+//        } catch (Exception e) {
+//            Log.i("mensaje feridem", e.getMessage());
+//
+//        }
     }
 
     private void irRegistro(View view) {
@@ -73,9 +74,12 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
 
         validarIniciarSesion = new ValidarIniciarSesion(this);
-
-        if (!validarIniciarSesion.validarCuentaUsuario(ingresarCorreo.getText().toString(), ingresarContrasena.getText().toString()))
-            return;
+        try {
+            if (!validarIniciarSesion.validarCuentaUsuario(ingresarCorreo.getText().toString(), ingresarContrasena.getText().toString()))
+                return;
+        } catch (AppException error) {
+            throw new RuntimeException(error);
+        }
         startActivity(siguiente);
         finish();
     }

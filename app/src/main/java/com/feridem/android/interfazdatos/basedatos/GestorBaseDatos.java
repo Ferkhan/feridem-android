@@ -1,18 +1,22 @@
 package com.feridem.android.interfazdatos.basedatos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.feridem.android.framework.AppException;
+
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class GestorBaseDatos extends SQLiteOpenHelper {
+public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     private static final int BASEDATOS_VERSION = 1;
     private static final String BASEDATOS_NOMBRE = "FeridemBD.db";
     protected static final String TABLA_USUARIO = "USUARIO";
@@ -24,6 +28,9 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
     protected static final String TABLA_USUARIO_ROL = "USUARIO_ROL";
     protected static final String TABLA_HABITACION = "HABITACION";
     protected Context contexto;
+    protected ContentValues valoresContenido;
+    protected String consultaSQL;
+    protected Cursor cursorConsulta;
     private String rutaBaseDatos;
 
     public GestorBaseDatos(@Nullable Context contexto) {
@@ -36,13 +43,13 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         try{
             comprobarBaseDatos();
-        } catch (Exception e) {
-            Log.i("mensaje feridem", e.getMessage());
+        } catch (Exception error) {
+            Log.i("FeridemException", error.getMessage());
         }
         try {
             abrirBaseDatos();
-        } catch (Exception e) {
-            Log.i("mensaje feridem", e.getMessage());
+        } catch (Exception error) {
+            Log.i("FeridemException", error.getMessage());
         }
     }
 
@@ -54,7 +61,7 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
         SQLiteDatabase.openDatabase(outputPath, null, 0);
     }
 
-    public void copiarBaseDatos() {
+    public void copiarBaseDatos() throws AppException {
         this.getReadableDatabase();
         try {
             InputStream inputStream = contexto.getAssets().open(BASEDATOS_NOMBRE);
@@ -64,33 +71,37 @@ public class GestorBaseDatos extends SQLiteOpenHelper {
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
-            Log.i("mensaje feridem", "EXITO al copiar base de datos");
-        } catch (Exception e) {
-            Log.i("mensaje feridem", "ERROR al copiar base de datos");
+        } catch (Exception error) {
+            throw new AppException(error, getClass(), "copiarBaseDatos()");
         }
     }
 
-    public void comprobarBaseDatos() {
+    public void comprobarBaseDatos() throws AppException {
         SQLiteDatabase sqliteBaseDatos = null;
         try {
             sqliteBaseDatos = SQLiteDatabase.openDatabase(rutaBaseDatos, null, 0);
-        } catch (Exception e) {
-            Log.i("mensaje feridem", e.getMessage());
+        } catch (SQLException error) {
+            throw new AppException(error, getClass(), "comprobarBaseDatos()");
         }
-        if (sqliteBaseDatos != null) {
-            Log.i("mensaje feridem", "BASE de datos existente");
-        } else {
+        if (sqliteBaseDatos == null) {
             copiarBaseDatos();
         }
     }
 
-    protected Cursor obtenerConsulta(String consultaSQL, String[] valores) {
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(consultaSQL, valores);
-
-        return cursor;
+    protected Cursor obtenerConsulta(String consultaSQL, String[] valores) throws AppException {
+        try {
+            cursorConsulta = getReadableDatabase().rawQuery(consultaSQL, valores);
+            return cursorConsulta;
+        } catch (SQLException error) {
+            throw new AppException(error, getClass(), "obtenerConsulta()");
+        }
     }
 
-    // public abstract Cursor obtenerRegistrosActivos();
+
+    public abstract Cursor leerRegistrosActivos() throws AppException;
+
+    public abstract Cursor leerPorId(int idRegistro) throws AppException;
+
+//    public abstract long insertarRegistro();
 
 }

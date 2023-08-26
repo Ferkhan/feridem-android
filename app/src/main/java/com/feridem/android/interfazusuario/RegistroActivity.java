@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.fachada.UsuarioBL;
 import com.feridem.android.logicanegocio.fachada.UsuarioCredencialBL;
 import com.feridem.android.logicanegocio.ValidarDatos;
@@ -50,7 +51,7 @@ public class RegistroActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    private void irPrincipal(View view) {
+    private void irPrincipal(View view){
         if (!ValidarDatos.campoLleno(this, ingresarNombre) ||
                 !ValidarDatos.campoLleno(this, ingresarCorreo) ||
                 !ValidarDatos.campoLleno(this, ingresarCelular) ||
@@ -68,15 +69,20 @@ public class RegistroActivity extends AppCompatActivity {
         Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
         UsuarioBL usuarioBL = new UsuarioBL(this);
         UsuarioCredencialBL usuarioCredencialBL = new UsuarioCredencialBL(this);
-        long idUsuario = usuarioBL.insertarUsuario(ingresarNombre.getText().toString(), ingresarCorreo.getText().toString(),
-                                      ingresarCelular.getText().toString());
-        long idCredencial = usuarioCredencialBL.insertarCredencial((int)idUsuario, ingresarContrasenia.getText().toString());
+        long idUsuario = usuarioBL.ingresarRegistro(1,ingresarNombre.getText().toString(),
+                                                                ingresarCorreo.getText().toString(),
+                                                                ingresarCelular.getText().toString());
 
-        if (idUsuario > 0 && idCredencial >= 0) {
+        if (idUsuario >= 0) {
+            try {
+                usuarioCredencialBL.insertarCredencial((int)idUsuario, ingresarContrasenia.getText().toString());
+            } catch (AppException error) {
+                throw new RuntimeException(error);
+            }
             Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();
             startActivity(siguienteActivity);
         } else {
-            Toast.makeText(this, "ERROR al intentar crear la cuenta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Usuario ya registrado", Toast.LENGTH_SHORT).show();
         }
 
     }

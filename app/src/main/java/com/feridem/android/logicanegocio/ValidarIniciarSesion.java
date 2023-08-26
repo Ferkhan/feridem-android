@@ -2,6 +2,7 @@ package com.feridem.android.logicanegocio;
 
 import android.widget.Toast;
 
+import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.fachada.UsuarioBL;
 import com.feridem.android.logicanegocio.fachada.UsuarioCredencialBL;
 import com.feridem.android.logicanegocio.entidades.Usuario;
@@ -9,6 +10,7 @@ import com.feridem.android.logicanegocio.entidades.UsuarioCredencial;
 
 import android.content.Context;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValidarIniciarSesion {
 
@@ -22,16 +24,17 @@ public class ValidarIniciarSesion {
 
     }
 
-    public boolean validarCuentaUsuario(String ingresarCorreo, String ingresarContrasena) {
-        ArrayList<Usuario> listaUsuarios = usuarioBL.leerUsuarios();
-        ArrayList<UsuarioCredencial> listaCredenciales = gestorCredencial.leerCredenciales();
+    public boolean validarCuentaUsuario(String ingresarCorreo, String ingresarContrasena) throws AppException {
+        List<Usuario> listaUsuarios = usuarioBL.obtenerRegistrosActivos();
+        UsuarioCredencial usuarioCredencial;
+
         for (Usuario usuario : listaUsuarios)
             if (ingresarCorreo.equals(usuario.getCorreo())) {
-                for (UsuarioCredencial credencial : listaCredenciales)
-                    if (usuario.getId() == credencial.getId() && ingresarContrasena.equals(credencial.getContrasena())) {
-                        Toast.makeText(contexto, "¡Saludos, " + usuario.getNombre() + "!", Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
+                usuarioCredencial = gestorCredencial.obtenerPorId(usuario.getId());
+                if (ingresarContrasena.equals(usuarioCredencial.getContrasena())) {
+                    Toast.makeText(contexto, "¡Saludos, " + usuario.getNombre() + "!", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
             }
 
         Toast.makeText(contexto, "Correo y/o contraseña incorrectos", Toast.LENGTH_SHORT).show();

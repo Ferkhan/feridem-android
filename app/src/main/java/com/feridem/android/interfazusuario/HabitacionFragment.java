@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.fachada.HabitacionBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.logicanegocio.AdaptadorLista;
@@ -59,7 +60,11 @@ public class HabitacionFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         HabitacionBL habitacionBL = new HabitacionBL(getContext());
-        listaHabitaciones = habitacionBL.obtenerRegistrosActivos();
+        try {
+            listaHabitaciones = habitacionBL.obtenerRegistrosActivos();
+        } catch (AppException error) {
+            throw new RuntimeException(error);
+        }
 
 
     }

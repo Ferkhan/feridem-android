@@ -1,81 +1,76 @@
 package com.feridem.android.logicanegocio.fachada;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
-import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
+import com.feridem.android.framework.AppException;
+import com.feridem.android.interfazdatos.basedatos.UsuarioDAC;
 import com.feridem.android.logicanegocio.entidades.Usuario;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
-public class UsuarioBL extends GestorBaseDatos {
-    private Context contexto;
-    private ArrayList<Usuario> listaUsuarios;
+public class UsuarioBL extends GestorBL{
+    private UsuarioDAC usuarioDAC;
 
-    public UsuarioBL(@Nullable Context contexto) {
+    public UsuarioBL(Context contexto) {
         super(contexto);
-        this.contexto = contexto;
+        this.usuarioDAC = new UsuarioDAC(contexto);
     }
 
-    /**
-     *
-     * @param nombre
-     * @param correo
-     * @param celular
-     * @return returna el id en un long
-     */
-    public long insertarUsuario(String nombre, String correo, String celular) {
-        long id = 0;
-        try{
-            GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
-            SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
-            ContentValues valoresInsertar = new ContentValues();
-
-            valoresInsertar.put("IdRol", 1);
-            valoresInsertar.put("Nombre", nombre);
-            valoresInsertar.put("Correo", correo);
-            valoresInsertar.put("Celular", celular);
-            valoresInsertar.put("Estado", 1);
-            id = sqLiteDatabase.insert(TABLA_USUARIO, null, valoresInsertar);
-        } catch (Exception e) {
-            Log.i("mensaje feridem", e.toString());
-        }
-        return id;
-    }
-
-    public ArrayList<Usuario> leerUsuarios() {
-        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(contexto);
-        SQLiteDatabase sqLiteDatabase = gestorBaseDatos.getWritableDatabase();
-        Cursor cursorUsuarios = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLA_USUARIO, null);
-
-        listaUsuarios = new ArrayList<>();
+    public List<Usuario> obtenerRegistrosActivos() throws AppException {
         Usuario usuario;
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        if (cursorUsuarios.moveToFirst()) {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        cursorConsulta = usuarioDAC.leerRegistrosActivos();
+
+        if (cursorConsulta.moveToFirst()) {
             do {
                 usuario = new Usuario();
-                usuario.setId(cursorUsuarios.getInt(0));
-                usuario.setIdRol(cursorUsuarios.getInt(1));
-                usuario.setNombre(cursorUsuarios.getString(2));
-                usuario.setCorreo(cursorUsuarios.getString(3));
-                usuario.setCelular(cursorUsuarios.getString(4));
-                usuario.setEstado(cursorUsuarios.getInt(5));
+                usuario.setId(cursorConsulta.getInt(0));
+                usuario.setIdRol(cursorConsulta.getInt(1));
+                usuario.setNombre(cursorConsulta.getString(2));
+                usuario.setCorreo(cursorConsulta.getString(3));
+                usuario.setCelular(cursorConsulta.getString(4));
+                usuario.setEstado(cursorConsulta.getInt(5));
                 try {
-                    usuario.setFechaRegistro(formatoFecha.parse(cursorUsuarios.getString(6)));
-                    usuario.setFechaModificacion(formatoFecha.parse(cursorUsuarios.getString(7)));
-                } catch (ParseException e) {Log.i("mensaje feridem", "otro error");}
+                    usuario.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(6)));
+                    usuario.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(7)));
+                } catch (ParseException error) {
+                    throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
+                }
                 listaUsuarios.add(usuario);
-            } while (cursorUsuarios.moveToNext());
+            } while (cursorConsulta.moveToNext());
         }
-        cursorUsuarios.close();
 
+        cursorConsulta.close();
         return listaUsuarios;
+    }
+
+    public Usuario obtenerPorId(int idUsuario) throws AppException {
+        Usuario usuario = new Usuario();
+        cursorConsulta = usuarioDAC.leerPorId(idUsuario);
+
+        if (cursorConsulta.moveToFirst()) {
+            usuario = new Usuario();
+            usuario.setId(cursorConsulta.getInt(0));
+            usuario.setIdRol(cursorConsulta.getInt(1));
+            usuario.setNombre(cursorConsulta.getString(2));
+            usuario.setCorreo(cursorConsulta.getString(3));
+            usuario.setCelular(cursorConsulta.getString(4));
+            usuario.setEstado(cursorConsulta.getInt(5));
+            try {
+                usuario.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(6)));
+                usuario.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(7)));
+            } catch (ParseException error) {
+                throw new AppException(error, getClass(), "obtenerPorId()");
+            }
+        }
+
+        return usuario;
+    }
+
+    public long ingresarRegistro(int idRol, String nombre, String correo, String celular) {
+        return usuarioDAC.insertarRegistro(idRol, nombre, correo, celular);
     }
 }

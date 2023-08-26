@@ -4,72 +4,75 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
-import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
+import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.HabitacionDAC;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HabitacionBL extends GestorBaseDatos {
-    private SimpleDateFormat formatoFechaHora = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public HabitacionBL(@Nullable Context contexto) {
+public class HabitacionBL extends GestorBL {
+    private HabitacionDAC habitacionDAC;
+
+    public HabitacionBL(Context contexto) {
         super(contexto);
+        habitacionDAC = new HabitacionDAC(contexto);
     }
 
-    public List<Habitacion> obtenerRegistrosActivos() {
-
-        List<Habitacion> listaHabitaciones = new ArrayList<>();
+    public List<Habitacion> obtenerRegistrosActivos() throws AppException {
         Habitacion habitacion;
-        HabitacionDAC habitacionDAC = new HabitacionDAC(contexto);
-        Cursor cursorHabitaciones = habitacionDAC.leerRegistrosActivos();
+        List<Habitacion> listaHabitaciones = new ArrayList<>();
+        cursorConsulta = habitacionDAC.leerRegistrosActivos();
 
-        if (cursorHabitaciones.moveToFirst()) {
+        if (cursorConsulta.moveToFirst()) {
             do {
                 habitacion = new Habitacion();
-                habitacion.setId(cursorHabitaciones.getInt(0));
-                habitacion.setIdHotel(cursorHabitaciones.getInt(1));
-                habitacion.setNombre(cursorHabitaciones.getString(2));
-                habitacion.setDescripcion(cursorHabitaciones.getString(3));
-                habitacion.setPrecioNoche(cursorHabitaciones.getDouble(4));
-                habitacion.setImagen(cursorHabitaciones.getString(5));
-                habitacion.setEstado(cursorHabitaciones.getInt(6));
+                habitacion.setId(cursorConsulta.getInt(0));
+                habitacion.setIdHotel(cursorConsulta.getInt(1));
+                habitacion.setNombre(cursorConsulta.getString(2));
+                habitacion.setDescripcion(cursorConsulta.getString(3));
+                habitacion.setPrecioNoche(cursorConsulta.getDouble(4));
+                habitacion.setImagen(cursorConsulta.getString(5));
+                habitacion.setEstado(cursorConsulta.getInt(6));
                 try {
-                    habitacion.setFechaIngreso(formatoFechaHora.parse(cursorHabitaciones.getString(7)));
-                    habitacion.setFechaModificacion(formatoFechaHora.parse(cursorHabitaciones.getString(8)));
-                } catch (ParseException e) {
-                    Log.i("mensaje feridem", e.getMessage());}
+                    habitacion.setFechaIngreso(formatoFechaHora.parse(cursorConsulta.getString(7)));
+                    habitacion.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(8)));
+                } catch (ParseException error) {
+                    throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
+                }
                 listaHabitaciones.add(habitacion);
-            } while (cursorHabitaciones.moveToNext());
+            } while (cursorConsulta.moveToNext());
         }
-        cursorHabitaciones.close();
+
+        cursorConsulta.close();
         return listaHabitaciones;
     }
 
-    public Habitacion obtenerPorId(int IdHabitacion) {
+    public Habitacion obtenerPorId(int idHabitacion) throws AppException {
         Habitacion habitacion = new Habitacion();
-        HabitacionDAC habitacionDAC = new HabitacionDAC(contexto);
-        Cursor cursorHabitaciones = habitacionDAC.leerRegistrosActivos();
-        if (cursorHabitaciones.moveToFirst()) {
+        cursorConsulta = habitacionDAC.leerRegistrosActivos();
+
+        if (cursorConsulta.moveToFirst()) {
             habitacion = new Habitacion();
-            habitacion.setId(cursorHabitaciones.getInt(0));
-            habitacion.setIdHotel(cursorHabitaciones.getInt(1));
-            habitacion.setNombre(cursorHabitaciones.getString(2));
-            habitacion.setDescripcion(cursorHabitaciones.getString(3));
-            habitacion.setPrecioNoche(cursorHabitaciones.getDouble(4));
-            habitacion.setImagen(cursorHabitaciones.getString(5));
-            habitacion.setEstado(cursorHabitaciones.getInt(6));
+            habitacion.setId(cursorConsulta.getInt(0));
+            habitacion.setIdHotel(cursorConsulta.getInt(1));
+            habitacion.setNombre(cursorConsulta.getString(2));
+            habitacion.setDescripcion(cursorConsulta.getString(3));
+            habitacion.setPrecioNoche(cursorConsulta.getDouble(4));
+            habitacion.setImagen(cursorConsulta.getString(5));
+            habitacion.setEstado(cursorConsulta.getInt(6));
             try {
-                habitacion.setFechaIngreso(formatoFechaHora.parse(cursorHabitaciones.getString(7)));
-                habitacion.setFechaModificacion(formatoFechaHora.parse(cursorHabitaciones.getString(8)));
-            } catch (ParseException e) {
-                Log.i("mensaje feridem", e.getMessage());
+                habitacion.setFechaIngreso(formatoFechaHora.parse(cursorConsulta.getString(7)));
+                habitacion.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(8)));
+            } catch (ParseException error) {
+                throw new AppException(error, getClass(), "obtenerPorId()");
             }
         }
+
         return habitacion;
     }
+
+
+
 }
