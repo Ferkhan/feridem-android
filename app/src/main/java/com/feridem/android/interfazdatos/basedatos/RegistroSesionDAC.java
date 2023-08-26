@@ -1,11 +1,14 @@
 package com.feridem.android.interfazdatos.basedatos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
 import androidx.annotation.Nullable;
 
 import com.feridem.android.framework.AppException;
+
+import java.util.Date;
 
 public class RegistroSesionDAC extends GestorBaseDatos {
 
@@ -34,4 +37,13 @@ public class RegistroSesionDAC extends GestorBaseDatos {
         return obtenerConsulta(consultaSQL, null);
     }
 
+    public long insertarRegistro(int idUsuario, String resultadoIngreso, int estadoSesion, Date fechaIngreso, Date fechaCierre) {
+        valoresContenido = new ContentValues();
+        valoresContenido.put("IdUsuario", idUsuario);
+        valoresContenido.put("ResultadoIngreso", resultadoIngreso);
+        valoresContenido.put("EstadoSesion", estadoSesion);
+        valoresContenido.put("FechaIngreso", String.valueOf(fechaIngreso));
+        valoresContenido.put("FechaCierre", String.valueOf(fechaCierre));
+        return getWritableDatabase().insert(TABLA_REGISTRO_SESION, null, valoresContenido);
+    }
 }

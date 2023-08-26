@@ -6,12 +6,13 @@ public class HabitacionReservada {
     private int id;
     private int idHabitacion;
     private int idUsuario;
-    private Date fechaEntrada;
-    private Date fechaSalida;
     private int totalNoches;
     private double precioNoche;
     private double precioTotal;
     private int estado;
+    private String codigoQR;
+    private Date fechaEntrada;
+    private Date fechaSalida;
     private Date fechaRegistro;
     private Date fechaModificacion;
 
@@ -101,5 +102,13 @@ public class HabitacionReservada {
 
     public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
+    }
+
+    public String getCodigoQR() {
+        return codigoQR;
+    }
+
+    public void setCodigoQR(String codigoQR) {
+        this.codigoQR = codigoQR;
     }
 }
