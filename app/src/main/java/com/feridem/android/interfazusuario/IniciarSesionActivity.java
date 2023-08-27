@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
+import com.feridem.android.interfazdatos.basedatos.HotelDAC;
 import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.ValidarIniciarSesion;
 
@@ -33,7 +34,17 @@ public class IniciarSesionActivity extends AppCompatActivity {
         botonRegistrarse.setOnClickListener(this::irRegistro);
         botonIniciarSesion.setOnClickListener(this::irPrincipal);
 
-
+        HotelDAC hotelDAC = new HotelDAC(this);
+        try{
+            hotelDAC.comprobarBaseDatos();
+        } catch (Exception error) {
+            Log.i("FeridemException", error.getMessage());
+        }
+        try {
+            hotelDAC.abrirBaseDatos();
+        } catch (Exception error) {
+            Log.i("FeridemException", error.getMessage());
+        }
     }
 
     private void inicializarRecursos() {

@@ -41,12 +41,12 @@ public class AdaptadorLista extends RecyclerView.Adapter<HabitacionesVistaSoport
         } catch (AppException error) {
             throw new RuntimeException(error);
         }
-        soporte.habitacionTarjeta.setOnClickListener(vista -> seleccionarHabitacion(posicion));
+        soporte.habitacionTarjeta.setOnClickListener(vista -> seleccionarHabitacion(listaHabitaciones.get(posicion)));
     }
 
-    private void seleccionarHabitacion (int posicion) {
+    private void seleccionarHabitacion (Habitacion habitacion) {
         Intent intencion = new Intent(contexto, HabitacionDetallesActivity.class);
-        intencion.putExtra("habitacion_seleccionada", posicion);
+        intencion.putExtra("habitacion_seleccionada", habitacion);
         contexto.startActivity(intencion);
         //        notifyDataSetChanged();
     }

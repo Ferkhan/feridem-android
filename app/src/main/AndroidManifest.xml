@@ -18,17 +18,20 @@
         android:theme="@style/Theme.Feridem"
         tools:targetApi="31">
         <activity
+            android:name=".interfazusuario.FacturaActivity"
+            android:exported="false" />
+        <activity
             android:name=".interfazusuario.HabitacionDetallesActivity"
             android:exported="false" />
         <activity
             android:name=".interfazusuario.BarraNavegacionActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            tools:replace="screenOrientation"></activity>
+            tools:replace="screenOrientation" />
         <activity
             android:name=".interfazusuario.RegistroActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".interfazusuario.IniciarSesionActivity"
             android:exported="true"

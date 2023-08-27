@@ -17,15 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelBL extends GestorBL {
-
+    private Hotel hotel;
     private HotelDAC hotelDAC;
     public HotelBL(Context contexto) {
         super(contexto);
         hotelDAC = new HotelDAC(contexto);
+        hotel = new Hotel();
     }
 
     public List<Hotel> obtenerRegistrosActivos() throws AppException {
-        Hotel hotel;
         List<Hotel> listaHoteles = new ArrayList<>();
         cursorConsulta = hotelDAC.leerRegistrosActivos();
 
@@ -54,7 +54,6 @@ public class HotelBL extends GestorBL {
     }
 
     public Hotel obtenerPorId(int idHotel) throws AppException {
-        Hotel hotel = new Hotel();
         cursorConsulta = hotelDAC.leerPorId(idHotel);
 
         if (cursorConsulta.moveToFirst()) {

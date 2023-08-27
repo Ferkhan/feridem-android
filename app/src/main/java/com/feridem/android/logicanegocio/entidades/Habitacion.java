@@ -5,9 +5,10 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Habitacion {
+public class Habitacion implements Serializable {
     private int id;
     private int idHotel;
     private String nombre;

@@ -1,11 +1,11 @@
 package com.feridem.android.logicanegocio.fachada;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.RegistroSesionDAC;
 import com.feridem.android.logicanegocio.entidades.RegistroSesion;
-import com.feridem.android.logicanegocio.entidades.Usuario;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -46,10 +46,10 @@ public class RegistroSesionBL extends GestorBL {
         return listaRegistros;
     }
 
-    public RegistroSesion obtenerRegistroConectado() throws AppException {
+    public RegistroSesion obtenerUsuarioConectado() throws AppException {
         cursorConsulta = registroSesionDAC.leerRegistroConectado();
 
-        if (cursorConsulta.moveToFirst()) {
+        if (cursorConsulta.moveToLast()) {
             registroSesion = new RegistroSesion();
             registroSesion.setId(cursorConsulta.getInt(0));
             registroSesion.setIdUsuario(cursorConsulta.getInt(1));
@@ -66,5 +66,16 @@ public class RegistroSesionBL extends GestorBL {
         return registroSesion;
     }
 
+    public boolean desconectarUsuario() throws AppException {
+        registroSesion = obtenerUsuarioConectado();
+        int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId(), 0);
+        if (idRegistroActualizado > 0) {
+            Toast.makeText(contexto, "Sesión cerrada con éxito", Toast.LENGTH_SHORT);
+            return true;
+        } else {
+            Toast.makeText(contexto, "Fallo al cerrar sesión", Toast.LENGTH_SHORT);
+            return false;
+        }
+    }
 
 }

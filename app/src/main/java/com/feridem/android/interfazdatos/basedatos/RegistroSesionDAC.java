@@ -46,4 +46,11 @@ public class RegistroSesionDAC extends GestorBaseDatos {
         valoresContenido.put("FechaCierre", String.valueOf(fechaCierre));
         return getWritableDatabase().insert(TABLA_REGISTRO_SESION, null, valoresContenido);
     }
+
+    public int actualizarConexion(int idRegistro, int estadoSesion) {
+        String[] valores = new String[] {String.valueOf(idRegistro)};
+        valoresContenido = new ContentValues();
+        valoresContenido.put("EstadoSesion", estadoSesion);
+        return getWritableDatabase().update("usuarios", valoresContenido, "IdRegistroSesion = ?", valores);
+    }
 }

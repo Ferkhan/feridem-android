@@ -41,16 +41,16 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        try{
-            comprobarBaseDatos();
-        } catch (Exception error) {
-            Log.i("FeridemException", error.getMessage());
-        }
-        try {
-            abrirBaseDatos();
-        } catch (Exception error) {
-            Log.i("FeridemException", error.getMessage());
-        }
+//        try{
+//            comprobarBaseDatos();
+//        } catch (Exception error) {
+//            Log.i("FeridemException", error.getMessage());
+//        }
+//        try {
+//            abrirBaseDatos();
+//        } catch (Exception error) {
+//            Log.i("FeridemException", error.getMessage());
+//        }
     }
 
     @Override
