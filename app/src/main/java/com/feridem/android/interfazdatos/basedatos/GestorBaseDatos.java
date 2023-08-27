@@ -81,7 +81,6 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
         try {
             sqliteBaseDatos = SQLiteDatabase.openDatabase(rutaBaseDatos, null, 0);
         } catch (SQLException error) {
-            throw new AppException(error, getClass(), "comprobarBaseDatos()");
         }
         if (sqliteBaseDatos == null) {
             copiarBaseDatos();
