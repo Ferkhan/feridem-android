@@ -31,7 +31,7 @@ public class HabitacionBL extends GestorBL {
                 habitacion.setId(cursorConsulta.getInt(0));
                 habitacion.setIdHotel(cursorConsulta.getInt(1));
                 habitacion.setNombre(cursorConsulta.getString(2));
-                habitacion.setDescripcion(cursorConsulta.getString(3));
+                habitacion.setDescripcion(cursorConsulta.getString(3).replace("\\n", "\n"));
                 habitacion.setPrecioNoche(cursorConsulta.getDouble(4));
                 habitacion.setImagen(cursorConsulta.getString(5));
                 habitacion.setEstado(cursorConsulta.getInt(6));
