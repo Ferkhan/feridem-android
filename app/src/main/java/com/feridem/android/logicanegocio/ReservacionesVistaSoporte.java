@@ -54,14 +54,9 @@ public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
         int imagenResource  = CONTEXTO.getResources().getIdentifier(habitacion.getImagen(), "drawable", CONTEXTO.getPackageName());
 
         IMAGEN_HABITACION.setImageResource(imagenResource);
-        Log.i("reservaciones", String.valueOf(imagenResource));
         nombreHabitacion.setText(habitacion.getNombre());
-        Log.i("reservaciones", habitacion.getNombre());
         nombreHotel.setText(hotel.getNombre());
-        Log.i("reservaciones", hotel.getNombre());
-        fechaEntrada.setText(String.valueOf(habitacionReservada.getFechaEntrada()));
-        Log.i("reservaciones", habitacionReservada.getFechaEntrada().toString());
-        fechaSalida.setText(habitacionReservada.getFechaSalida().toString());
-        Log.i("reservaciones", habitacionReservada.getFechaSalida().toString());
+        fechaEntrada.setText(habitacionReservada.getFechaEntrada());
+        fechaSalida.setText(habitacionReservada.getFechaSalida());
     }
 }

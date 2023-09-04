@@ -12,8 +12,8 @@ public class HabitacionReservada implements Serializable {
     private double precioTotal;
     private int estado;
     private String codigoQR;
-    private Date fechaEntrada;
-    private Date fechaSalida;
+    private String fechaEntrada;
+    private String fechaSalida;
     private Date fechaRegistro;
     private Date fechaModificacion;
 
@@ -41,19 +41,19 @@ public class HabitacionReservada implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Date getFechaEntrada() {
+    public String getFechaEntrada() {
         return fechaEntrada;
     }
 
-    public void setFechaEntrada(Date fechaEntrada) {
+    public void setFechaEntrada(String fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
     }
 
-    public Date getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 

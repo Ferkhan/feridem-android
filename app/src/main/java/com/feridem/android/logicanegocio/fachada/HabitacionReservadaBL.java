@@ -29,15 +29,16 @@ public class HabitacionReservadaBL extends GestorBL {
                 habitacionReservada.setId(cursorConsulta.getInt(0));
                 habitacionReservada.setIdHabitacion(cursorConsulta.getInt(1));
                 habitacionReservada.setIdUsuario(cursorConsulta.getInt(2));
+                habitacionReservada.setFechaEntrada(cursorConsulta.getString(3));
+                habitacionReservada.setFechaSalida(cursorConsulta.getString(4));
                 habitacionReservada.setTotalNoches(cursorConsulta.getInt(5));
-                habitacionReservada.setPrecioTotal(cursorConsulta.getDouble(6));
-                habitacionReservada.setCodigoQR(cursorConsulta.getString(7));
-                habitacionReservada.setEstado(cursorConsulta.getInt(8));
+                habitacionReservada.setPrecioNoche(cursorConsulta.getDouble(6));
+                habitacionReservada.setPrecioTotal(cursorConsulta.getDouble(7));
+                habitacionReservada.setCodigoQR(cursorConsulta.getString(8));
+                habitacionReservada.setEstado(cursorConsulta.getInt(9));
                 try {
-                    habitacionReservada.setFechaEntrada(formatoFecha.parse(cursorConsulta.getString(3)));
-                    habitacionReservada.setFechaSalida(formatoFecha.parse(cursorConsulta.getString(4)));
-                    habitacionReservada.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(9)));
-                    habitacionReservada.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(10)));
+                    habitacionReservada.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(10)));
+                    habitacionReservada.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(11)));
                 } catch (ParseException error) {
                     throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
                 }
@@ -58,15 +59,16 @@ public class HabitacionReservadaBL extends GestorBL {
             habitacionReservada.setId(cursorConsulta.getInt(0));
             habitacionReservada.setIdHabitacion(cursorConsulta.getInt(1));
             habitacionReservada.setIdUsuario(cursorConsulta.getInt(2));
+            habitacionReservada.setFechaEntrada(cursorConsulta.getString(3));
+            habitacionReservada.setFechaSalida(cursorConsulta.getString(4));
             habitacionReservada.setTotalNoches(cursorConsulta.getInt(5));
-            habitacionReservada.setPrecioTotal(cursorConsulta.getDouble(6));
-            habitacionReservada.setCodigoQR(cursorConsulta.getString(7));
-            habitacionReservada.setEstado(cursorConsulta.getInt(8));
+            habitacionReservada.setPrecioNoche(cursorConsulta.getDouble(6));
+            habitacionReservada.setPrecioTotal(cursorConsulta.getDouble(7));
+            habitacionReservada.setCodigoQR(cursorConsulta.getString(8));
+            habitacionReservada.setEstado(cursorConsulta.getInt(9));
             try {
-                habitacionReservada.setFechaEntrada(formatoFecha.parse(cursorConsulta.getString(3)));
-                habitacionReservada.setFechaSalida(formatoFecha.parse(cursorConsulta.getString(4)));
-                habitacionReservada.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(9)));
-                habitacionReservada.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(10)));
+                habitacionReservada.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(10)));
+                habitacionReservada.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(11)));
             } catch (ParseException error) {
                 throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
             }
