@@ -169,10 +169,9 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
             return;
         }
 
-        Intent irActivity = new Intent(this, FacturaActivity.class);
+
         Toast.makeText(this, "Habitación Reservada con éxito", Toast.LENGTH_SHORT).show();
         reservar();
-        startActivity(irActivity);
         finish();
     }
 
@@ -185,9 +184,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
                         habitacion.getId(), usuario.getId(), fechaEntrada.getText().toString(),
                         fechaSalida.getText().toString(), Integer.parseInt(totalNoches.getText().toString()),
                         habitacion.getPrecioNoche(), precioTotal, generarTextoQr());
-        Intent intencion = new Intent(this, FacturaActivity.class);
+        Intent irActivity = new Intent(this, FacturaActivity.class);
         HabitacionReservada habitacionReservada = new HabitacionReservadaBL(this).obtenerPorId((int) id);
-        intencion.putExtra("reservacion_seleccionada", habitacionReservada);
+        irActivity.putExtra("reservacion_seleccionada", habitacionReservada);
+        startActivity(irActivity);
 
     }
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -65,10 +66,11 @@ public class FacturaActivity extends AppCompatActivity {
         nombreHotel         = findViewById(R.id.nombre_hotel);
         nombreUsuario       = findViewById(R.id.usuario);
         direccion           = findViewById(R.id.direccion);
-        fechaEntrada        = findViewById(R.id.fecha_entrada);
-        fechaSalida         = findViewById(R.id.fecha_salida);
+        fechaEntrada        = findViewById(R.id.dia_entrada);
+        fechaSalida         = findViewById(R.id.dia_salida);
         totalNoches         = findViewById(R.id.total_noches);
         precioTotal         = findViewById(R.id.precio_total);
+        codigoQR            = findViewById(R.id.codigo_qr);
     }
 
     private void irBarraNavegacion(View vista) {
@@ -77,7 +79,6 @@ public class FacturaActivity extends AppCompatActivity {
 
     private void establecerDatos() throws AppException {
         habitacionReservada = (HabitacionReservada) getIntent().getSerializableExtra("reservacion_seleccionada");
-
         habitacion = new HabitacionBL(this).obtenerPorId(habitacionReservada.getIdHabitacion());
         hotel = new HotelBL(this).obtenerPorId(habitacion.getIdHotel());
         usuario = new UsuarioBL(this).obtenerPorId(habitacionReservada.getIdUsuario());
@@ -87,13 +88,13 @@ public class FacturaActivity extends AppCompatActivity {
         nombreHotel.setText(hotel.getNombre());
         nombreUsuario.setText(usuario.getNombre());
         direccion.setText(hotel.getDireccion());
-        fechaEntrada.setText(habitacionReservada.getFechaEntrada().toString());
-        fechaSalida.setText(habitacionReservada.getFechaSalida().toString());
-        totalNoches.setText(habitacionReservada.getTotalNoches());
+        fechaEntrada.setText(habitacionReservada.getFechaEntrada());
+        fechaSalida.setText(habitacionReservada.getFechaSalida());
+        totalNoches.setText(String.valueOf(habitacionReservada.getTotalNoches()));
         precioTotal.setText(String.format("$%.0f", habitacionReservada.getPrecioTotal()));
     }
 
-    private void generarQR(String textoQR) {
+    private void generarQR(String textoQR) throws AppException {
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(textoQR, BarcodeFormat.QR_CODE, 250, 250);
@@ -101,8 +102,8 @@ public class FacturaActivity extends AppCompatActivity {
             barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             codigoQR.setImageBitmap(bitmap);
-        } catch (WriterException e) {
-            e.printStackTrace();
+        } catch (WriterException error) {
+            throw new AppException(error, getClass(), "generarQR()");
         }
     }
 

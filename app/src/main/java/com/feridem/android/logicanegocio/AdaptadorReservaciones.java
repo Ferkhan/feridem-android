@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
+import com.feridem.android.interfazusuario.FacturaActivity;
 import com.feridem.android.interfazusuario.HabitacionDetallesActivity;
 import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
 
@@ -44,7 +45,7 @@ public class AdaptadorReservaciones extends RecyclerView.Adapter<ReservacionesVi
     }
 
     private void seleccionarReservacion(HabitacionReservada habitacionReservada) {
-        Intent intencion = new Intent(CONTEXTO, HabitacionDetallesActivity.class);
+        Intent intencion = new Intent(CONTEXTO, FacturaActivity.class);
         intencion.putExtra("reservacion_seleccionada", habitacionReservada);
         CONTEXTO.startActivity(intencion);
     }
