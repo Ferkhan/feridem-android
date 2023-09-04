@@ -59,7 +59,10 @@
                 style="@style/texto_factura"
                 android:text="Reservado por 4 noches" />
 
-
+            <TextView
+                android:id="@+id/precio_total"
+                style="@style/texto_factura"
+                android:text="Precio Total $699" />
 
             <ImageView
                 android:id="@+id/codigo_qr"

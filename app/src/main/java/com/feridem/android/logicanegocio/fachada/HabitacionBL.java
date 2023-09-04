@@ -21,7 +21,7 @@ public class HabitacionBL extends GestorBL {
     public List<Habitacion> obtenerRegistrosActivos() throws AppException {
         Habitacion habitacion;
         List<Habitacion> listaHabitaciones = new ArrayList<>();
-        cursorConsulta = habitacionDAC.leerRegistrosExito();
+        cursorConsulta = habitacionDAC.leerRegistros();
 
         if (cursorConsulta.moveToFirst()) {
             do {
@@ -49,7 +49,7 @@ public class HabitacionBL extends GestorBL {
 
     public Habitacion obtenerPorId(int idHabitacion) throws AppException {
         Habitacion habitacion = new Habitacion();
-        cursorConsulta = habitacionDAC.leerRegistrosExito();
+        cursorConsulta = habitacionDAC.leerPorId(idHabitacion);
 
         if (cursorConsulta.moveToFirst()) {
             habitacion = new Habitacion();

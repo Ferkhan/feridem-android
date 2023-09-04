@@ -16,7 +16,7 @@ public class RegistroSesionDAC extends GestorBaseDatos {
     }
 
     @Override
-    public Cursor leerRegistrosExito() throws AppException {
+    public Cursor leerRegistros() throws AppException {
         String consultaSQL =  " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
                             + " FROM " + TABLA_REGISTRO_SESION
                             + " WHERE ResultadoIngreso = Exito ";

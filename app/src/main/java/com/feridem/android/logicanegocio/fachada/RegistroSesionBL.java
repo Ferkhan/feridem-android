@@ -24,7 +24,7 @@ public class RegistroSesionBL extends GestorBL {
 
     public List<RegistroSesion> obtenerRegistrosExito() throws AppException {
         List<RegistroSesion> listaRegistros = new ArrayList<>();
-        cursorConsulta = registroSesionDAC.leerRegistrosExito();
+        cursorConsulta = registroSesionDAC.leerRegistros();
 
         if (cursorConsulta.moveToFirst()) {
             do {

@@ -96,7 +96,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
 
-    public abstract Cursor leerRegistrosExito() throws AppException;
+    public abstract Cursor leerRegistros() throws AppException;
 
     public abstract Cursor leerPorId(int idRegistro) throws AppException;
 

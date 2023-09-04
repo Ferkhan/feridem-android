@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/habitacion_tarjeta"
+    android:id="@+id/reservacion_tarjeta"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="150dp"
     android:animateLayoutChanges="true"
     android:backgroundTint="#267521"
     android:clickable="true"
     app:cardCornerRadius="20dp"
-    app:cardElevation="10dp"
-    app:cardUseCompatPadding="true"
-    android:focusable="true">
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"

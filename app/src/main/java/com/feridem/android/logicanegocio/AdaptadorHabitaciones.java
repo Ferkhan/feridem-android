@@ -19,18 +19,18 @@ import java.util.List;
 public class AdaptadorHabitaciones extends RecyclerView.Adapter<HabitacionesVistaSoporte> {
     private List<Habitacion> listaHabitaciones;
     private LayoutInflater infladorLayout;
-    private Context contexto;
+    private final Context CONTEXTO;
 
-    public AdaptadorHabitaciones(List<Habitacion> listaHabitaciones, Context contexto) {
-        this.contexto = contexto;
-        this.infladorLayout = LayoutInflater.from(contexto);
+    public AdaptadorHabitaciones(List<Habitacion> listaHabitaciones, Context CONTEXTO) {
+        this.CONTEXTO = CONTEXTO;
+        this.infladorLayout = LayoutInflater.from(CONTEXTO);
         this.listaHabitaciones = listaHabitaciones;
     }
 
     @NonNull
     public HabitacionesVistaSoporte onCreateViewHolder(@NonNull ViewGroup padre, int tipoVista) {
         View vista = infladorLayout.inflate(R.layout.lista_habitaciones, padre, false);
-        return new HabitacionesVistaSoporte(vista, contexto);
+        return new HabitacionesVistaSoporte(vista, CONTEXTO);
     }
 
     @Override
@@ -44,9 +44,9 @@ public class AdaptadorHabitaciones extends RecyclerView.Adapter<HabitacionesVist
     }
 
     private void seleccionarHabitacion (Habitacion habitacion) {
-        Intent intencion = new Intent(contexto, HabitacionDetallesActivity.class);
+        Intent intencion = new Intent(CONTEXTO, HabitacionDetallesActivity.class);
         intencion.putExtra("habitacion_seleccionada", habitacion);
-        contexto.startActivity(intencion);
+        CONTEXTO.startActivity(intencion);
         //        notifyDataSetChanged();
     }
 

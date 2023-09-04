@@ -73,9 +73,8 @@ public class ReservacionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        HabitacionReservadaBL habitacionReservadaBL = new HabitacionReservadaBL(getContext());
         try {
-            listaReservaciones = habitacionReservadaBL.obtenerRegistrosActivos();
+            listaReservaciones = new HabitacionReservadaBL(getContext()).obtenerRegistrosActivos();
         } catch (AppException error) {
             throw new RuntimeException(error);
         }
@@ -84,13 +83,9 @@ public class ReservacionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_reservacion, container, false);
-//        imageView = vista.findViewById(R.id.imagen_qr);
-//        botonGenerar = vista.findViewById(R.id.boton_generar_codigo);
-//        botonGenerar.setOnClickListener(this::generarQR);
 
-        RecyclerView recyclerView = vista.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = vista.findViewById(R.id.recycler);
         AdaptadorReservaciones adaptadorReservaciones = new AdaptadorReservaciones(listaReservaciones, getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

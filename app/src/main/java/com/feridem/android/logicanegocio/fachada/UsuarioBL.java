@@ -22,7 +22,7 @@ public class UsuarioBL extends GestorBL{
 
     public List<Usuario> obtenerRegistrosActivos() throws AppException {
         List<Usuario> listaUsuarios = new ArrayList<>();
-        cursorConsulta = usuarioDAC.leerRegistrosExito();
+        cursorConsulta = usuarioDAC.leerRegistros();
 
         if (cursorConsulta.moveToFirst()) {
             do {

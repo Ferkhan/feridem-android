@@ -8,7 +8,6 @@ import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HabitacionReservadaBL extends GestorBL {
@@ -22,7 +21,7 @@ public class HabitacionReservadaBL extends GestorBL {
     public List<HabitacionReservada> obtenerRegistrosActivos() throws AppException {
         HabitacionReservada habitacionReservada;
         List<HabitacionReservada> listaHabitaciones = new ArrayList<>();
-        cursorConsulta = habitacionReservadaDAC.leerRegistrosExito();
+        cursorConsulta = habitacionReservadaDAC.leerRegistros();
 
         if (cursorConsulta.moveToFirst()) {
             do {
@@ -50,9 +49,35 @@ public class HabitacionReservadaBL extends GestorBL {
         return listaHabitaciones;
     }
 
-    public boolean ingresarRegistro(int idHabitacion, int idUsuario, String fechaEntrada, String fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {
-        long id = habitacionReservadaDAC.insertarRegistro(idHabitacion, idUsuario, fechaEntrada, fechaSalida, totalNoches, precioNoche, precioTotal, codigoQR);
-        return id > 0;
+
+    public HabitacionReservada obtenerPorId(int idReservacion) throws AppException {
+        HabitacionReservada habitacionReservada = new HabitacionReservada();
+        cursorConsulta = habitacionReservadaDAC.leerPorId(idReservacion);
+
+        if (cursorConsulta.moveToFirst()) {
+            habitacionReservada.setId(cursorConsulta.getInt(0));
+            habitacionReservada.setIdHabitacion(cursorConsulta.getInt(1));
+            habitacionReservada.setIdUsuario(cursorConsulta.getInt(2));
+            habitacionReservada.setTotalNoches(cursorConsulta.getInt(5));
+            habitacionReservada.setPrecioTotal(cursorConsulta.getDouble(6));
+            habitacionReservada.setCodigoQR(cursorConsulta.getString(7));
+            habitacionReservada.setEstado(cursorConsulta.getInt(8));
+            try {
+                habitacionReservada.setFechaEntrada(formatoFecha.parse(cursorConsulta.getString(3)));
+                habitacionReservada.setFechaSalida(formatoFecha.parse(cursorConsulta.getString(4)));
+                habitacionReservada.setFechaRegistro(formatoFechaHora.parse(cursorConsulta.getString(9)));
+                habitacionReservada.setFechaModificacion(formatoFechaHora.parse(cursorConsulta.getString(10)));
+            } catch (ParseException error) {
+                throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
+            }
+        }
+
+        cursorConsulta.close();
+        return habitacionReservada;
+    }
+    public long ingresarRegistro(int idHabitacion, int idUsuario, String fechaEntrada, String fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {
+        return habitacionReservadaDAC.insertarRegistro(idHabitacion, idUsuario, fechaEntrada, fechaSalida, totalNoches, precioNoche, precioTotal, codigoQR);
+
     }
 
 }

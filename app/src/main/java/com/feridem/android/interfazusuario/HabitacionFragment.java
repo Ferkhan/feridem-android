@@ -59,9 +59,8 @@ public class HabitacionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        HabitacionBL habitacionBL = new HabitacionBL(getContext());
         try {
-            listaHabitaciones = habitacionBL.obtenerRegistrosActivos();
+            listaHabitaciones = new HabitacionBL(getContext()).obtenerRegistrosActivos();
         } catch (AppException error) {
             throw new RuntimeException(error);
         }

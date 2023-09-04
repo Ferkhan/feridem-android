@@ -1,6 +1,7 @@
 package com.feridem.android.logicanegocio;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +29,6 @@ public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
             fechaSalida;
     private HotelBL hotelBL;
     private HabitacionBL habitacionBL;
-    private UsuarioBL usuarioBL;
     private Habitacion habitacion;
     private Hotel hotel;
 
@@ -40,7 +40,7 @@ public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
         nombreHotel         = vistaItem.findViewById(R.id.nombre_hotel);
         fechaEntrada        = vistaItem.findViewById(R.id.fecha_entrada);
         fechaSalida         = vistaItem.findViewById(R.id.fecha_salida);
-        reservacionTargeta  = vistaItem.findViewById(R.id.habitacion_tarjeta);
+        reservacionTargeta  = vistaItem.findViewById(R.id.reservacion_tarjeta);
         IMAGEN_HABITACION   = vistaItem.findViewById(R.id.imagen_habitacion);
 
         habitacionBL = new HabitacionBL(contexto);
@@ -49,14 +49,19 @@ public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
     }
 
     public void desplegar(HabitacionReservada habitacionReservada) throws AppException {
-        int imagenResource = CONTEXTO.getResources().getIdentifier(habitacion.getImagen(), "drawable", CONTEXTO.getPackageName());
-        habitacion = habitacionBL.obtenerPorId(habitacionReservada.getIdHabitacion());
-        hotel      = hotelBL.obtenerPorId(habitacion.getIdHotel());
+        habitacion          = habitacionBL.obtenerPorId(habitacionReservada.getIdHabitacion());
+        hotel               = hotelBL.obtenerPorId(habitacion.getIdHotel());
+        int imagenResource  = CONTEXTO.getResources().getIdentifier(habitacion.getImagen(), "drawable", CONTEXTO.getPackageName());
 
         IMAGEN_HABITACION.setImageResource(imagenResource);
+        Log.i("reservaciones", String.valueOf(imagenResource));
         nombreHabitacion.setText(habitacion.getNombre());
+        Log.i("reservaciones", habitacion.getNombre());
         nombreHotel.setText(hotel.getNombre());
-        fechaEntrada.setText(habitacionReservada.getFechaEntrada().toString());
+        Log.i("reservaciones", hotel.getNombre());
+        fechaEntrada.setText(String.valueOf(habitacionReservada.getFechaEntrada()));
+        Log.i("reservaciones", habitacionReservada.getFechaEntrada().toString());
         fechaSalida.setText(habitacionReservada.getFechaSalida().toString());
+        Log.i("reservaciones", habitacionReservada.getFechaSalida().toString());
     }
 }

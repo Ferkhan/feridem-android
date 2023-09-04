@@ -21,7 +21,7 @@ public class HotelBL extends GestorBL {
 
     public List<Hotel> obtenerRegistrosActivos() throws AppException {
         List<Hotel> listaHoteles = new ArrayList<>();
-        cursorConsulta = hotelDAC.leerRegistrosExito();
+        cursorConsulta = hotelDAC.leerRegistros();
 
         if (cursorConsulta.moveToFirst()) {
             do {
