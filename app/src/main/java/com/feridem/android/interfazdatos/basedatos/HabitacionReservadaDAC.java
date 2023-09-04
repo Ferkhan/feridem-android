@@ -34,12 +34,12 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
         return obtenerConsulta(consultaSQL, valores);
     }
 
-    public long insertarRegistro(String idHabitacion, String idUsuario, Date fechaEntrada, Date fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {
+    public long insertarRegistro(int idHabitacion, int idUsuario, String fechaEntrada, String fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {
         valoresContenido = new ContentValues();
         valoresContenido.put("IdHabitacion", idHabitacion);
         valoresContenido.put("IdUsuario", idUsuario);
-        valoresContenido.put("FechaEntrada", String.valueOf(fechaEntrada));
-        valoresContenido.put("FechaSalida", String.valueOf(fechaSalida));
+        valoresContenido.put("FechaEntrada", fechaEntrada);
+        valoresContenido.put("FechaSalida", fechaSalida);
         valoresContenido.put("TotalNoches", totalNoches);
         valoresContenido.put("PrecioNoche", precioNoche);
         valoresContenido.put("PrecioTotal", precioTotal);

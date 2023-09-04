@@ -101,7 +101,7 @@ public class ReservacionFragment extends Fragment {
 
     private void generarQR(View vista) {
 
-        String reservaInfo = "Nombre de Usuario|Nombre de Habitación|Nombre de Hotel|2023-07-10|2023-07-15|150.00";
+        String reservaInfo = "Nombre de Usuario$|&Nombre de Habitación&|&Nombre de Hotel|2023-07-10|2023-07-15|150.00";
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(reservaInfo, BarcodeFormat.QR_CODE, 250, 250);

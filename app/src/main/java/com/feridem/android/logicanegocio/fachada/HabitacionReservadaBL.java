@@ -8,6 +8,7 @@ import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HabitacionReservadaBL extends GestorBL {
@@ -47,6 +48,11 @@ public class HabitacionReservadaBL extends GestorBL {
 
         cursorConsulta.close();
         return listaHabitaciones;
+    }
+
+    public boolean ingresarRegistro(int idHabitacion, int idUsuario, String fechaEntrada, String fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {
+        long id = habitacionReservadaDAC.insertarRegistro(idHabitacion, idUsuario, fechaEntrada, fechaSalida, totalNoches, precioNoche, precioTotal, codigoQR);
+        return id > 0;
     }
 
 }

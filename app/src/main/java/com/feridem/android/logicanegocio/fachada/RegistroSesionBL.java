@@ -47,8 +47,17 @@ public class RegistroSesionBL extends GestorBL {
         return listaRegistros;
     }
 
-    public RegistroSesion obtenerUsuarioConectado() throws AppException {
-        cursorConsulta = registroSesionDAC.leerRegistroConectado();
+    public int obtenerIdUsuarioConectado() throws AppException {
+        cursorConsulta = registroSesionDAC.leerIdUsuarioConectado();
+
+        if (cursorConsulta.moveToLast()) {
+            return cursorConsulta.getInt(0);
+        }
+        return 0;
+    }
+
+    public RegistroSesion obtenerRegistroConectado() throws AppException {
+        cursorConsulta = registroSesionDAC.leerIdUsuarioConectado();
 
         if (cursorConsulta.moveToLast()) {
             registroSesion = new RegistroSesion();
@@ -69,7 +78,7 @@ public class RegistroSesionBL extends GestorBL {
 
     public boolean desconectarUsuario() throws AppException {
         Date fecha = new Date();
-        registroSesion = obtenerUsuarioConectado();
+        registroSesion = obtenerRegistroConectado();
         int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId(), formatoFechaHora.format(fecha));
         if (idRegistroActualizado > 0) {
             Toast.makeText(contexto, "Sesión cerrada con éxito", Toast.LENGTH_SHORT);

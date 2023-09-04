@@ -15,9 +15,16 @@ import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
+import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
+import com.feridem.android.logicanegocio.entidades.RegistroSesion;
+import com.feridem.android.logicanegocio.entidades.Usuario;
+import com.feridem.android.logicanegocio.fachada.HabitacionReservadaBL;
 import com.feridem.android.logicanegocio.fachada.HotelBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
+import com.feridem.android.logicanegocio.fachada.RegistroSesionBL;
 import com.feridem.android.logicanegocio.entidades.Hotel;
+import com.feridem.android.logicanegocio.fachada.UsuarioBL;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.Calendar;
 
@@ -47,6 +54,9 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     private Button botonReserva;
     private DatePickerDialog seleccionarFecha;
     private long diasEntreFechas;
+    private Hotel hotel;
+    private Usuario usuario;
+    private Habitacion habitacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +66,13 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         inicializarRecursos();
         fechaEntrada.setOnClickListener(this::seleccionarFechaEntrada);
         fechaSalida.setOnClickListener(this::seleccionarFechaSalida);
-        botonReserva.setOnClickListener(this::irFactura);
+        botonReserva.setOnClickListener(vista -> {
+            try {
+                irFactura(vista);
+            } catch (AppException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         try {
             establecerDatos();
@@ -88,7 +104,7 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     private void seleccionarFechaEntrada(View vista) {
         calendario = Calendar.getInstance();
         seleccionarFecha = new DatePickerDialog(this, (datePicker, year, month, dayOfMonth) -> {
-            String fecha = dayOfMonth + "/" + (month + 1) + "/" + year;
+            String fecha = dayOfMonth + "-" + (month + 1) + "-" + year;
             anioEntrada = year;
             mesEntrada = month;
             diaEntrada = dayOfMonth;
@@ -96,7 +112,6 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
             calendarioEntrada = Calendar.getInstance();
             calendarioEntrada.clear();
             calendarioEntrada.set(anioEntrada, mesEntrada, diaEntrada);
-            Log.i("AppException", String.valueOf(calendarioEntrada.getTimeInMillis()));
             actualizarCampoFecha(fechaSalida);
         }, anioEntrada, mesEntrada, diaEntrada);
         seleccionarFecha.getDatePicker().setMinDate(calendario.getTimeInMillis());
@@ -107,7 +122,7 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         calendario = Calendar.getInstance();
         calendario.add(Calendar.DAY_OF_MONTH, 1);
         seleccionarFecha = new DatePickerDialog(this, (datePicker, year, month, dayOfMonth) -> {
-            String fecha = dayOfMonth + "/" + (month + 1) + "/" + year;
+            String fecha = dayOfMonth + "-" + (month + 1) + "-" + year;
             anioSalida = year;
             mesSalida = month;
             diaSalida = dayOfMonth;
@@ -115,7 +130,6 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
             calendarioSalida = Calendar.getInstance();
             calendarioSalida.clear();
             calendarioSalida.set(anioSalida, mesSalida, diaSalida);
-            Log.i("AppException", String.valueOf(calendarioSalida.getTimeInMillis()));
             actualizarCampoFecha(fechaEntrada);
         }, anioSalida, mesSalida, diaSalida);
         seleccionarFecha.getDatePicker().setMinDate(calendario.getTimeInMillis());
@@ -136,20 +150,20 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     }
 
     private void establecerDatos() throws AppException {
-        Habitacion habitacionSeleccionada = (Habitacion) getIntent().getSerializableExtra("habitacion_seleccionada");
+        habitacion = (Habitacion) getIntent().getSerializableExtra("habitacion_seleccionada");
         HotelBL hotelBL = new HotelBL(this);
-        Hotel hotel = hotelBL.obtenerPorId(habitacionSeleccionada.getIdHotel());
-        int imagenResource = getResources().getIdentifier(habitacionSeleccionada.getImagen(), "drawable", getPackageName());
+        hotel = hotelBL.obtenerPorId(habitacion.getIdHotel());
+        int imagenResource = getResources().getIdentifier(habitacion.getImagen(), "drawable", getPackageName());
 
         imagen.setImageResource(imagenResource);
-        nombreCuarto.setText(habitacionSeleccionada.getNombre());
-        precioNoche.setText(String.format("$%.0f", habitacionSeleccionada.getPrecioNoche()));
-        descripcion.setText(habitacionSeleccionada.getDescripcion());
+        nombreCuarto.setText(habitacion.getNombre());
+        precioNoche.setText(String.format("$%.0f", habitacion.getPrecioNoche()));
+        descripcion.setText(habitacion.getDescripcion());
         nombreHotel.setText(hotel.getNombre());
         direccion.setText(hotel.getDireccion());
     }
 
-    private void irFactura(View vista) {
+    private void irFactura(View vista) throws AppException {
         if (fechaEntrada.getText().toString().isEmpty() || fechaSalida.getText().toString().isEmpty()) {
             Toast.makeText(this, "Llene todos los campos.", Toast.LENGTH_SHORT).show();
             return;
@@ -157,6 +171,36 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
 
         Intent irActivity = new Intent(this, FacturaActivity.class);
         Toast.makeText(this, "Habitación Reservada con éxito", Toast.LENGTH_SHORT).show();
+        reservar();
         startActivity(irActivity);
+        finish();
+    }
+
+    private void reservar() throws AppException {
+        double precioTotal = (Integer.parseInt(totalNoches.getText().toString()) * habitacion.getPrecioNoche());
+
+        usuario = new UsuarioBL(this).obtenerPorId(new RegistroSesionBL(this).obtenerIdUsuarioConectado());
+
+        boolean ingreso = new HabitacionReservadaBL(this).ingresarRegistro(
+                habitacion.getId(), usuario.getId(), fechaEntrada.getText().toString(),
+                fechaSalida.getText().toString(), Integer.parseInt(totalNoches.getText().toString()),
+                habitacion.getPrecioNoche(), precioTotal, generarTextoQr());
+
+        if (ingreso) {
+            Toast.makeText(this, "reserva ingresada", Toast.LENGTH_SHORT).show();
+        } else  {
+            Toast.makeText(this, "fallo al reservar", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    private String generarTextoQr() {
+        return habitacion.getNombre() + "$|&"
+                        + hotel.getNombre() + "$|&"
+                        + usuario.getNombre() + "$|&"
+                        + fechaEntrada.getText().toString() + "$|&"
+                        + fechaSalida.getText().toString() + "$|&"
+                        + totalNoches.getText().toString() + "$|&";
     }
 }
