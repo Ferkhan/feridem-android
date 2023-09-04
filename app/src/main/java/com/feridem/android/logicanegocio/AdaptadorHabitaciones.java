@@ -14,15 +14,14 @@ import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.interfazusuario.HabitacionDetallesActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorLista extends RecyclerView.Adapter<HabitacionesVistaSoporte> {
+public class AdaptadorHabitaciones extends RecyclerView.Adapter<HabitacionesVistaSoporte> {
     private List<Habitacion> listaHabitaciones;
     private LayoutInflater infladorLayout;
     private Context contexto;
 
-    public AdaptadorLista(List<Habitacion> listaHabitaciones, Context contexto) {
+    public AdaptadorHabitaciones(List<Habitacion> listaHabitaciones, Context contexto) {
         this.contexto = contexto;
         this.infladorLayout = LayoutInflater.from(contexto);
         this.listaHabitaciones = listaHabitaciones;

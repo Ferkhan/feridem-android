@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/habitacion_tarjeta"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:animateLayoutChanges="true"
+    android:backgroundTint="#267521"
+    android:clickable="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imagen_habitacion"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:contentDescription="Imagen"
+            android:scaleType="centerCrop"
+            android:src="@drawable/finlandia_habitacion_doble" />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/nombre_habitacion"
+                style="@style/texto_lista_reservaciones"
+                android:text="Nombre Habitacion" />
+
+            <TextView
+                android:id="@+id/nombre_hotel"
+                style="@style/texto_lista_reservaciones"
+                android:text="Nombre Hotel" />
+
+            <TextView
+                android:id="@+id/fecha_entrada"
+                style="@style/texto_lista_reservaciones"
+                android:text="Fecha Entrada" />
+
+            <TextView
+                android:id="@+id/fecha_salida"
+                style="@style/texto_lista_reservaciones"
+                android:text="Fecha Salida" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

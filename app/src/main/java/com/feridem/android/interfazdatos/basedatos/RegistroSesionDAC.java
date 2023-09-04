@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 
 import com.feridem.android.framework.AppException;
 
-import java.util.Date;
 
 public class RegistroSesionDAC extends GestorBaseDatos {
 
@@ -46,15 +45,14 @@ public class RegistroSesionDAC extends GestorBaseDatos {
         valoresContenido.put("IdUsuario", idUsuario);
         valoresContenido.put("ResultadoIngreso", resultadoIngreso);
         valoresContenido.put("EstadoSesion", estadoSesion);
-        valoresContenido.put("FechaIngreso", "CURRENT_TIMESTAMP");
         return getWritableDatabase().insert(TABLA_REGISTRO_SESION, null, valoresContenido);
     }
 
-    public int actualizarConexion(int idRegistro) {
+    public int actualizarConexion(int idRegistro, String fechaCierre) {
         String[] valores = new String[] {String.valueOf(idRegistro)};
         valoresContenido = new ContentValues();
         valoresContenido.put("EstadoSesion", 0);
-        valoresContenido.put("FechaCierre", "CURRENT_TIMESTAMP");
+        valoresContenido.put("FechaCierre", fechaCierre);
         return getWritableDatabase().update(TABLA_REGISTRO_SESION, valoresContenido, "IdRegistroSesion = ?", valores);
     }
 }

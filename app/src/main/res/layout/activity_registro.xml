@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/nombreCompleto"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Nombre y apellido" />
 
         <EditText
@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/correo"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Correo electrónico" />
 
         <EditText
@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/numeroCelular"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Número de celular" />
 
         <EditText
@@ -71,7 +71,7 @@
 
         <TextView
             android:id="@+id/contrasenia"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Contraseña" />
 
         <EditText
@@ -83,7 +83,7 @@
 
         <TextView
             android:id="@+id/confirmarContrasenia"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Confirmar contraseña" />
 
         <EditText

@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/correo"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Correo electrónico" />
 
         <EditText
@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/contrasenia"
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:text="Contraseña" />
 
         <EditText

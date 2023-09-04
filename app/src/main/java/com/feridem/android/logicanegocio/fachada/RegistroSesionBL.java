@@ -9,6 +9,7 @@ import com.feridem.android.logicanegocio.entidades.RegistroSesion;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RegistroSesionBL extends GestorBL {
@@ -67,8 +68,9 @@ public class RegistroSesionBL extends GestorBL {
     }
 
     public boolean desconectarUsuario() throws AppException {
+        Date fecha = new Date();
         registroSesion = obtenerUsuarioConectado();
-        int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId());
+        int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId(), formatoFechaHora.format(fecha));
         if (idRegistroActualizado > 0) {
             Toast.makeText(contexto, "Sesión cerrada con éxito", Toast.LENGTH_SHORT);
             return true;

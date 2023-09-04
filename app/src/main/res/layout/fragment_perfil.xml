@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/encabezado">
 
         <TextView
-            style="@style/textoInicioRegistro"
+            style="@style/texto_inicio_registro"
             android:textAlignment="center"
             android:text="Configuración del perfil del usuario"
             android:textSize="30sp"

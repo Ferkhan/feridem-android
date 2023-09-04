@@ -14,7 +14,7 @@ import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
 import com.feridem.android.logicanegocio.fachada.HabitacionBL;
 import com.feridem.android.logicanegocio.entidades.Habitacion;
-import com.feridem.android.logicanegocio.AdaptadorLista;
+import com.feridem.android.logicanegocio.AdaptadorHabitaciones;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,10 +76,10 @@ public class HabitacionFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_habitacion, container, false);
 
         RecyclerView recyclerView = vista.findViewById(R.id.recyclerView);
-        AdaptadorLista adaptadorLista = new AdaptadorLista(listaHabitaciones, getContext());
+        AdaptadorHabitaciones adaptadorHabitaciones = new AdaptadorHabitaciones(listaHabitaciones, getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adaptadorLista);
+        recyclerView.setAdapter(adaptadorHabitaciones);
 
         return vista;
     }

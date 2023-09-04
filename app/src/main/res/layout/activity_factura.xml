@@ -4,6 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/variacionPrincipal"
     tools:context=".interfazusuario.FacturaActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="20sp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/nombre_habitacion"
+                style="@style/texto_factura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Nombre Habitacion" />
+
+            <TextView
+                android:id="@+id/nombre_hotel"
+                style="@style/texto_factura"
+                android:text="Nombre Hotel" />
+
+            <TextView
+                android:id="@+id/direccion"
+                style="@style/texto_factura"
+                android:text="Direccion" />
+
+            <TextView
+                android:id="@+id/usuario"
+                style="@style/texto_factura"
+                android:text="Reservado por: Usuario" />
+
+            <TextView
+                android:id="@+id/dia_entrada"
+                style="@style/texto_factura"
+                android:text="Entrada 28/09/2023 a partir de ls 2pm" />
+
+            <TextView
+                android:id="@+id/dia_salida"
+                style="@style/texto_factura"
+                android:text="Salida 28/09/2023 hasta las 12pm" />
+
+            <TextView
+                android:id="@+id/total_noches"
+                style="@style/texto_factura"
+                android:text="Reservado por 4 noches" />
+
+
+
+            <ImageView
+                android:id="@+id/codigo_qr"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center" />
+
+
+
+
+            <Button
+                style="@style/botonPrincipal"
+                android:text="Aceptar" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
