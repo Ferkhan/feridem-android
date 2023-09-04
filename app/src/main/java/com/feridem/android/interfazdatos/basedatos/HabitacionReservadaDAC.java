@@ -18,7 +18,7 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
 
     @Override
     public Cursor leerRegistrosExito() throws AppException {
-        consultaSQL = " SELECT IdReservacion, IdHabitacion, IdUsuario, FechaEntrada, FechaSalia, TotalNoches, PrecioTotal, CodigoQR, Estado, FechaRegistro, FechaModificacion "
+        consultaSQL = " SELECT IdReservacion, IdHabitacion, IdUsuario, FechaEntrada, FechaSalida, TotalNoches, PrecioTotal, CodigoQR, Estado, FechaRegistro, FechaModificacion "
                     + " FROM " + TABLA_HABITACION_RESERVADA
                     + " WHERE  Estado = 1 ";
         return obtenerConsulta(consultaSQL, null);

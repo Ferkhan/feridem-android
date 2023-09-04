@@ -23,25 +23,29 @@ import java.util.Calendar;
 
 public class HabitacionDetallesActivity extends AppCompatActivity {
     private ImageView imagen;
-    private TextView nombreCuarto;
-    private TextView nombreHotel;
-    private TextView direccion;
-    private TextView precioNoche;
-    private TextView descripcion;
-    private TextView totalNoches;
-    private EditText fechaEntrada;
-    private EditText fechaSalida;
+    private TextView
+            nombreCuarto,
+            nombreHotel,
+            direccion,
+            precioNoche,
+            descripcion,
+            totalNoches;
+    private EditText
+            fechaEntrada,
+            fechaSalida;
+    private Calendar
+            calendario,
+            calendarioEntrada,
+            calendarioSalida;
+    private int
+            anioEntrada,
+            anioSalida,
+            mesEntrada,
+            mesSalida,
+            diaEntrada,
+            diaSalida;
     private Button botonReserva;
-    private Calendar calendario;
-    private Calendar calendarioEntrada;
-    private Calendar calendarioSalida;
     private DatePickerDialog seleccionarFecha;
-    private int anioEntrada;
-    private int anioSalida;
-    private int mesEntrada;
-    private int mesSalida;
-    private int diaEntrada;
-    private int diaSalida;
     private long diasEntreFechas;
 
     @Override
@@ -74,11 +78,11 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         fechaEntrada    = findViewById(R.id.fecha_entrada);
         fechaSalida     = findViewById(R.id.fecha_salida);
         botonReserva    = findViewById(R.id.boton_reservar);
-        calendario = calendarioEntrada = calendarioSalida = Calendar.getInstance();
+        calendario  = calendarioEntrada = calendarioSalida = Calendar.getInstance();
         anioEntrada = calendario.get(Calendar.YEAR);
-        mesEntrada = mesSalida = calendario.get(Calendar.MONTH);
-        diaEntrada = diaSalida = calendario.get(Calendar.DAY_OF_MONTH);
-        diaSalida += 1;
+        mesEntrada  = mesSalida = calendario.get(Calendar.MONTH);
+        diaEntrada  = diaSalida = calendario.get(Calendar.DAY_OF_MONTH);
+        diaSalida  += 1;
     }
 
     private void seleccionarFechaEntrada(View vista) {

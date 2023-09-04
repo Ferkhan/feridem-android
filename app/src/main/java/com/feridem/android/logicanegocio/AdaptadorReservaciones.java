@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.logicanegocio.entidades.Habitacion;
 import com.feridem.android.interfazusuario.HabitacionDetallesActivity;
 import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
 
@@ -41,14 +40,13 @@ public class AdaptadorReservaciones extends RecyclerView.Adapter<ReservacionesVi
         } catch (AppException error) {
             throw new RuntimeException(error);
         }
-        soporte.reservacionTargeta.setOnClickListener(vista -> seleccionarHabitacion(listaReservaciones.get(posicion)));
+        soporte.reservacionTargeta.setOnClickListener(vista -> seleccionarReservacion(listaReservaciones.get(posicion)));
     }
 
-    private void seleccionarHabitacion (HabitacionReservada habitacionReservada) {
+    private void seleccionarReservacion(HabitacionReservada habitacionReservada) {
         Intent intencion = new Intent(CONTEXTO, HabitacionDetallesActivity.class);
-        intencion.putExtra("habitacion_seleccionada", habitacionReservada);
+        intencion.putExtra("reservacion_seleccionada", habitacionReservada);
         CONTEXTO.startActivity(intencion);
-        //        notifyDataSetChanged();
     }
 
     @Override

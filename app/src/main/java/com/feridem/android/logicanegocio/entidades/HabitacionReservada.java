@@ -1,7 +1,7 @@
 package com.feridem.android.logicanegocio.entidades;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class HabitacionReservada implements Serializable {
     private int id;

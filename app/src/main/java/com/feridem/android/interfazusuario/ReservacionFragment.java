@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +14,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
+import com.feridem.android.logicanegocio.AdaptadorHabitaciones;
+import com.feridem.android.logicanegocio.AdaptadorReservaciones;
+import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
+import com.feridem.android.logicanegocio.fachada.HabitacionBL;
+import com.feridem.android.logicanegocio.fachada.HabitacionReservadaBL;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +46,7 @@ public class ReservacionFragment extends Fragment {
     private String mParam2;
     private ImageView imageView;
     private Button botonGenerar;
+    private List<HabitacionReservada> listaReservaciones;
     public ReservacionFragment() {
         // Required empty public constructor
     }
@@ -60,9 +72,12 @@ public class ReservacionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+        HabitacionReservadaBL habitacionReservadaBL = new HabitacionReservadaBL(getContext());
+        try {
+            listaReservaciones = habitacionReservadaBL.obtenerRegistrosActivos();
+        } catch (AppException error) {
+            throw new RuntimeException(error);
         }
     }
 
@@ -71,11 +86,15 @@ public class ReservacionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_reservacion, container, false);
-        imageView = vista.findViewById(R.id.imagen_qr);
-        botonGenerar = vista.findViewById(R.id.boton_generar_codigo);
-        botonGenerar.setOnClickListener(this::generarQR);
+//        imageView = vista.findViewById(R.id.imagen_qr);
+//        botonGenerar = vista.findViewById(R.id.boton_generar_codigo);
+//        botonGenerar.setOnClickListener(this::generarQR);
 
-
+        RecyclerView recyclerView = vista.findViewById(R.id.recyclerView);
+        AdaptadorReservaciones adaptadorReservaciones = new AdaptadorReservaciones(listaReservaciones, getContext());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adaptadorReservaciones);
 
         return vista;
     }
