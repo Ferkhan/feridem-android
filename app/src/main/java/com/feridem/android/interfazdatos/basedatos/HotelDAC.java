@@ -14,7 +14,7 @@ public class HotelDAC extends GestorBaseDatos {
     }
 
     @Override
-    public Cursor leerRegistrosActivos() throws AppException {
+    public Cursor leerRegistrosExito() throws AppException {
         String consultaSQL =  " SELECT IdHotel, Nombre, Ciudad, Direccion, Latitud, Longitud, Estado, FechaIngreso, FechaModificacion "
                 + " FROM " + TABLA_HOTEL
                 + " WHERE Estado = 1 ";

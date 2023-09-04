@@ -15,7 +15,7 @@ public class UsuarioDAC extends GestorBaseDatos {
     }
 
     @Override
-    public Cursor leerRegistrosActivos() throws AppException {
+    public Cursor leerRegistrosExito() throws AppException {
         consultaSQL = " SELECT IdUsuario, IdRol, Nombre, Correo, Celular, Estado, FechaRegistro, FechaModificacion "
                     + " FROM " + TABLA_USUARIO
                     + " WHERE Estado = 1 ";

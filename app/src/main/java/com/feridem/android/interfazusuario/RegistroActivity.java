@@ -11,20 +11,23 @@ import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
+import com.feridem.android.logicanegocio.ValidarDatos;
+import com.feridem.android.logicanegocio.VerificarDatos;
 import com.feridem.android.logicanegocio.fachada.UsuarioBL;
 import com.feridem.android.logicanegocio.fachada.UsuarioCredencialBL;
-import com.feridem.android.logicanegocio.ValidarDatos;
 
 public class RegistroActivity extends AppCompatActivity {
-    private Button botonIniciarSesion;
-    private Button botonRegistrarse;
-    private EditText ingresarNombre,
-                     ingresarCorreo,
-                     ingresarCelular,
-                     ingresarContrasenia,
-                     confirmarContrasenia;
+    private Button
+            botonIniciarSesion,
+            botonRegistrarse;
+    private EditText
+            ingresarNombre,
+            ingresarCorreo,
+            ingresarCelular,
+            ingresarContrasenia,
+            confirmarContrasenia;
+    private VerificarDatos verificarDatos;
 
-//    private TextView texto;
 
 
     @Override
@@ -38,13 +41,14 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void inicializarRecursos() {
-        botonIniciarSesion =    findViewById(R.id.botonIniciarSesion);
-        botonRegistrarse =      findViewById(R.id.botonRegistrarse);
-        ingresarNombre =        findViewById(R.id.ingresarNombreCompleto);
-        ingresarCorreo =        findViewById(R.id.ingresarCorreo);
-        ingresarCelular =       findViewById(R.id.ingresarNumeroCelular);
-        ingresarContrasenia =   findViewById(R.id.ingresarContrasenia);
-        confirmarContrasenia =  findViewById(R.id.ingresarConfirmarContrasenia);
+        botonIniciarSesion      = findViewById(R.id.botonIniciarSesion);
+        botonRegistrarse        = findViewById(R.id.botonRegistrarse);
+        ingresarNombre          = findViewById(R.id.ingresarNombreCompleto);
+        ingresarCorreo          = findViewById(R.id.ingresarCorreo);
+        ingresarCelular         = findViewById(R.id.ingresarNumeroCelular);
+        ingresarContrasenia     = findViewById(R.id.ingresarContrasenia);
+        confirmarContrasenia    = findViewById(R.id.ingresarConfirmarContrasenia);
+        verificarDatos          = new VerificarDatos(this);
     }
 
     private void irIniciarSesion(View vista) {
@@ -66,21 +70,22 @@ public class RegistroActivity extends AppCompatActivity {
                 !ValidarDatos.confirmarContrasenia(this, ingresarContrasenia, confirmarContrasenia))
             return;
 
-        Intent siguienteActivity = new Intent(this, BarraNavegacionActivity.class);
+        Intent siguienteActivity = new Intent(this, IniciarSesionActivity.class);
         UsuarioBL usuarioBL = new UsuarioBL(this);
         UsuarioCredencialBL usuarioCredencialBL = new UsuarioCredencialBL(this);
         long idUsuario = usuarioBL.ingresarRegistro(1,ingresarNombre.getText().toString(),
                                                                 ingresarCorreo.getText().toString(),
                                                                 ingresarCelular.getText().toString());
 
-        if (idUsuario >= 0) {
+        if (idUsuario > 0) {
             try {
-                usuarioCredencialBL.insertarCredencial((int)idUsuario, ingresarContrasenia.getText().toString());
+                usuarioCredencialBL.insertarCredencial((int)idUsuario, verificarDatos.encriptarContrasenia(ingresarContrasenia.getText().toString()));
             } catch (AppException error) {
                 throw new RuntimeException(error);
             }
             Toast.makeText(this, "Cuenta creada", Toast.LENGTH_SHORT).show();
             startActivity(siguienteActivity);
+            finish();
         } else {
             Toast.makeText(this, "Usuario ya registrado", Toast.LENGTH_SHORT).show();
         }

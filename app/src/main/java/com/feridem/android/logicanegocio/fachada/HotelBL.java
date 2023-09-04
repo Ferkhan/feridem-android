@@ -1,18 +1,12 @@
 package com.feridem.android.logicanegocio.fachada;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 import com.feridem.android.framework.AppException;
-import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.interfazdatos.basedatos.HotelDAC;
 import com.feridem.android.logicanegocio.entidades.Hotel;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +21,7 @@ public class HotelBL extends GestorBL {
 
     public List<Hotel> obtenerRegistrosActivos() throws AppException {
         List<Hotel> listaHoteles = new ArrayList<>();
-        cursorConsulta = hotelDAC.leerRegistrosActivos();
+        cursorConsulta = hotelDAC.leerRegistrosExito();
 
         if (cursorConsulta.moveToFirst()) {
             do {

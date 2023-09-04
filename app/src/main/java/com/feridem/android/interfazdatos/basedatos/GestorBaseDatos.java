@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -97,7 +96,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
 
-    public abstract Cursor leerRegistrosActivos() throws AppException;
+    public abstract Cursor leerRegistrosExito() throws AppException;
 
     public abstract Cursor leerPorId(int idRegistro) throws AppException;
 

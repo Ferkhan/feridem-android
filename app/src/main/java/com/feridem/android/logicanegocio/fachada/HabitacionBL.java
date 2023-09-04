@@ -1,8 +1,6 @@
 package com.feridem.android.logicanegocio.fachada;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.util.Log;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.HabitacionDAC;
@@ -23,7 +21,7 @@ public class HabitacionBL extends GestorBL {
     public List<Habitacion> obtenerRegistrosActivos() throws AppException {
         Habitacion habitacion;
         List<Habitacion> listaHabitaciones = new ArrayList<>();
-        cursorConsulta = habitacionDAC.leerRegistrosActivos();
+        cursorConsulta = habitacionDAC.leerRegistrosExito();
 
         if (cursorConsulta.moveToFirst()) {
             do {
@@ -51,7 +49,7 @@ public class HabitacionBL extends GestorBL {
 
     public Habitacion obtenerPorId(int idHabitacion) throws AppException {
         Habitacion habitacion = new Habitacion();
-        cursorConsulta = habitacionDAC.leerRegistrosActivos();
+        cursorConsulta = habitacionDAC.leerRegistrosExito();
 
         if (cursorConsulta.moveToFirst()) {
             habitacion = new Habitacion();

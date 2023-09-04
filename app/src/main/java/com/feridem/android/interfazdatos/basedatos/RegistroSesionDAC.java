@@ -17,7 +17,7 @@ public class RegistroSesionDAC extends GestorBaseDatos {
     }
 
     @Override
-    public Cursor leerRegistrosActivos() throws AppException {
+    public Cursor leerRegistrosExito() throws AppException {
         String consultaSQL =  " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
                             + " FROM " + TABLA_REGISTRO_SESION
                             + " WHERE ResultadoIngreso = Exito ";
@@ -26,7 +26,11 @@ public class RegistroSesionDAC extends GestorBaseDatos {
 
     @Override
     public Cursor leerPorId(int idRegistro) throws AppException {
-        return null;
+        consultaSQL = " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
+                    + " FROM " + TABLA_REGISTRO_SESION
+                    + " WHERE IdRegistroSesion = ? ";
+        String[] valores = new String[]{String.valueOf(idRegistro)};
+        return obtenerConsulta(consultaSQL, valores);
     }
 
     public Cursor leerRegistroConectado() throws AppException {
@@ -37,20 +41,20 @@ public class RegistroSesionDAC extends GestorBaseDatos {
         return obtenerConsulta(consultaSQL, null);
     }
 
-    public long insertarRegistro(int idUsuario, String resultadoIngreso, int estadoSesion, Date fechaIngreso, Date fechaCierre) {
+    public long insertarRegistro(int idUsuario, String resultadoIngreso, int estadoSesion) {
         valoresContenido = new ContentValues();
         valoresContenido.put("IdUsuario", idUsuario);
         valoresContenido.put("ResultadoIngreso", resultadoIngreso);
         valoresContenido.put("EstadoSesion", estadoSesion);
-        valoresContenido.put("FechaIngreso", String.valueOf(fechaIngreso));
-        valoresContenido.put("FechaCierre", String.valueOf(fechaCierre));
+        valoresContenido.put("FechaIngreso", "CURRENT_TIMESTAMP");
         return getWritableDatabase().insert(TABLA_REGISTRO_SESION, null, valoresContenido);
     }
 
-    public int actualizarConexion(int idRegistro, int estadoSesion) {
+    public int actualizarConexion(int idRegistro) {
         String[] valores = new String[] {String.valueOf(idRegistro)};
         valoresContenido = new ContentValues();
-        valoresContenido.put("EstadoSesion", estadoSesion);
-        return getWritableDatabase().update("usuarios", valoresContenido, "IdRegistroSesion = ?", valores);
+        valoresContenido.put("EstadoSesion", 0);
+        valoresContenido.put("FechaCierre", "CURRENT_TIMESTAMP");
+        return getWritableDatabase().update(TABLA_REGISTRO_SESION, valoresContenido, "IdRegistroSesion = ?", valores);
     }
 }

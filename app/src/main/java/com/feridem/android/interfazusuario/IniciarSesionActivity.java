@@ -11,18 +11,17 @@ import android.widget.EditText;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.interfazdatos.basedatos.GestorBaseDatos;
 import com.feridem.android.interfazdatos.basedatos.HotelDAC;
 import com.feridem.android.logicanegocio.ValidarDatos;
-import com.feridem.android.logicanegocio.ValidarIniciarSesion;
+import com.feridem.android.logicanegocio.VerificarDatos;
 
 public class IniciarSesionActivity extends AppCompatActivity {
     private EditText ingresarCorreo;
     private EditText ingresarContrasena;
     private Button botonRegistrarse;
     private Button botonIniciarSesion;
-    private ValidarIniciarSesion validarIniciarSesion;
-    private boolean activarHacks = true;
+    private VerificarDatos verificarDatos;
+    private boolean activarHacks = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +52,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
         botonRegistrarse = findViewById(R.id.botonRegistrarse);
         botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
 
-//        GestorBaseDatos gestorBaseDatos = new GestorBaseDatos(this);
-//        try{
-//            gestorBaseDatos.comprobarBaseDatos();
-//        } catch (Exception e) {
-//            Log.i("mensaje feridem", e.getMessage());
-//        }
-//        try {
-//            gestorBaseDatos.abrirBaseDatos();
-//        } catch (Exception e) {
-//            Log.i("mensaje feridem", e.getMessage());
-//
-//        }
     }
 
     private void irRegistro(View view) {
@@ -79,18 +66,19 @@ public class IniciarSesionActivity extends AppCompatActivity {
         if (activarHacks) startActivity(siguiente);
         // -------------------------------------------
 
-        if (!ValidarDatos.campoLleno(this, ingresarCorreo) &&
+        if (!ValidarDatos.campoLleno(this, ingresarCorreo) ||
                 !ValidarDatos.campoLleno(this, ingresarContrasena))
             return;
 
 
-        validarIniciarSesion = new ValidarIniciarSesion(this);
+        verificarDatos = new VerificarDatos(this);
         try {
-            if (!validarIniciarSesion.validarCuentaUsuario(ingresarCorreo.getText().toString(), ingresarContrasena.getText().toString()))
+            if (!verificarDatos.verificarCuentaUsuario(ingresarCorreo.getText().toString(), ingresarContrasena.getText().toString()))
                 return;
         } catch (AppException error) {
             throw new RuntimeException(error);
         }
+
         startActivity(siguiente);
         finish();
     }

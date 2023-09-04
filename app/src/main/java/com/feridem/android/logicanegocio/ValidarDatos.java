@@ -1,9 +1,13 @@
 package com.feridem.android.logicanegocio;
 
 import android.content.Context;
+import android.os.Build;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.util.regex.Pattern;
+
+
 
 public class ValidarDatos {
     /**
@@ -96,6 +100,6 @@ public class ValidarDatos {
     }
 
 
-    // Guardar en la base de datos
+
 
 }

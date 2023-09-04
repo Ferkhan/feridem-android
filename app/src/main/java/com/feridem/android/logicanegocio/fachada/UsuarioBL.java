@@ -1,7 +1,6 @@
 package com.feridem.android.logicanegocio.fachada;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.UsuarioDAC;
@@ -23,7 +22,7 @@ public class UsuarioBL extends GestorBL{
 
     public List<Usuario> obtenerRegistrosActivos() throws AppException {
         List<Usuario> listaUsuarios = new ArrayList<>();
-        cursorConsulta = usuarioDAC.leerRegistrosActivos();
+        cursorConsulta = usuarioDAC.leerRegistrosExito();
 
         if (cursorConsulta.moveToFirst()) {
             do {
