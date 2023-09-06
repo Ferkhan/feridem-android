@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +28,8 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.io.ByteArrayOutputStream;
+
 public class FacturaActivity extends AppCompatActivity {
     private HabitacionReservada habitacionReservada;
     private Habitacion habitacion;
@@ -42,6 +46,7 @@ public class FacturaActivity extends AppCompatActivity {
             precioTotal;
     private ImageView codigoQR;
     private Button botonAceptar;
+    private Bitmap qrBitmap;
 
 
     @Override
@@ -100,11 +105,28 @@ public class FacturaActivity extends AppCompatActivity {
             BitMatrix bitMatrix = multiFormatWriter.encode(textoQR, BarcodeFormat.QR_CODE, 250, 250);
             BarcodeEncoder barcodeEncoder;
             barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            codigoQR.setImageBitmap(bitmap);
+            qrBitmap = barcodeEncoder.createBitmap(bitMatrix);
+            codigoQR.setImageBitmap(qrBitmap);
         } catch (WriterException error) {
             throw new AppException(error, getClass(), "generarQR()");
         }
     }
 
+    private void compartirQR(View vista) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/png"); // Cambia el tipo de datos según el formato de tu código QR
+
+        // Agrega la imagen del código QR al intent
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        qrBitmap.compress(Bitmap.CompressFormat.PNG, 250, bytes);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), qrBitmap, "QR Code", null);
+        Uri qrCodeUri = Uri.parse(path);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, qrCodeUri);
+
+        // Puedes agregar un mensaje opcional
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "¡Mira este código QR!");
+
+        // Abre la actividad de compartir
+        startActivity(Intent.createChooser(shareIntent, "Compartir código QR usando..."));
+    }
 }

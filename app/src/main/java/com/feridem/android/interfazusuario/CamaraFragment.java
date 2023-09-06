@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.feridem.android.R;
+import com.feridem.android.framework.AppException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -33,7 +35,8 @@ public class CamaraFragment extends Fragment {
     private String mParam2;
 
 
-    Button botonEscanear;
+    private Button botonEscanear;
+    private ActivityResultLauncher<ScanOptions> barcodeLauncher;
 
     public CamaraFragment() {
         // Required empty public constructor
@@ -75,30 +78,42 @@ public class CamaraFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_camara, container, false);
 
         botonEscanear = vista.findViewById(R.id.botonEscanear);
-        botonEscanear.setOnClickListener(this::escanearCodigo);
+        barcodeLauncher = registerForActivityResult(new ScanContract(),
+                result -> {
+                    if (result.getContents() == null) {
+                        Toast.makeText(getContext(), "Escaner cancelado", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getContext(), "Escaneado: " + result.getContents(), Toast.LENGTH_LONG).show();
+                    }
+                });
+        try {
+            Log.i("AppException", "intentando abrir cámara");
+            botonEscanear.setOnClickListener(this::escanearCodigo);
+            Log.i("AppException", "después de intentando abrir cámara");
+        } catch (Exception error) {
+            Log.i("AppException", "error al abrir cámara");
+            error.printStackTrace();
+
+        }
 
         return vista;
     }
 
-    private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
-            result -> {
-                if(result.getContents() == null) {
-                    Toast.makeText(getContext(), "Escaner cancelado", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getContext(), "Escaneado: " + result.getContents(), Toast.LENGTH_LONG).show();
-                }
-            });
-
     private void escanearCodigo(View vista) {
         ScanOptions integrador = new ScanOptions();
-        integrador.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-        integrador.setPrompt("Escanea tu código QR");
-        integrador.setCameraId(0);
-        integrador.setBeepEnabled(true);
-        integrador.setBarcodeImageEnabled(true);
-        integrador.setOrientationLocked(true);
-        barcodeLauncher.launch(integrador);
 
+        try {
+            integrador.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
+            integrador.setPrompt("Escanea el código proporcionado por Feridem");
+            integrador.setCameraId(0);
+            integrador.setBeepEnabled(true);
+            integrador.setBarcodeImageEnabled(true);
+            integrador.setOrientationLocked(true);
+            barcodeLauncher.launch(integrador);
+
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
         Toast.makeText(getContext(), "Escaneando Código QR", Toast.LENGTH_SHORT).show();
     }
 }
