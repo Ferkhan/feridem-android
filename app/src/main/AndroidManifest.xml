@@ -18,6 +18,17 @@
         android:theme="@style/Theme.Feridem"
         tools:targetApi="31">
         <activity
+            android:name=".interfazusuario.PantallazoActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".interfazusuario.ActPerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".interfazusuario.FacturaActivity"
             android:exported="false" />
         <activity
@@ -25,7 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".interfazusuario.BarraNavegacionActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
         <activity
@@ -36,11 +47,7 @@
             android:name=".interfazusuario.IniciarSesionActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- Otros filtros de intención si es necesario -->
         </activity>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"

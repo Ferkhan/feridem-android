@@ -40,4 +40,12 @@ public class UsuarioDAC extends GestorBaseDatos {
         valoresContenido.put("Celular", celular);
         return getWritableDatabase().insert(TABLA_USUARIO, null, valoresContenido);
     }
+    public long actualizarRegistro(int IdRol, String nombre, String correo, String celular) {
+        String[] valores = new String[] {String.valueOf(IdRol)};
+        valoresContenido = new ContentValues();
+        valoresContenido.put("Nombre", nombre);
+        valoresContenido.put("Correo", correo);
+        valoresContenido.put("Celular", celular);
+        return getWritableDatabase().update(TABLA_USUARIO,valoresContenido,"IdRol= ?",valores);
+    }
 }

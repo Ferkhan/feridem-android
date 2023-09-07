@@ -14,6 +14,7 @@ public class UsuarioBL extends GestorBL{
     private Usuario usuario;
     private UsuarioDAC usuarioDAC;
 
+
     public UsuarioBL(Context contexto) {
         super(contexto);
         usuarioDAC = new UsuarioDAC(contexto);
@@ -71,5 +72,8 @@ public class UsuarioBL extends GestorBL{
 
     public long ingresarRegistro(int idRol, String nombre, String correo, String celular) {
         return usuarioDAC.insertarRegistro(idRol, nombre, correo, celular);
+    }
+    public long actualizarRegistro(int idRol, String nombre, String correo, String celular){
+        return usuarioDAC.actualizarRegistro(idRol,  nombre,  correo, celular);
     }
 }

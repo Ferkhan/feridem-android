@@ -44,7 +44,7 @@ public class RegistroSesionDAC extends GestorBaseDatos {
         String consultaSQL =  " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
                             + " FROM " + TABLA_REGISTRO_SESION
                             + " WHERE ResultadoIngreso = 'OK' "
-                            + " AND   EstadoSesion = 1 ";
+                            + " AND   EstadoSesion = 0 ";
         return obtenerConsulta(consultaSQL, null);
     }
 
@@ -59,8 +59,9 @@ public class RegistroSesionDAC extends GestorBaseDatos {
     public int actualizarConexion(int idRegistro, String fechaCierre) {
         String[] valores = new String[] {String.valueOf(idRegistro)};
         valoresContenido = new ContentValues();
-        valoresContenido.put("EstadoSesion", 0);
+        valoresContenido.put("EstadoSesion",0);
         valoresContenido.put("FechaCierre", fechaCierre);
         return getWritableDatabase().update(TABLA_REGISTRO_SESION, valoresContenido, "IdRegistroSesion = ?", valores);
     }
+
 }
