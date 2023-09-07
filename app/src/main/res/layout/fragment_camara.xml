@@ -45,13 +45,13 @@
                 android:layout_marginTop="20dp"/>
 
             <TextView
-                android:id="@+id/usuario"
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Reservación a nombre de:" />
 
             <EditText
+                android:id="@+id/usuario"
                 style="@style/ingreso_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,13 +59,13 @@
                 android:focusable="false"/>
 
             <TextView
-                android:id="@+id/nombre_hotel"
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hospedaje en el Hotel:" />
 
             <EditText
+                android:id="@+id/nombre_hotel"
                 style="@style/ingreso_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,13 +73,13 @@
                 android:focusable="false" />
 
             <TextView
-                android:id="@+id/nombre_habitacion"
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Habitación reservada:" />
 
             <EditText
+                android:id="@+id/nombre_habitacion"
                 style="@style/ingreso_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,14 +87,13 @@
                 android:focusable="false" />
 
             <TextView
-                android:id="@+id/estado_reservacion"
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Estado de la reservación:" />
 
             <EditText
-                android:id="@+id/verificar"
+                android:id="@+id/estado_reservacion"
                 style="@style/ingreso_escaner"
                 android:layout_width="wrap_content"
                 android:textSize="25sp"
