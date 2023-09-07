@@ -69,7 +69,8 @@
                 style="@style/ingreso_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Necesita escanear un QR" />
+                android:hint="Necesita escanear un QR"
+                android:focusable="false" />
 
             <TextView
                 android:id="@+id/nombre_habitacion"
@@ -82,7 +83,8 @@
                 style="@style/ingreso_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Necesita escanear un QR" />
+                android:hint="Necesita escanear un QR"
+                android:focusable="false" />
 
             <TextView
                 android:id="@+id/estado_reservacion"
@@ -97,7 +99,8 @@
                 android:layout_width="wrap_content"
                 android:textSize="25sp"
                 android:layout_gravity="center_horizontal"
-                android:hint="Vigencia" />
+                android:hint="Vigencia"
+                android:focusable="false" />
 
 
             <Button

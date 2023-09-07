@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
@@ -33,7 +34,11 @@ public class CamaraFragment extends Fragment {
 
     private Button botonEscanear;
     private ActivityResultLauncher<ScanOptions> barcodeLauncher;
-
+    private EditText
+            usuario,
+            habitacion,
+            hotel,
+            vigencia;
     public CamaraFragment() {
         // Required empty public constructor
     }
@@ -73,7 +78,19 @@ public class CamaraFragment extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_camara, container, false);
 
+        iniciarRecursos(vista);
+
+        botonEscanear.setOnClickListener(this::escanearCodigo);
+
+        return vista;
+    }
+
+    private void iniciarRecursos(View vista) {
         botonEscanear = vista.findViewById(R.id.boton_escaner);
+        usuario       = vista.findViewById(R.id.usuario);
+        hotel         = vista.findViewById(R.id.nombre_hotel);
+        habitacion    = vista.findViewById(R.id.nombre_habitacion);
+        vigencia      = vista.findViewById(R.id.verificar);
         barcodeLauncher = registerForActivityResult(new ScanContract(),
                 result -> {
                     if (result.getContents() == null) {
@@ -82,17 +99,6 @@ public class CamaraFragment extends Fragment {
                         Toast.makeText(getContext(), "Escaneado: " + result.getContents(), Toast.LENGTH_LONG).show();
                     }
                 });
-        try {
-            Log.i("AppException", "intentando abrir cámara");
-            botonEscanear.setOnClickListener(this::escanearCodigo);
-            Log.i("AppException", "después de intentando abrir cámara");
-        } catch (Exception error) {
-            Log.i("AppException", "error al abrir cámara");
-            error.printStackTrace();
-
-        }
-
-        return vista;
     }
 
     private void escanearCodigo(View vista) {
@@ -111,5 +117,13 @@ public class CamaraFragment extends Fragment {
             error.printStackTrace();
         }
         Toast.makeText(getContext(), "Escaneando Código QR", Toast.LENGTH_SHORT).show();
+    }
+
+    private void colocarInformacion() {
+
+    }
+
+    private void limpiarInformacion() {
+
     }
 }
