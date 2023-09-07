@@ -5,6 +5,7 @@ import android.content.Context;
 import com.feridem.android.framework.AppException;
 import com.feridem.android.interfazdatos.basedatos.HabitacionReservadaDAC;
 import com.feridem.android.logicanegocio.entidades.HabitacionReservada;
+import com.feridem.android.logicanegocio.entidades.RegistroSesion;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,16 +13,18 @@ import java.util.List;
 
 public class HabitacionReservadaBL extends GestorBL {
     private HabitacionReservadaDAC habitacionReservadaDAC;
+    private RegistroSesionBL registroSesionBL;
 
     public HabitacionReservadaBL(Context contexto) {
         super(contexto);
         habitacionReservadaDAC = new HabitacionReservadaDAC(contexto);
+        registroSesionBL = new RegistroSesionBL(contexto);
     }
 
     public List<HabitacionReservada> obtenerRegistrosActivos() throws AppException {
         HabitacionReservada habitacionReservada;
         List<HabitacionReservada> listaHabitaciones = new ArrayList<>();
-        cursorConsulta = habitacionReservadaDAC.leerRegistros();
+        cursorConsulta = habitacionReservadaDAC.leerRegistrosUsuario(registroSesionBL.obtenerIdUsuarioConectado());
 
         if (cursorConsulta.moveToFirst()) {
             do {
