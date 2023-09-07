@@ -46,4 +46,13 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
         valoresContenido.put("CodigoQR", codigoQR);
         return getWritableDatabase().insert(TABLA_HABITACION_RESERVADA, null, valoresContenido);
     }
+
+    public Cursor leerRegistrosUsuario(int idUsuario) throws AppException {
+        consultaSQL = " SELECT IdReservacion, IdHabitacion, IdUsuario, FechaEntrada, FechaSalida, TotalNoches, PrecioNoche, PrecioTotal, CodigoQR, Estado, FechaRegistro, FechaModificacion "
+                + " FROM " + TABLA_HABITACION_RESERVADA
+                + " WHERE  Estado = 1 "
+                + " AND    IdUsuario = ? ";
+        String[] valores = new String[] {String.valueOf(idUsuario)};
+        return obtenerConsulta(consultaSQL, valores);
+    }
 }

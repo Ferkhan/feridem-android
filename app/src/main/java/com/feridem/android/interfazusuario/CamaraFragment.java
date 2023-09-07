@@ -1,22 +1,28 @@
 package com.feridem.android.interfazusuario;
 
-import android.content.Intent;
+import android.database.DatabaseErrorHandler;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.feridem.android.R;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import com.feridem.android.framework.AppException;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,8 +39,17 @@ public class CamaraFragment extends Fragment {
     private String mParam2;
 
 
-    Button botonEscanear;
-
+    private Button botonEscanear;
+    private ActivityResultLauncher<ScanOptions> barcodeLauncher;
+    private EditText
+            usuario,
+            habitacion,
+            hotel,
+            vigencia;
+    private Date
+            fechaActual,
+            fechaEntrada,
+            fechaSalida;
     public CamaraFragment() {
         // Required empty public constructor
     }
@@ -74,31 +89,115 @@ public class CamaraFragment extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_camara, container, false);
 
-        botonEscanear = vista.findViewById(R.id.botonEscanear);
-        botonEscanear.setOnClickListener(this::escanearCodigo);
+        iniciarRecursos(vista);
 
+        try {
+            botonEscanear.setOnClickListener(this::escanearCodigo);
+        } catch (Exception error) {
+            Log.i("AppException", "botonEscaner");
+        }
         return vista;
     }
 
-    private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
-            result -> {
-                if(result.getContents() == null) {
-                    Toast.makeText(getContext(), "Escaner cancelado", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getContext(), "Escaneado: " + result.getContents(), Toast.LENGTH_LONG).show();
-                }
-            });
+    private void iniciarRecursos(View vista) {
+        botonEscanear = vista.findViewById(R.id.boton_escaner);
+        usuario       = vista.findViewById(R.id.usuario);
+        hotel         = vista.findViewById(R.id.nombre_hotel);
+        habitacion    = vista.findViewById(R.id.nombre_habitacion);
+        vigencia      = vista.findViewById(R.id.estado_reservacion);
+        fechaActual   = new Date();
+        fechaEntrada  = null;
+        fechaSalida   = null;
+
+        barcodeLauncher = registerForActivityResult(new ScanContract(),
+                result -> {
+                    if (result.getContents() == null) {
+                        limpiarInformacion();
+                        Toast.makeText(getContext(), "Escaner cancelado", Toast.LENGTH_LONG).show();
+                    } else {
+                        try {
+                            decodificarQR(result.getContents());
+                        } catch (AppException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                });
+    }
 
     private void escanearCodigo(View vista) {
         ScanOptions integrador = new ScanOptions();
-        integrador.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
-        integrador.setPrompt("Escanea tu código QR");
-        integrador.setCameraId(0);
-        integrador.setBeepEnabled(true);
-        integrador.setBarcodeImageEnabled(true);
-        integrador.setOrientationLocked(true);
-        barcodeLauncher.launch(integrador);
 
+        try {
+            integrador.setDesiredBarcodeFormats(ScanOptions.QR_CODE);
+            integrador.setPrompt("Escanea el código proporcionado por Feridem");
+            integrador.setCameraId(0);
+            integrador.setBeepEnabled(true);
+            integrador.setBarcodeImageEnabled(true);
+            integrador.setOrientationLocked(true);
+            barcodeLauncher.launch(integrador);
+
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
         Toast.makeText(getContext(), "Escaneando Código QR", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    private void limpiarInformacion() {
+        usuario.setText("");
+        hotel.setText("");
+        habitacion.setText("");
+        vigencia.setText("");
+    }
+
+    private void decodificarQR(String codigo) throws AppException {
+        String[] decodificado = codigo.split("\\$\\|&");
+        if (decodificado.length == 5) {
+            usuario.setText(decodificado[0]);
+            hotel.setText(decodificado[1]);
+            habitacion.setText(decodificado[2]);
+            establecerVigencia(compararFechas(decodificado[3], decodificado[4]));
+        } else {
+            limpiarInformacion();
+            Toast.makeText(getContext(), "Código no válido", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private int compararFechas (String entrada, String salida) throws AppException {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        try {
+            fechaEntrada = formatoFecha.parse(entrada + " 14:00:00");
+            fechaSalida = formatoFecha.parse(salida + " 12:00:00");
+            Log.i("AppException", entrada + " 14:00:00" + ": entrada");
+            Log.i("AppException", salida + " 12:00:00" + ": salida");
+            Log.i("AppException", fechaActual.toString() + ": actual");
+        } catch (ParseException error) {
+            throw new AppException(error, getClass(), "establecerVigencia()");
+        }
+        if (fechaActual.compareTo(fechaEntrada) < 0)
+            return -1;
+
+        if (fechaActual.compareTo(fechaSalida) > 0)
+            return 1;
+
+
+        return 0;
+    }
+
+    private void establecerVigencia(int comparador) {
+        Log.i("AppException", comparador + ": comparador");
+        if (comparador > 0) {
+            vigencia.setText("Caducada");
+            vigencia.setTextColor(getResources().getColor(R.color.caducada, null));
+        } else if (comparador < 0) {
+            vigencia.setText("Pendiente");
+            vigencia.setTextColor(getResources().getColor(R.color.pendiente, null));
+        } else {
+            vigencia.setText("Confirmada");
+            vigencia.setTextColor(getResources().getColor(R.color.confirmada, null));
+        }
     }
 }

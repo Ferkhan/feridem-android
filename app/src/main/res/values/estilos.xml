@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="texto_inicio_registro">
+    <style name="texto_general">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/inter</item>
-        <item name="android:textSize">@dimen/textoInicioRegistro</item>
+        <item name="android:textSize">@dimen/texto_inicio_registro</item>
         <item name="android:textColor">@color/secundario</item>
         <item name="android:layout_weight">1</item>
 <!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
@@ -13,25 +13,42 @@
 
     </style>
 
-    <style name="ingresoInicioRegistro">
+    <style name="ingreso_inicio_registro">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/inter</item>
-        <item name="android:textSize">@dimen/entradaDatos</item>
+        <item name="android:textSize">@dimen/entrada_datos</item>
         <item name="android:textColor">@color/ingresoDatos</item>
         <item name="android:textColorHint">@color/textoOculto</item>
         <item name="android:layout_weight">1</item>
-<!--        <item name="android:layout_marginTop">5dp</item>-->
-<!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
-<!--        <item name="android:layout_marginEnd">@dimen/margenInicioRegistro</item>-->
     </style>
 
-    <style name="botonPrincipal">
+    <style name="texto_escaner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="ingreso_escaner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/ingresoDatos</item>
+        <item name="android:textColorHint">@color/textoOculto</item>
+<!--        <item name="android:clickable">false</item>-->
+    </style>
+
+    <style name="boton_principal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/boton</item>
         <item name="android:textColor">@color/secundario</item>
-        <item name="android:textSize">@dimen/textoBoton</item>
+        <item name="android:textSize">@dimen/texto_boton</item>
 
     </style>
 

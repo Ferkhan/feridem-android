@@ -192,11 +192,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     }
 
     private String generarTextoQr() {
-        return habitacion.getNombre() + "$|&"
+        return usuario.getNombre() + "$|&"
                         + hotel.getNombre() + "$|&"
-                        + usuario.getNombre() + "$|&"
+                        + habitacion.getNombre() + "$|&"
                         + fechaEntrada.getText().toString() + "$|&"
-                        + fechaSalida.getText().toString() + "$|&"
-                        + totalNoches.getText().toString() + "$|&";
+                        + fechaSalida.getText().toString() + "$|&";
     }
 }

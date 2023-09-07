@@ -75,7 +75,7 @@
 
             <Button
                 android:id="@+id/boton_aceptar"
-                style="@style/botonPrincipal"
+                style="@style/boton_principal"
                 android:text="Aceptar" />
 
 

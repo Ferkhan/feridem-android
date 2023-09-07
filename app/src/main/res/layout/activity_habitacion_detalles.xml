@@ -100,7 +100,7 @@
 
             <Button
                 android:id="@+id/boton_reservar"
-                style="@style/botonPrincipal"
+                style="@style/boton_principal"
                 android:text="RESERVAR" />
 
 
