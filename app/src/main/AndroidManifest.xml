@@ -18,7 +18,7 @@
         android:theme="@style/Theme.Feridem"
         tools:targetApi="31">
         <activity
-            android:name=".interfazusuario.PantallazoActivity"
+            android:name=".user_interface.PantallazoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,25 +26,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".interfazusuario.ActPerfilActivity"
+            android:name=".user_interface.ActPerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".interfazusuario.FacturaActivity"
+            android:name=".user_interface.FacturaActivity"
             android:exported="false" />
         <activity
-            android:name=".interfazusuario.HabitacionDetallesActivity"
+            android:name=".user_interface.HabitacionDetallesActivity"
             android:exported="false" />
         <activity
-            android:name=".interfazusuario.BarraNavegacionActivity"
+            android:name=".user_interface.BarraNavegacionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
         <activity
-            android:name=".interfazusuario.RegistroActivity"
+            android:name=".user_interface.RegistroActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".interfazusuario.IniciarSesionActivity"
+            android:name=".user_interface.IniciarSesionActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <!-- Otros filtros de intención si es necesario -->

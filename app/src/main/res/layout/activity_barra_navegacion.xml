@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".interfazusuario.BarraNavegacionActivity">
+    tools:context=".user_interface.BarraNavegacionActivity">
 
     <FrameLayout
         android:id="@+id/fragmento_contenedor"

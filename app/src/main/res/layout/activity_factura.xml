@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/variacionPrincipal"
-    tools:context=".interfazusuario.FacturaActivity">
+    tools:context=".user_interface.FacturaActivity">
 
     <ScrollView
         android:layout_width="0dp"

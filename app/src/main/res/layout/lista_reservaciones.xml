@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:animateLayoutChanges="true"
-    android:backgroundTint="#267521"
+    android:backgroundTint="@color/secundario"
     android:clickable="true"
     app:cardCornerRadius="20dp"
     app:cardElevation="5dp"

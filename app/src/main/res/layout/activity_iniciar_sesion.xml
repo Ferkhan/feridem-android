@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/principal"
     android:paddingHorizontal="@dimen/margen_inicio_registro"
-    tools:context=".interfazusuario.IniciarSesionActivity">
+    tools:context=".user_interface.IniciarSesionActivity">
 
 
     <TextView

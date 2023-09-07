@@ -81,6 +81,7 @@
         <item name="android:textColor">@color/black</item>
         <!--        <item name="android:fontFamily">@font/abril_fatface</item>-->
         <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginVertical">15dp</item>
         <!--        <item name="android:textAlignment">center</item>-->
 
     </style>
@@ -89,7 +90,7 @@
     <style name="texto_lista_reservaciones">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/secundario</item>
+        <item name="android:textColor">@color/principal</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
         <!--        <item name="android:fontFamily">@font/abril_fatface</item>-->
@@ -107,5 +108,6 @@
         <item name="android:textSize">20sp</item>
         <!--        <item name="android:textAlignment">center</item>-->
     </style>
+
 
 </resources>

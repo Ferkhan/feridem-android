@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/principal"
     android:paddingHorizontal="@dimen/margen_inicio_registro"
-    tools:context=".interfazusuario.RegistroActivity">
+    tools:context=".user_interface.RegistroActivity">
 
     <TextView
         android:id="@+id/encabezado"
