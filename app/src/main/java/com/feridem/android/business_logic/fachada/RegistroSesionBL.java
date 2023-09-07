@@ -86,7 +86,8 @@ public class RegistroSesionBL extends GestorBL {
             Log.i("AppException", "Si hay un registro conectado");
         }
 
-        return registroSesion;
+
+        return (registroSesion.getId() == 0) ? null : registroSesion;
     }
 
     /**
