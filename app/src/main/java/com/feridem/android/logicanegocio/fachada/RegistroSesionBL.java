@@ -79,14 +79,18 @@ public class RegistroSesionBL extends GestorBL {
     public boolean desconectarUsuario() throws AppException {
         Date fecha = new Date();
         registroSesion = obtenerRegistroConectado();
-        int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId(), formatoFechaHora.format(fecha));
-        if (idRegistroActualizado > 0) {
-            Toast.makeText(contexto, "Sesión cerrada con éxito", Toast.LENGTH_SHORT);
-            return true;
-        } else {
-            Toast.makeText(contexto, "Fallo al cerrar sesión", Toast.LENGTH_SHORT);
-            return false;
+        if (registroSesion != null) {
+            int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId(), formatoFechaHora.format(fecha));
+            if (idRegistroActualizado > 0) {
+                Toast.makeText(contexto, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
+                return true;
+            } else {
+                Toast.makeText(contexto, "Fallo al cerrar sesión", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
+        Toast.makeText(contexto, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     public boolean conectarUsuario(int idUsuario, String resultadoIngreso, int estadoSesion) throws AppException {
