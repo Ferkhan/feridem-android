@@ -57,7 +57,7 @@ public class RegistroSesionBL extends GestorBL {
     }
 
     public RegistroSesion obtenerRegistroConectado() throws AppException {
-        cursorConsulta = registroSesionDAC.leerIdUsuarioConectado();
+        cursorConsulta = registroSesionDAC.leerRegistroConectado();
 
         if (cursorConsulta.moveToLast()) {
             registroSesion = new RegistroSesion();
