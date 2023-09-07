@@ -67,7 +67,7 @@ public class RegistroSesionDAC extends GestorBaseDatos {
         String consultaSQL =  " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
                             + " FROM " + TABLA_REGISTRO_SESION
                             + " WHERE ResultadoIngreso = 'OK' "
-                            + " AND   EstadoSesion = 0 ";
+                            + " AND   EstadoSesion = 1 ";
         return obtenerConsulta(consultaSQL, null);
     }
 

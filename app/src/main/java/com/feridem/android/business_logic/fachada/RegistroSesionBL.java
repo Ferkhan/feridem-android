@@ -1,6 +1,7 @@
 package com.feridem.android.business_logic.fachada;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.feridem.android.framework.AppException;
@@ -42,12 +43,8 @@ public class RegistroSesionBL extends GestorBL {
                 registroSesion.setIdUsuario(cursorConsulta.getInt(1));
                 registroSesion.setResultadoIngreso(cursorConsulta.getString(2));
                 registroSesion.setEstadoSesion((cursorConsulta.getInt(3)));
-                try {
-                    registroSesion.setFechaIngreso(formatoFechaHora.parse(cursorConsulta.getString(4)));
-                    registroSesion.setFechaCierre(formatoFechaHora.parse(cursorConsulta.getString(5)));
-                } catch (ParseException error) {
-                    throw new AppException(error, getClass(), "obtenerRegistrosActivos()");
-                }
+                registroSesion.setFechaIngreso(cursorConsulta.getString(4));
+                registroSesion.setFechaCierre(cursorConsulta.getString(5));
                 listaRegistros.add(registroSesion);
             } while (cursorConsulta.moveToNext());
         }
@@ -77,19 +74,16 @@ public class RegistroSesionBL extends GestorBL {
      */
     public RegistroSesion obtenerRegistroConectado() throws AppException {
         cursorConsulta = registroSesionDAC.leerRegistroConectado();
+        registroSesion = new RegistroSesion();
 
         if (cursorConsulta.moveToLast()) {
-            registroSesion = new RegistroSesion();
             registroSesion.setId(cursorConsulta.getInt(0));
             registroSesion.setIdUsuario(cursorConsulta.getInt(1));
             registroSesion.setResultadoIngreso(cursorConsulta.getString(2));
             registroSesion.setEstadoSesion((cursorConsulta.getInt(3)));
-            try {
-                registroSesion.setFechaIngreso(formatoFechaHora.parse(cursorConsulta.getString(4)));
-                registroSesion.setFechaCierre(formatoFechaHora.parse(cursorConsulta.getString(5)));
-            } catch (ParseException error) {
-                throw new AppException(error, getClass(), "obtenerRegistroConectado()");
-            }
+            registroSesion.setFechaIngreso(cursorConsulta.getString(4));
+            registroSesion.setFechaCierre(cursorConsulta.getString(5));
+            Log.i("AppException", "Si hay un registro conectado");
         }
 
         return registroSesion;
@@ -104,9 +98,9 @@ public class RegistroSesionBL extends GestorBL {
         Date fecha = new Date();
         registroSesion=new RegistroSesion();
         registroSesion = obtenerRegistroConectado();
-        if(registroSesion!=null){
+        if(registroSesion != null) {
             int idRegistroActualizado = registroSesionDAC.actualizarConexion(registroSesion.getId(), formatoFechaHora.format(fecha));
-            if (idRegistroActualizado == 0) {
+            if (idRegistroActualizado > 0) {
                 Toast.makeText(contexto, "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
                 return true;
             } else {
@@ -114,7 +108,7 @@ public class RegistroSesionBL extends GestorBL {
                 return false;
             }
         }
-        Toast.makeText(contexto, "no hay usuario conectado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(contexto, "No hay usuario conectado", Toast.LENGTH_SHORT).show();
         return false;
     }
 

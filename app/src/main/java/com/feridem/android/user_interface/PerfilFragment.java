@@ -169,9 +169,9 @@ public class PerfilFragment extends Fragment {
     public void cerrarSesion(View view ) throws AppException {
         Context context = getActivity();
         rgBL= new RegistroSesionBL(context);
-        boolean verUsuarioConect= rgBL.desconectarUsuario();
-        if(verUsuarioConect==true){
-            Intent intent= new Intent(context,IniciarSesionActivity.class);
+        boolean verUsuarioConect = rgBL.desconectarUsuario();
+        if(verUsuarioConect){
+            Intent intent= new Intent(context, IniciarSesionActivity.class);
             startActivity(intent);
         }
     }

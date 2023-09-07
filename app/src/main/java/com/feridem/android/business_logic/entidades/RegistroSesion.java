@@ -1,14 +1,13 @@
 package com.feridem.android.business_logic.entidades;
 
-import java.util.Date;
 
 public class RegistroSesion {
     private int id;
     private int idUsuario;
     private String resultadoIngreso;
     private int estadoSesion;
-    private Date fechaIngreso;
-    private Date fechaCierre;
+    private String fechaIngreso;
+    private String fechaCierre;
 
     public int getId() {
         return id;
@@ -42,19 +41,19 @@ public class RegistroSesion {
         this.estadoSesion = estadoSesion;
     }
 
-    public Date getFechaIngreso() {
+    public String getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(String fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public Date getFechaCierre() {
+    public String getFechaCierre() {
         return fechaCierre;
     }
 
-    public void setFechaCierre(Date fechaCierre) {
+    public void setFechaCierre(String fechaCierre) {
         this.fechaCierre = fechaCierre;
     }
 }

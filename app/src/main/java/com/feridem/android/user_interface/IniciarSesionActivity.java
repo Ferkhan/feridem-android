@@ -40,17 +40,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
         botonRegistrarse.setOnClickListener(this::irRegistro);
         botonIniciarSesion.setOnClickListener(this::irPrincipal);
 
-        HotelDAC hotelDAC = new HotelDAC(this);
-        try{
-            hotelDAC.comprobarBaseDatos();
-        } catch (Exception error) {
-            Log.i("FeridemException", error.getMessage());
-        }
-        try {
-            hotelDAC.abrirBaseDatos();
-        } catch (Exception error) {
-            Log.i("FeridemException", error.getMessage());
-        }
     }
 
     /**
