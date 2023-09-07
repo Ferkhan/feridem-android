@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/principal"
-    android:paddingHorizontal="@dimen/margenInicioRegistro"
+    android:paddingHorizontal="@dimen/margen_inicio_registro"
     tools:context=".interfazusuario.RegistroActivity">
 
     <TextView
@@ -34,36 +34,36 @@
 
         <TextView
             android:id="@+id/nombreCompleto"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:text="Nombre y apellido" />
 
         <EditText
             android:id="@+id/ingresarNombreCompleto"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:ems="10"
             android:hint="Ingresa tu nombre"
             android:inputType="text" />
 
         <TextView
             android:id="@+id/correo"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:text="Correo electrónico" />
 
         <EditText
             android:id="@+id/ingresarCorreo"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:ems="10"
             android:hint="Ingresa tu correo"
             android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/numeroCelular"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:text="Número de celular" />
 
         <EditText
             android:id="@+id/ingresarNumeroCelular"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:ems="10"
             android:hint="Ingresa tu celular"
             android:inputType="number"
@@ -71,24 +71,24 @@
 
         <TextView
             android:id="@+id/contrasenia"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:text="Contraseña" />
 
         <EditText
             android:id="@+id/ingresarContrasenia"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:ems="10"
             android:hint="Ingresa tu contraseña"
             android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/confirmarContrasenia"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:text="Confirmar contraseña" />
 
         <EditText
             android:id="@+id/ingresarConfirmarContrasenia"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:ems="10"
             android:hint="Vuelve a ingresar tu contraseña"
             android:inputType="textPassword" />
@@ -96,7 +96,7 @@
 
     <Button
         android:id="@+id/botonRegistrarse"
-        style="@style/botonPrincipal"
+        style="@style/boton_principal"
         android:text="Registrarte"
         android:textColor="@color/secundario"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,7 +112,7 @@
         android:fontFamily="@font/inter"
         android:text="¿Ya tienes una cuenta?"
         android:textColor="@color/secundario"
-        android:textSize="@dimen/textoInicioRegistro"
+        android:textSize="@dimen/texto_inicio_registro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -128,7 +128,7 @@
         android:fontFamily="@font/inter_bold"
         android:text="Inicia Sesión"
         android:textColor="@color/secundario"
-        android:textSize="@dimen/textoInicioRegistro"
+        android:textSize="@dimen/texto_inicio_registro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"

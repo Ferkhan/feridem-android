@@ -1,6 +1,5 @@
 package com.feridem.android.interfazusuario;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -14,9 +13,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.feridem.android.R;
-import com.feridem.android.framework.AppException;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -77,7 +73,7 @@ public class CamaraFragment extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_camara, container, false);
 
-        botonEscanear = vista.findViewById(R.id.botonEscanear);
+        botonEscanear = vista.findViewById(R.id.boton_escaner);
         barcodeLauncher = registerForActivityResult(new ScanContract(),
                 result -> {
                     if (result.getContents() == null) {

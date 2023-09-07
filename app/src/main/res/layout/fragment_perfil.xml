@@ -25,14 +25,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="@dimen/margenInicioRegistro"
+        android:padding="@dimen/margen_inicio_registro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/encabezado">
 
         <TextView
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:textAlignment="center"
             android:text="Configuración del perfil del usuario"
             android:textSize="30sp"
