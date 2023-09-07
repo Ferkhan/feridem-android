@@ -10,6 +10,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Corresponde a la lógoca de negocios correspondiente a Usuario Credencial.
+ */
 public class UsuarioCredencialBL extends GestorBL {
     private UsuarioCredencialDAC usuarioCredencialDAC;
 
@@ -18,7 +21,12 @@ public class UsuarioCredencialBL extends GestorBL {
         usuarioCredencialDAC = new UsuarioCredencialDAC(contexto);
     }
 
-
+    /**
+     * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
+     * De esta manera, obtiene la información y la envía a la entidad usuarioCredencial.
+     * @return listaCredenciales: Representa a las credenciales de los usuarios que estan activos.
+     * @throws AppException
+     */
     public List<UsuarioCredencial> obtenerRegistrosActivos() throws AppException {
         UsuarioCredencial usuarioCredencial;
         List<UsuarioCredencial> listaCredenciales = new ArrayList<>();
@@ -44,6 +52,13 @@ public class UsuarioCredencialBL extends GestorBL {
         return listaCredenciales;
     }
 
+    /**
+     * obtenerPorId: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos de una credencial en específico.
+     *  De esta manera, obtiene la información y la envía a la entidad usuarioCredencial.
+     * @param idRegistro: Representa al Id del registro.
+     * @return usuarioCredencial.
+     * @throws AppException
+     */
     public UsuarioCredencial obtenerPorId(int idRegistro) throws AppException {
         UsuarioCredencial usuarioCredencial = new UsuarioCredencial();
         cursorConsulta = usuarioCredencialDAC.leerPorId(idRegistro);
@@ -64,7 +79,13 @@ public class UsuarioCredencialBL extends GestorBL {
         return usuarioCredencial;
     }
 
-
+    /**
+     * insertarCredencial: Se encarga de insertar una credencial en la base de datos.
+     * @param idUsuario: Representa al Id de las credenciales
+     * @param contrasena: Representa a la contraseña del usuario.
+     * @return long
+     * @throws AppException
+     */
     public long insertarCredencial(int idUsuario, String contrasena) throws AppException {
         return usuarioCredencialDAC.insertarRegistro(idUsuario, contrasena);
     }

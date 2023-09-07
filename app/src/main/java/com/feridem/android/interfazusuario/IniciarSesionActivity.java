@@ -15,6 +15,9 @@ import com.feridem.android.interfazdatos.basedatos.HotelDAC;
 import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.VerificarDatos;
 
+/**
+ * Esta es la ventana de inicio de sesión.
+ */
 public class IniciarSesionActivity extends AppCompatActivity {
     private EditText ingresarCorreo;
     private EditText ingresarContrasena;
@@ -23,6 +26,10 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private VerificarDatos verificarDatos;
     private boolean activarHacks = false;
 
+    /**
+     * onCreate: Se encarga de crear la ventana de iniciar sesión
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +53,9 @@ public class IniciarSesionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * inicializarRecursos: Se encarga de iniciar TextView, Buttons, EditText, a partir de su id.
+     */
     private void inicializarRecursos() {
         ingresarCorreo = findViewById(R.id.ingresarCorreo);
         ingresarContrasena = findViewById(R.id.ingresarContrasenia);
@@ -54,11 +64,19 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * irRegistro: Se encarga de ir al activity registro, cuando se presione un botón.
+     * @param view
+     */
     private void irRegistro(View view) {
         Intent siguiente = new Intent(this, RegistroActivity.class);
         startActivity(siguiente);
     }
 
+    /**
+     * irPrincipal: Se encarga de ir a la barra de navegación, cuando se presione un botón.
+     * @param view
+     */
     private void irPrincipal(View view) {
         Intent siguiente = new Intent(this, BarraNavegacionActivity.class);
 

@@ -16,6 +16,9 @@ import com.feridem.android.logicanegocio.VerificarDatos;
 import com.feridem.android.logicanegocio.fachada.UsuarioBL;
 import com.feridem.android.logicanegocio.fachada.UsuarioCredencialBL;
 
+/**
+ * Esta es la ventana para registrarse en la aplicación.
+ */
 public class RegistroActivity extends AppCompatActivity {
     private Button
             botonIniciarSesion,
@@ -29,7 +32,10 @@ public class RegistroActivity extends AppCompatActivity {
     private VerificarDatos verificarDatos;
 
 
-
+    /**
+     * onCreate: Se encarga de generar la ventana denominada Registro.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,9 @@ public class RegistroActivity extends AppCompatActivity {
         botonRegistrarse.setOnClickListener(this::irPrincipal);
     }
 
+    /**
+     * inicializarRecursos: Se encarga de iniciar TextView, EditText, Buttons, a partir de su Id.
+     */
     private void inicializarRecursos() {
         botonIniciarSesion      = findViewById(R.id.botonIniciarSesion);
         botonRegistrarse        = findViewById(R.id.botonRegistrarse);
@@ -51,10 +60,18 @@ public class RegistroActivity extends AppCompatActivity {
         verificarDatos          = new VerificarDatos(this);
     }
 
+    /**
+     * irIniciarSesión: Llama al metodo onBackPressed para poder movernos hacia atras de acuerdo a la jerarquía de los activities.
+     * @param vista
+     */
     private void irIniciarSesion(View vista) {
         onBackPressed();
     }
 
+    /**
+     * irPrincipal: Se encarga de llevar al usuario a la ventana de iniciar sesión, una vez se hayan llenado todos los campos para crear la cuenta.
+     * @param view
+     */
     private void irPrincipal(View view){
         if (!ValidarDatos.campoLleno(this, ingresarNombre) ||
                 !ValidarDatos.campoLleno(this, ingresarCorreo) ||

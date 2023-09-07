@@ -8,7 +8,9 @@ import android.widget.Toast;
 import java.util.regex.Pattern;
 
 
-
+/**
+ * Corresponde a una clase para poder validar los datos del usuario.
+ */
 public class ValidarDatos {
     /**
      * Verifica que un campo de texto no este vacio
@@ -81,10 +83,10 @@ public class ValidarDatos {
 
 
     /**
-     * Valida que se ingres un correo válido
+     * validarCorreo: Se encarga de verificar que el correo ingresado tenga una correcta estructura.
      * @param contexto
      * @param ingresarCorreo
-     * @return true si el correo es valido y false si no es valido
+     * @return
      */
     public static boolean validarCorreo(Context contexto, EditText ingresarCorreo) {
         String textoCorreo = ingresarCorreo.getText().toString();

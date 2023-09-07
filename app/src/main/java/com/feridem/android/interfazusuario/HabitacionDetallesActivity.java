@@ -28,6 +28,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.Calendar;
 
+/**
+ * Esta es la ventana que tiene los detalles sobre la habitación.
+ */
 public class HabitacionDetallesActivity extends AppCompatActivity {
     private ImageView imagen;
     private TextView
@@ -58,6 +61,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     private Usuario usuario;
     private Habitacion habitacion;
 
+    /**
+     * onCreate: Se encarga de crear la ventana denominada HabitacionDetalles
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +89,9 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * inicalizarRecursos: Se encarga de iniciar recursos correspondientes a TexteView,EditText, Buttons, Calendar, etc.
+     */
     private void inicializarRecursos() {
         imagen          = findViewById(R.id.imagen_habitacion);
         nombreCuarto    = findViewById(R.id.nombre_habitacion);
@@ -101,6 +110,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         diaSalida  += 1;
     }
 
+    /**
+     * seleccionarFechaEntrada: Se encarga de crear un DatePickerDialog, para que el usuario seleccione la fecha de entrada.
+     * @param vista: Representa la vista que fue interactuada para mostrar el DatePickerDialog
+     */
     private void seleccionarFechaEntrada(View vista) {
         calendario = Calendar.getInstance();
         seleccionarFecha = new DatePickerDialog(this, (datePicker, year, month, dayOfMonth) -> {
@@ -118,6 +131,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         seleccionarFecha.show();
     }
 
+    /**
+     * seleccionarFechaSalida:Se encarga de crear un DatePickerDialog, para que el usuario seleccione la fecha de salida.
+     * @param vista: Representa la vista que fue interactuada para mostrar el DatePickerDialog
+     */
     private void seleccionarFechaSalida(View vista) {
         calendario = Calendar.getInstance();
         calendario.add(Calendar.DAY_OF_MONTH, 1);
@@ -136,6 +153,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         seleccionarFecha.show();
     }
 
+    /**
+     * actualizarCampoFecha: Se encarga de actualizar la información en los campos de fechas para la reservación y el número de noches.
+     * @param campoFecha
+     */
     private void actualizarCampoFecha(EditText campoFecha) {
         if (calendarioEntrada.after(calendarioSalida)|| calendarioSalida.equals(calendarioEntrada))
             campoFecha.setText("");
@@ -149,6 +170,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * establecerDatos: Se encarga de establecer la información para el nombre del cuarto, el precio, la descripción, el nombre del hotel y la dirección.
+     * @throws AppException
+     */
     private void establecerDatos() throws AppException {
         habitacion = (Habitacion) getIntent().getSerializableExtra("habitacion_seleccionada");
         HotelBL hotelBL = new HotelBL(this);
@@ -181,9 +206,9 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         usuario = new UsuarioBL(this).obtenerPorId(new RegistroSesionBL(this).obtenerIdUsuarioConectado());
 
         long id = new HabitacionReservadaBL(this).ingresarRegistro(
-                        habitacion.getId(), usuario.getId(), fechaEntrada.getText().toString(),
-                        fechaSalida.getText().toString(), Integer.parseInt(totalNoches.getText().toString()),
-                        habitacion.getPrecioNoche(), precioTotal, generarTextoQr());
+                habitacion.getId(), usuario.getId(), fechaEntrada.getText().toString(),
+                fechaSalida.getText().toString(), Integer.parseInt(totalNoches.getText().toString()),
+                habitacion.getPrecioNoche(), precioTotal, generarTextoQr());
         Intent irActivity = new Intent(this, FacturaActivity.class);
         HabitacionReservada habitacionReservada = new HabitacionReservadaBL(this).obtenerPorId((int) id);
         irActivity.putExtra("reservacion_seleccionada", habitacionReservada);
@@ -193,9 +218,9 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
 
     private String generarTextoQr() {
         return usuario.getNombre() + "$|&"
-                        + hotel.getNombre() + "$|&"
-                        + habitacion.getNombre() + "$|&"
-                        + fechaEntrada.getText().toString() + "$|&"
-                        + fechaSalida.getText().toString() + "$|&";
+                + hotel.getNombre() + "$|&"
+                + habitacion.getNombre() + "$|&"
+                + fechaEntrada.getText().toString() + "$|&"
+                + fechaSalida.getText().toString() + "$|&";
     }
 }

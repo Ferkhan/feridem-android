@@ -69,6 +69,11 @@ public class ReservacionFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onCreate: Se encarga de crear el fragmento "reservacion" en el activity "barra de navegacion".
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +85,18 @@ public class ReservacionFragment extends Fragment {
         }
     }
 
+    /**
+     * onCreateView: Se encarga de crear la interfaz de usuario asociada al fragmento
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -94,6 +111,10 @@ public class ReservacionFragment extends Fragment {
         return vista;
     }
 
+    /**
+     * generarQr: Se encarga generar un código QR basado en la cadena de texto reservaInfo y mostrándolo en un ImageView
+     * @param vista
+     */
     private void generarQR(View vista) {
 
         String reservaInfo = "Nombre de Usuario$|&Nombre de Habitación&|&Nombre de Hotel|2023-07-10|2023-07-15|150.00";

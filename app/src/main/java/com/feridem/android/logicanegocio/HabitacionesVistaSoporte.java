@@ -16,6 +16,9 @@ import com.feridem.android.logicanegocio.entidades.Hotel;
 
 import java.util.List;
 
+/**
+ * corresponde a la visya de las habitaciones.
+ */
 public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
     private final Context contexto;
     protected CardView habitacionTarjeta;
@@ -35,6 +38,12 @@ public class HabitacionesVistaSoporte extends RecyclerView.ViewHolder {
         hotelBL = new HotelBL(contexto);
     }
 
+    /**
+     * desplegar: toma una instancia de Habitacion como entrada y utiliza sus propiedades para llenar diferentes vistas de la interfaz de usuario con la información de la habitación
+     * y el hotel al que pertenece.
+     * @param habitacion
+     * @throws AppException
+     */
     public void desplegar(Habitacion habitacion) throws AppException {
         int imagenResource = contexto.getResources().getIdentifier(habitacion.getImagen(), "drawable", contexto.getPackageName());
         String formatoPrecio = String.format("$%.0f", habitacion.getPrecioNoche());

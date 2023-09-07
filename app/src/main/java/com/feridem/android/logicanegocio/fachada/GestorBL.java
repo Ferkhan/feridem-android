@@ -6,6 +6,9 @@ import android.database.Cursor;
 
 import java.text.SimpleDateFormat;
 
+/**
+ * Es el gestor para la parte de la lógica de negocios.
+ */
 public abstract class GestorBL {
     protected Context contexto;
     protected Cursor cursorConsulta;

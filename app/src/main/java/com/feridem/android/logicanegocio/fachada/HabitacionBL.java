@@ -10,6 +10,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Correponde a la l+ógica de negocios de habitación.
+ */
 public class HabitacionBL extends GestorBL {
     private HabitacionDAC habitacionDAC;
 
@@ -18,6 +21,12 @@ public class HabitacionBL extends GestorBL {
         habitacionDAC = new HabitacionDAC(contexto);
     }
 
+    /**
+     * obtenerRegistrosActivos: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
+     * De esta manera, obtiene la información y la envía a la entidad habitación.
+     * @return listaHabitaciones: Reprsenta a un conjunto de habitaciones.
+     * @throws AppException
+     */
     public List<Habitacion> obtenerRegistrosActivos() throws AppException {
         Habitacion habitacion;
         List<Habitacion> listaHabitaciones = new ArrayList<>();
@@ -47,6 +56,13 @@ public class HabitacionBL extends GestorBL {
         return listaHabitaciones;
     }
 
+    /**
+     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la información de una habitación específica.
+     * De esta manera, enviía dicha informacion a la entidad habitación.
+     * @param idHabitacion
+     * @return habitacion
+     * @throws AppException
+     */
     public Habitacion obtenerPorId(int idHabitacion) throws AppException {
         Habitacion habitacion = new Habitacion();
         cursorConsulta = habitacionDAC.leerPorId(idHabitacion);

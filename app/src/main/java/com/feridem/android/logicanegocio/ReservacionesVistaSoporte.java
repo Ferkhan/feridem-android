@@ -18,6 +18,9 @@ import com.feridem.android.R;
 import com.feridem.android.logicanegocio.entidades.Hotel;
 import com.feridem.android.logicanegocio.fachada.UsuarioBL;
 
+/**
+ * Corresponde a la vista de las reservaciones.
+ */
 public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
     private final Context CONTEXTO;
     private final ImageView IMAGEN_HABITACION;
@@ -48,6 +51,12 @@ public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
 
     }
 
+    /**
+     * desplegar: oma una instancia de HabitacionReservada como entrada y utiliza sus propiedades para llenar diferentes vistas de la interfaz de usuario con la información de la habitación reservada
+     * y el hotel al que pertenece.
+     * @param habitacionReservada
+     * @throws AppException
+     */
     public void desplegar(HabitacionReservada habitacionReservada) throws AppException {
         habitacion          = habitacionBL.obtenerPorId(habitacionReservada.getIdHabitacion());
         hotel               = hotelBL.obtenerPorId(habitacion.getIdHotel());

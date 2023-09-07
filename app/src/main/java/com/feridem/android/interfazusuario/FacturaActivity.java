@@ -30,6 +30,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.ByteArrayOutputStream;
 
+/**
+ * Esta es la ventana correspondiente a la factura de una reservación.
+ */
 public class FacturaActivity extends AppCompatActivity {
     private HabitacionReservada habitacionReservada;
     private Habitacion habitacion;
@@ -48,7 +51,10 @@ public class FacturaActivity extends AppCompatActivity {
     private Button botonAceptar;
     private Bitmap qrBitmap;
 
-
+    /**
+     * onCreate: Se encarga de crear la ventana o activitym en este caso la Factura.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,9 @@ public class FacturaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * inicializarRecursos: Se encarga de iniciar los Textos, botones, al relacionarlos con su Id.
+     */
     private void inicializarRecursos() {
         botonAceptar        = findViewById(R.id.boton_aceptar);
         nombreHabitacion    = findViewById(R.id.nombre_habitacion);
@@ -78,10 +87,18 @@ public class FacturaActivity extends AppCompatActivity {
         codigoQR            = findViewById(R.id.codigo_qr);
     }
 
+    /**
+     * irBarraNavegacion: Permite navegar hacia atrás teniendo en cuenta la jerarquía de los fragmentos.
+     * @param vista : representa el diseño de un fragmento en la interfaz de usuario.
+     */
     private void irBarraNavegacion(View vista) {
         onBackPressed();
     }
 
+    /**
+     * establecerDatos: Establece la información sobre habitación, hotel, usuario.
+     * @throws AppException
+     */
     private void establecerDatos() throws AppException {
         habitacionReservada = (HabitacionReservada) getIntent().getSerializableExtra("reservacion_seleccionada");
         habitacion = new HabitacionBL(this).obtenerPorId(habitacionReservada.getIdHabitacion());
@@ -99,6 +116,11 @@ public class FacturaActivity extends AppCompatActivity {
         precioTotal.setText(String.format("$%.0f", habitacionReservada.getPrecioTotal()));
     }
 
+    /**
+     * generarQr:Se encarga de generar un código QR a partir de un texto proporcionado como parámetro y mostrarlo en una vista de imagen
+     * @param textoQR: Texto único correpondiente a la reservación.
+     * @throws AppException
+     */
     private void generarQR(String textoQR) throws AppException {
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
@@ -112,6 +134,10 @@ public class FacturaActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * compartirQr: Se encarga de compartir una imagen del código QR a través de aplicaciones y servicios de uso compartido disponibles en el dispositivo
+     * @param vista
+     */
     private void compartirQR(View vista) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("image/png"); // Cambia el tipo de datos según el formato de tu código QR

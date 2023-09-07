@@ -10,6 +10,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Corresponde a la lógica de negocios de hotel.
+ */
 public class HotelBL extends GestorBL {
     private Hotel hotel;
     private HotelDAC hotelDAC;
@@ -19,6 +22,12 @@ public class HotelBL extends GestorBL {
         hotel = new Hotel();
     }
 
+    /**
+     * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
+     *  De esta manera, obtiene la información y la envía a la entidad habitacionReservada.
+     * @return: listaHoteles: Representa el conjunto de hoteles.
+     * @throws AppException
+     */
     public List<Hotel> obtenerRegistrosActivos() throws AppException {
         List<Hotel> listaHoteles = new ArrayList<>();
         cursorConsulta = hotelDAC.leerRegistros();
@@ -47,6 +56,13 @@ public class HotelBL extends GestorBL {
         return listaHoteles;
     }
 
+    /**
+     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la información de un hotel especifíco.
+     * De esta manera, enviía dicha informacion a la entidad hotel.
+     * @param idHotel
+     * @return hotel.
+     * @throws AppException
+     */
     public Hotel obtenerPorId(int idHotel) throws AppException {
         cursorConsulta = hotelDAC.leerPorId(idHotel);
 

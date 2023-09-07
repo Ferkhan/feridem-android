@@ -10,6 +10,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Corresponde a la lógica de negocios correspondiente a usuario.
+ */
 public class UsuarioBL extends GestorBL{
     private Usuario usuario;
     private UsuarioDAC usuarioDAC;
@@ -21,6 +24,12 @@ public class UsuarioBL extends GestorBL{
         usuario = new Usuario();
     }
 
+    /**
+     * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
+     * De esta manera, obtiene la información y la envía a la entidad Usuario.
+     * @return listaUsuario: Representa el conjunto de usuarios activos.
+     * @throws AppException
+     */
     public List<Usuario> obtenerRegistrosActivos() throws AppException {
         List<Usuario> listaUsuarios = new ArrayList<>();
         cursorConsulta = usuarioDAC.leerRegistros();
@@ -48,6 +57,13 @@ public class UsuarioBL extends GestorBL{
         return listaUsuarios;
     }
 
+    /**
+     * obtenerPorId:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos de un usuario en específico.
+     *      * De esta manera, obtiene la información y la envía a la entidad Usuario.
+     * @param idUsuario: Representa al Id del usuario.
+     * @return usuario
+     * @throws AppException
+     */
     public Usuario obtenerPorId(int idUsuario) throws AppException {
         cursorConsulta = usuarioDAC.leerPorId(idUsuario);
 
@@ -70,9 +86,26 @@ public class UsuarioBL extends GestorBL{
         return usuario;
     }
 
+    /**
+     * ingresarRegistro: Se encarga de insertar un usuario en la base de datos.
+     * @param idRol: Representa el Id del rol
+     * @param nombre: Representa el nombre del usuario
+     * @param correo: Representa el correo del usuario
+     * @param celular: Representa el numero celular del usuario.
+     * @return long: Representa el identificador del registro ingresado
+     */
     public long ingresarRegistro(int idRol, String nombre, String correo, String celular) {
         return usuarioDAC.insertarRegistro(idRol, nombre, correo, celular);
     }
+
+    /**
+     * actualizarRegistro: Se encarga de actualizar la informacion de un usuario en la base de datos.
+     * @param idRol: Representa el Id del rol
+     * @param nombre: Representa el nombre del usuario
+     * @param correo: Representa el correo del usuario
+     * @param celular: Representa el numero celular del usuario.
+     * @return long: Representa el identificador del registro actualizado.
+     */
     public long actualizarRegistro(int idRol, String nombre, String correo, String celular){
         return usuarioDAC.actualizarRegistro(idRol,  nombre,  correo, celular);
     }

@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Corresponde a la lógica de neogocios para el registro de la sesión.
+ */
 public class RegistroSesionBL extends GestorBL {
     RegistroSesion registroSesion;
     private RegistroSesionDAC registroSesionDAC;
@@ -22,6 +25,12 @@ public class RegistroSesionBL extends GestorBL {
         registroSesion = new RegistroSesion();
     }
 
+    /**
+     * obtenerRegistroExito: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
+     * De esta manera, obtiene la información y la envía a la entidad registroSesion.
+     * @return listaRegistros: Representa al conjunto de registros exitosos.
+     * @throws AppException
+     */
     public List<RegistroSesion> obtenerRegistrosExito() throws AppException {
         List<RegistroSesion> listaRegistros = new ArrayList<>();
         cursorConsulta = registroSesionDAC.leerRegistros();
@@ -47,6 +56,11 @@ public class RegistroSesionBL extends GestorBL {
         return listaRegistros;
     }
 
+    /**
+     * obtenerIdUsuarioConectado: Se encarga de obtener el Id del usuario que se encuentra conectado
+     * @return int: Id del usuario conectado.
+     * @throws AppException
+     */
     public int obtenerIdUsuarioConectado() throws AppException {
         cursorConsulta = registroSesionDAC.leerIdUsuarioConectado();
 
@@ -56,6 +70,11 @@ public class RegistroSesionBL extends GestorBL {
         return 0;
     }
 
+    /**
+     * obtenerRegistroConectado: Se encarga de obtener el registro de la sesion del usuario que esta conectado.
+     * @return registroSesion: Registro del usuario que esta conectado.
+     * @throws AppException
+     */
     public RegistroSesion obtenerRegistroConectado() throws AppException {
         cursorConsulta = registroSesionDAC.leerRegistroConectado();
 
@@ -76,6 +95,11 @@ public class RegistroSesionBL extends GestorBL {
         return registroSesion;
     }
 
+    /**
+     * desconectarUsuario: Se encarga de cambiar el estado de sesión del usuario.
+     * @return boolean: Retorna true si se ha desconectado con éxito y false si se ha generado algun error.
+     * @throws AppException
+     */
     public boolean desconectarUsuario() throws AppException {
         Date fecha = new Date();
         registroSesion=new RegistroSesion();
@@ -94,6 +118,14 @@ public class RegistroSesionBL extends GestorBL {
         return false;
     }
 
+    /**
+     * conectarUsuario: Se encarga de conectar a un usuario en la base de datos.
+     * @param idUsuario: Representa el usuario a conectar
+     * @param resultadoIngreso: Representa si el ingreso es exitoso o no.
+     * @param estadoSesion: Representa si esta activo o no el usuario.
+     * @return boolean
+     * @throws AppException
+     */
     public boolean conectarUsuario(int idUsuario, String resultadoIngreso, int estadoSesion) throws AppException {
         long id = registroSesionDAC.insertarRegistro(idUsuario, resultadoIngreso, estadoSesion);
         return id > 0;

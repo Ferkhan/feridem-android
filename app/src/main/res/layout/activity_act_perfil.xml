@@ -43,7 +43,7 @@
 
         <TextView
             android:id="@+id/nombreActualizar"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:layout_width="120dp"
             android:layout_height="10dp"
             android:text="Nombre "
@@ -51,7 +51,7 @@
 
         <EditText
             android:id="@+id/ingresarNombreAct"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:layout_height="11dp"
             android:ems="10"
             android:hint="Ingresa tu nombre"
@@ -59,13 +59,13 @@
 
         <TextView
             android:id="@+id/correoActualizar"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:layout_height="2dp"
             android:text="Correo electrónico" />
 
         <EditText
             android:id="@+id/ingresarCorreoAct"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:layout_height="6dp"
             android:ems="10"
             android:hint="Ingresa tu correo"
@@ -73,13 +73,13 @@
 
         <TextView
             android:id="@+id/numeroCelularActualizar"
-            style="@style/texto_inicio_registro"
+            style="@style/texto_general"
             android:layout_height="5dp"
             android:text="Número de celular" />
 
         <EditText
             android:id="@+id/ingresarNumeroCelularAct"
-            style="@style/ingresoInicioRegistro"
+            style="@style/ingreso_inicio_registro"
             android:ems="10"
             android:hint="Ingresa tu celular"
             android:inputType="number"
@@ -88,7 +88,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:padding="@dimen/margenInicioRegistro">
+            android:padding="@dimen/margen_inicio_registro">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

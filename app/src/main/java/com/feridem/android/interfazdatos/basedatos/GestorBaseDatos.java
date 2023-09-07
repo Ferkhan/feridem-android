@@ -15,6 +15,9 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Esta es la base de datos
+ */
 public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     private static final int BASEDATOS_VERSION = 1;
     private static final String BASEDATOS_NOMBRE = "FeridemBD.db";
@@ -38,20 +41,20 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
         this.rutaBaseDatos = contexto.getDatabasePath(BASEDATOS_NOMBRE).getPath();
     }
 
+    /**
+     * onCreate: Crea la base de datos.
+     * @param sqLiteDatabase
+     */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//        try{
-//            comprobarBaseDatos();
-//        } catch (Exception error) {
-//            Log.i("FeridemException", error.getMessage());
-//        }
-//        try {
-//            abrirBaseDatos();
-//        } catch (Exception error) {
-//            Log.i("FeridemException", error.getMessage());
-//        }
     }
 
+    /**
+     *
+     * @param sqLiteDatabase
+     * @param i
+     * @param i1
+     */
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) { }
 
@@ -60,6 +63,11 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
         SQLiteDatabase.openDatabase(outputPath, null, 0);
     }
 
+    /**
+     * copiarBaseDatos:  se utiliza para copiar una base de datos desde los activos de la aplicación a una ubicación en el dispositivo,
+     * lo que permite a la aplicación acceder y utilizar la base de datos en su funcionamiento.
+     * @throws AppException
+     */
     public void copiarBaseDatos() throws AppException {
         this.getReadableDatabase();
         try {
@@ -75,6 +83,10 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * comprobarBaseDatos:  comprueba si la base de datos existe y puede abrirse en la ubicación especificada.
+     * @throws AppException
+     */
     public void comprobarBaseDatos() throws AppException {
         SQLiteDatabase sqliteBaseDatos = null;
         try {
@@ -86,6 +98,14 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * obtenerConsulta:  facilita la ejecución de consultas SQL en la base de datos
+     * y devuelve un Cursor que permite acceder a los resultados de la consulta.
+     * @param consultaSQL
+     * @param valores
+     * @return
+     * @throws AppException
+     */
     protected Cursor obtenerConsulta(String consultaSQL, String[] valores) throws AppException {
         try {
             cursorConsulta = getReadableDatabase().rawQuery(consultaSQL, valores);
@@ -100,6 +120,5 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
 
     public abstract Cursor leerPorId(int idRegistro) throws AppException;
 
-//    public abstract long insertarRegistro();
 
 }

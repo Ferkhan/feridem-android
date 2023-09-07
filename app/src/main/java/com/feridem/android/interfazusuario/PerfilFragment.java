@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
@@ -67,6 +66,11 @@ public class PerfilFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onCreate: Se encarga de crear el fragmento "perfil", dentro de la ventana barra de navegación.
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,18 @@ public class PerfilFragment extends Fragment {
         }
     }
 
+    /**
+     * onCreateView:Se encarga de crear la interfaz de usuario asociada al fragmento
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,7 +107,7 @@ public class PerfilFragment extends Fragment {
         celularUs=view.findViewById(R.id.numUsuario2);
 
         try {
-            mostrarDatosPerfil();
+            obtenerDatosPerfil();
             nomUsuario.setText(nombUsuario);
             correoUs.setText(correoUsuario);
             celularUs.setText(celUsuario);
@@ -117,13 +133,23 @@ public class PerfilFragment extends Fragment {
 
         return view;
     }
+
+    /**
+     * editarPerfil: Se encarga de lanzar a una ventana de Actualización de información del perfil, al aplastar un botón.
+     * @param view
+     */
     public void editarPerfil (View view){
         Context context = getActivity();
         Intent editPerfilIntent = new Intent(context, ActPerfilActivity.class);
         startActivity(editPerfilIntent);
 
         }
-    public void mostrarDatosPerfil() throws AppException {
+
+    /**
+     * mostrarDatosPerfil: Se encarga de obtener los datos que el usuario a ingresado en el Registro.
+      * @throws AppException
+     */
+    public void obtenerDatosPerfil() throws AppException {
         Context context = getActivity();
         usBL= new UsuarioBL(context);
         rgBL= new RegistroSesionBL(context);
@@ -134,6 +160,12 @@ public class PerfilFragment extends Fragment {
         correoUsuario=usuario.getCorreo().toString();
         celUsuario=usuario.getCelular().toString();
     }
+
+    /**
+     * cerrarSesion: Se encarga de cerrar la sesión y lanzar el activity de iniciar sesión.
+     * @param view
+     * @throws AppException
+     */
     public void cerrarSesion(View view ) throws AppException {
         Context context = getActivity();
         rgBL= new RegistroSesionBL(context);

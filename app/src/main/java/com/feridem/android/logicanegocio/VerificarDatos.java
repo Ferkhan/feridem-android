@@ -18,7 +18,9 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.List;
 
-
+/**
+ * Corresponde a una clase para poder verificar los datos del usuario.
+ */
 public class VerificarDatos {
 
     private Context contexto;
@@ -34,6 +36,14 @@ public class VerificarDatos {
 
     }
 
+    /**
+     * verificarCuentaUsuario: verifica las credenciales de un usuario durante el inicio de sesión,
+     * buscando un usuario con el correo proporcionado y luego verificando si la contraseña coincide.
+     * @param ingresarCorreo
+     * @param ingresarContrasenia
+     * @return
+     * @throws AppException
+     */
     public boolean verificarCuentaUsuario(String ingresarCorreo, String ingresarContrasenia) throws AppException {
         List<Usuario> listaUsuarios = usuarioBL.obtenerRegistrosActivos();
         UsuarioCredencial usuarioCredencial;
@@ -52,6 +62,13 @@ public class VerificarDatos {
         return false;
     }
 
+    /**
+     * encriptarContrasenia:este método toma una contraseña en formato de texto claro, la encripta utilizando el algoritmo de resumen MD5
+     * y devuelve la representación hexadecimal de la contraseña encriptada.
+     * @param contrasenia
+     * @return
+     * @throws AppException
+     */
     public String encriptarContrasenia(String contrasenia) throws AppException {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -70,6 +87,13 @@ public class VerificarDatos {
         }
     }
 
+    /**
+     * verificarContrasenia:este método se utiliza para verificar si una contraseña proporcionada coincide con la contraseña almacenada después de aplicar el mismo proceso de encriptación.
+     * @param contrasenia
+     * @param contraseniaEncriptada
+     * @return
+     * @throws AppException
+     */
     public boolean verificarContrasenia(String contrasenia, String contraseniaEncriptada) throws AppException {
         contrasenia = encriptarContrasenia(contrasenia);
         return contrasenia.equals(contraseniaEncriptada);

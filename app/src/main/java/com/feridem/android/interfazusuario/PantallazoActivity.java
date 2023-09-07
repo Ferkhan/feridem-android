@@ -1,11 +1,9 @@
 package com.feridem.android.interfazusuario;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
@@ -15,10 +13,18 @@ import com.feridem.android.logicanegocio.fachada.RegistroSesionBL;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Esta es la ventana correspondiente al splash.
+ */
 public class PantallazoActivity extends AppCompatActivity {
     private RegistroSesionBL rgBL;
     private static final PerfilFragment pf = new PerfilFragment();
     private RegistroSesion registroSesion;
+
+    /**
+     * onCreate: Se encarga de crear el Splash.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +54,10 @@ public class PantallazoActivity extends AppCompatActivity {
         Timer tiempoPantalla= new Timer();
         tiempoPantalla.schedule(tarea,5000);
     }
+
+    /**
+     * onDestroy: Desturye el splash cuando se cierra la app.
+     */
     @Override
     protected  void onDestroy() {
         super.onDestroy();

@@ -24,7 +24,7 @@
 
 
 
-    
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -85,11 +85,11 @@
 
             <EditText
                 android:id="@+id/fecha_salida"
-                android:layout_width="match_parent"
+                android:layout_width="352dp"
                 android:layout_height="wrap_content"
-                android:hint="Fecha de salida"
                 android:clickable="false"
-                android:focusable="false" />
+                android:focusable="false"
+                android:hint="Fecha de salida" />
 
             <TextView
                 android:id="@+id/total_noches"

@@ -21,7 +21,9 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
-
+/**
+ * Esta es ventana que tiene la barra de navegación.
+ */
 public class BarraNavegacionActivity extends AppCompatActivity {
     private static final HabitacionFragment  hf = new HabitacionFragment();
     private static final ReservacionFragment rf = new ReservacionFragment();
@@ -34,6 +36,10 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     Context contexto = this;
 //    ActivityMainBinding binding;
 
+    /**
+     * onCreate: Se encarga se crear la ventana o activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +52,18 @@ public class BarraNavegacionActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * inicializarRecursos: Se encarga de inicar la barra de navegación y el item de la barra seleccionado.
+     */
     private void inicializarRecursos() {
         bn = findViewById(R.id.barraNavegacion);
         bn.setOnItemSelectedListener(itemSeleccionado);
 
     }
 
+    /**
+     * onBackPressed: Se encarga
+     */
     @Override
     public void onBackPressed() {
         gestorFragmento = getSupportFragmentManager();
@@ -68,6 +80,9 @@ public class BarraNavegacionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método asignado a un botón, para el cambio entre framentos dentro de una ventana.
+     */
     private final NavigationBarView.OnItemSelectedListener itemSeleccionado = new NavigationBarView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -85,7 +100,10 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     };
 
 
-
+    /**
+     * cargarFragmento: Se encarga de generar el fragmento, dependiendo del que ha sido seleccionado.
+     * @param fragmento: Representa el framgneto que se quiere cargar.
+     */
     private void cargarFragmento (Fragment fragmento) {
         FragmentTransaction transaccion = getSupportFragmentManager().beginTransaction();
         transaccion.replace(R.id.fragmento_contenedor,fragmento);

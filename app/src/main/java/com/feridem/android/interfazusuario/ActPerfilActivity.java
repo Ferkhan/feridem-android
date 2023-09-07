@@ -14,10 +14,14 @@ import android.widget.TextView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
+import com.feridem.android.logicanegocio.ValidarDatos;
 import com.feridem.android.logicanegocio.entidades.Usuario;
 import com.feridem.android.logicanegocio.fachada.RegistroSesionBL;
 import com.feridem.android.logicanegocio.fachada.UsuarioBL;
 
+/**
+ * Esta es la ventana para acutalizar la información del usuario.
+ */
 public class ActPerfilActivity extends AppCompatActivity {
     private EditText nombreUsuarioAc, correoUsuarioAc,celularUsuarioAc;
     private Button guardarInfo;
@@ -29,7 +33,7 @@ public class ActPerfilActivity extends AppCompatActivity {
     private String nombUsuario,correoUsuario,celUsuario;
 
     /**
-     * onCreate:
+     * onCreate: Se encarga de la creación del activity.
      * @param savedInstanceState
      */
     @SuppressLint("MissingInflatedId")
@@ -44,7 +48,22 @@ public class ActPerfilActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * guardarInfo: Se encarga de guardar la información que el usuario quiero Actualizar.
+     * @param view
+     * @throws AppException
+     */
+    @SuppressLint("SuspiciousIndentation")
     public void guardarInfo(View view) throws AppException {
+        if (!ValidarDatos.campoLleno(this, nombreUsuarioAc) ||
+                !ValidarDatos.campoLleno(this, correoUsuarioAc) ||
+                !ValidarDatos.campoLleno(this, celularUsuarioAc))
+        return;
+        if (!ValidarDatos.longitudTextoMaxMin(this, nombreUsuarioAc, "El nombre", 3, 25) ||
+                !ValidarDatos.validarCorreo(this,correoUsuarioAc ) ||
+                !ValidarDatos.longitudCelular(this, celularUsuarioAc, 10))
+            return;
+
         nombUsuario=nombreUsuarioAc.getText().toString();
         correoUsuario=correoUsuarioAc.getText().toString();
         celUsuario=celularUsuarioAc.getText().toString();
@@ -52,6 +71,13 @@ public class ActPerfilActivity extends AppCompatActivity {
         cargarActivity(pf);
     }
 
+    /**
+     * actualizarInfo: Se encarga de actualizar la informacion nueva que ha estipulado el usuario, en la base de datos.
+     * @param nombre1
+     * @param correo2
+     * @param celular2
+     * @throws AppException
+     */
     public void actualizarInfo(String nombre1, String correo2, String celular2) throws AppException {
         usBL= new UsuarioBL(this);
         rgBL= new RegistroSesionBL(this);
@@ -61,6 +87,11 @@ public class ActPerfilActivity extends AppCompatActivity {
         usBL.actualizarRegistro(idRol,nombre1,correo2,celular2);
 
     }
+
+    /**
+     * cargarActivity: Se encarga de cargar una nueva ventana, una vez que se terminó el proceso de actualizar información.
+     * @param fragmento
+     */
     private void cargarActivity(Fragment fragmento) {
         Intent intent= new Intent(this, BarraNavegacionActivity.class);
         startActivity(intent);
