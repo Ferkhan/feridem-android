@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.interfazdatos.data_access.HotelDAC;
 import com.feridem.android.business_logic.ValidarDatos;
 import com.feridem.android.business_logic.VerificarDatos;
 

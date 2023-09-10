@@ -3,7 +3,7 @@ package com.feridem.android.business_logic.fachada;
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
-import com.feridem.android.interfazdatos.data_access.HabitacionDAC;
+import com.feridem.android.data_access.HabitacionDAC;
 import com.feridem.android.business_logic.entidades.Habitacion;
 
 import java.text.ParseException;

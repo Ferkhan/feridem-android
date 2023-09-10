@@ -1,4 +1,4 @@
-package com.feridem.android.interfazdatos.data_access;
+package com.feridem.android.data_access;
 
 import android.content.ContentValues;
 import android.content.Context;

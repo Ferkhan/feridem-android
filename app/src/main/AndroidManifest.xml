@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Feridem"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value= "AIzaSyCXL_7KTINNBRcq-JjWD2juy_WeO4MLURk"/>
+
         <activity
             android:name=".user_interface.PantallazoActivity"
             android:exported="true">

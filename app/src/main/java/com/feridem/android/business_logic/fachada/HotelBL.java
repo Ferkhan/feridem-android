@@ -3,7 +3,7 @@ package com.feridem.android.business_logic.fachada;
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
-import com.feridem.android.interfazdatos.data_access.HotelDAC;
+import com.feridem.android.data_access.HotelDAC;
 import com.feridem.android.business_logic.entidades.Hotel;
 
 import java.text.ParseException;

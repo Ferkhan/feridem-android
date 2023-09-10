@@ -5,10 +5,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.feridem.android.framework.AppException;
-import com.feridem.android.interfazdatos.data_access.RegistroSesionDAC;
+import com.feridem.android.data_access.RegistroSesionDAC;
 import com.feridem.android.business_logic.entidades.RegistroSesion;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -7,10 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.feridem.android.R;
-import com.feridem.android.framework.AppException;
 import com.feridem.android.business_logic.entidades.RegistroSesion;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
-import com.feridem.android.interfazdatos.data_access.HotelDAC;
+import com.feridem.android.data_access.HotelDAC;
 
 import java.util.Timer;
 import java.util.TimerTask;
