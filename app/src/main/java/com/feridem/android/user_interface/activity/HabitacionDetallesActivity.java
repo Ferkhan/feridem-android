@@ -250,7 +250,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
 
     @Override
     public void onMapClick(@NonNull LatLng latLng) {
-//        Intent intent = new Intent(this, )
+        Intent intent = new Intent(this, MapaActivity.class);
+        intent.putExtra("latitud", hotel.getLatitud());
+        intent.putExtra("longitud", hotel.getLongitud());
+        startActivity(intent);
 
     }
 }
