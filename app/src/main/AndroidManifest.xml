@@ -23,7 +23,7 @@
             android:value= "AIzaSyBPCQsxUGGcbgu7-etmpm29vewlmqaHzIk"/>
 
         <activity
-            android:name=".user_interface.PantallazoActivity"
+            android:name=".user_interface.activity.PantallazoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,25 +31,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".user_interface.ActPerfilActivity"
+            android:name=".user_interface.activity.ActPerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".user_interface.FacturaActivity"
+            android:name=".user_interface.activity.FacturaActivity"
             android:exported="false" />
         <activity
-            android:name=".user_interface.HabitacionDetallesActivity"
+            android:name=".user_interface.activity.HabitacionDetallesActivity"
             android:exported="false" />
         <activity
-            android:name=".user_interface.BarraNavegacionActivity"
+            android:name=".user_interface.activity.BarraNavegacionActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
         <activity
-            android:name=".user_interface.RegistroActivity"
+            android:name=".user_interface.activity.RegistroActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".user_interface.IniciarSesionActivity"
+            android:name=".user_interface.activity.IniciarSesionActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <!-- Otros filtros de intención si es necesario -->

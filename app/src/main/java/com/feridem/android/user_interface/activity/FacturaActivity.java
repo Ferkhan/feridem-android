@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

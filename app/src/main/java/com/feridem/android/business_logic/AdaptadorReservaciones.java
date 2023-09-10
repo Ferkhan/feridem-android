@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.user_interface.FacturaActivity;
+import com.feridem.android.user_interface.activity.FacturaActivity;
 import com.feridem.android.business_logic.entidades.HabitacionReservada;
 
 import java.util.List;

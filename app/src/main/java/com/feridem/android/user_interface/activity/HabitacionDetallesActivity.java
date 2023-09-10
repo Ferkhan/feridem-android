@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,7 @@ import com.feridem.android.business_logic.entidades.Habitacion;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.entidades.Hotel;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.user_interface.activity.FacturaActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -240,7 +241,7 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
     public void onMapReady(@NonNull GoogleMap googleMap) {
         LatLng coordenadas = new LatLng(hotel.getLatitud(), hotel.getLongitud());
         vistaMapa = googleMap;
-        vistaMapa.addMarker(new MarkerOptions().position(coordenadas).title("Habitacion tal y cual"));
+        vistaMapa.addMarker(new MarkerOptions().position(coordenadas));
         vistaMapa.moveCamera(CameraUpdateFactory.newLatLng(coordenadas));
 
         this.vistaMapa.setOnMapClickListener(this);

@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,6 +19,8 @@ import com.feridem.android.business_logic.entidades.RegistroSesion;
 import com.feridem.android.business_logic.entidades.Usuario;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.user_interface.activity.ActPerfilActivity;
+import com.feridem.android.user_interface.activity.IniciarSesionActivity;
 
 /**
  * A simple {@link Fragment} subclass.

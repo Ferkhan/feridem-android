@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/variacionPrincipal"
-    tools:context=".user_interface.PerfilFragment">
+    tools:context=".user_interface.fragment.PerfilFragment">
 
     <LinearLayout
         android:id="@+id/encabezado"

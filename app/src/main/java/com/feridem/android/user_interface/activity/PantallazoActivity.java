@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import com.feridem.android.R;
 import com.feridem.android.business_logic.entidades.RegistroSesion;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.data_access.HotelDAC;
+import com.feridem.android.user_interface.fragment.PerfilFragment;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,10 @@ import android.widget.Button;
 
 //import com.feridem.android.databinding.ActivityMainBinding;
 import com.feridem.android.R;
+import com.feridem.android.user_interface.fragment.CamaraFragment;
+import com.feridem.android.user_interface.fragment.HabitacionFragment;
+import com.feridem.android.user_interface.fragment.PerfilFragment;
+import com.feridem.android.user_interface.fragment.ReservacionFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -21,7 +25,7 @@ import com.google.android.material.navigation.NavigationBarView;
  * Esta es ventana que tiene la barra de navegación.
  */
 public class BarraNavegacionActivity extends AppCompatActivity {
-    private static final HabitacionFragment  hf = new HabitacionFragment();
+    private static final HabitacionFragment hf = new HabitacionFragment();
     private static final ReservacionFragment rf = new ReservacionFragment();
     private static final PerfilFragment pf = new PerfilFragment();
     private static final CamaraFragment cf = new CamaraFragment();

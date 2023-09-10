@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
 import com.feridem.android.business_logic.entidades.Habitacion;
-import com.feridem.android.user_interface.HabitacionDetallesActivity;
+import com.feridem.android.user_interface.activity.HabitacionDetallesActivity;
 
 import java.util.List;
 

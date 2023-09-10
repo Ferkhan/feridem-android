@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.fragment;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;

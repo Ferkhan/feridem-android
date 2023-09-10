@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,7 @@ import com.feridem.android.business_logic.ValidarDatos;
 import com.feridem.android.business_logic.VerificarDatos;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
 import com.feridem.android.business_logic.fachada.UsuarioCredencialBL;
+import com.feridem.android.user_interface.activity.IniciarSesionActivity;
 
 /**
  * Esta es la ventana para registrarse en la aplicación.

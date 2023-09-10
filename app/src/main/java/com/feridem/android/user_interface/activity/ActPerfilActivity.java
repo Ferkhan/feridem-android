@@ -1,4 +1,4 @@
-package com.feridem.android.user_interface;
+package com.feridem.android.user_interface.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,6 +16,7 @@ import com.feridem.android.business_logic.ValidarDatos;
 import com.feridem.android.business_logic.entidades.Usuario;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.user_interface.fragment.PerfilFragment;
 
 /**
  * Esta es la ventana para acutalizar la información del usuario.
