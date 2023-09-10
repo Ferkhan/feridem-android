@@ -1,5 +1,6 @@
 package com.feridem.android.user_interface;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -22,13 +23,19 @@ import com.feridem.android.business_logic.entidades.Habitacion;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.entidades.Hotel;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
 
 /**
  * Esta es la ventana que tiene los detalles sobre la habitación.
  */
-public class HabitacionDetallesActivity extends AppCompatActivity {
+public class HabitacionDetallesActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
     private ImageView imagen;
     private TextView
             nombreCuarto,
@@ -57,6 +64,8 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
     private Hotel hotel;
     private Usuario usuario;
     private Habitacion habitacion;
+    private GoogleMap vistaMapa;
+    private SupportMapFragment soporteMapa;
 
     /**
      * onCreate: Se encarga de crear la ventana denominada HabitacionDetalles
@@ -68,21 +77,7 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_habitacion_detalles);
 
         inicializarRecursos();
-        fechaEntrada.setOnClickListener(this::seleccionarFechaEntrada);
-        fechaSalida.setOnClickListener(this::seleccionarFechaSalida);
-        botonReserva.setOnClickListener(vista -> {
-            try {
-                irFactura(vista);
-            } catch (AppException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        try {
-            establecerDatos();
-        } catch (AppException error) {
-            throw new RuntimeException(error);
-        }
+        establecerEscuchadores();
     }
 
 
@@ -100,11 +95,32 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
         fechaEntrada    = findViewById(R.id.fecha_entrada);
         fechaSalida     = findViewById(R.id.fecha_salida);
         botonReserva    = findViewById(R.id.boton_reservar);
+        soporteMapa     = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
         calendario  = calendarioEntrada = calendarioSalida = Calendar.getInstance();
         anioEntrada = calendario.get(Calendar.YEAR);
         mesEntrada  = mesSalida = calendario.get(Calendar.MONTH);
         diaEntrada  = diaSalida = calendario.get(Calendar.DAY_OF_MONTH);
         diaSalida  += 1;
+
+        soporteMapa.getMapAsync(this);
+    }
+
+    private void establecerEscuchadores() {
+        fechaEntrada.setOnClickListener(this::seleccionarFechaEntrada);
+        fechaSalida.setOnClickListener(this::seleccionarFechaSalida);
+        botonReserva.setOnClickListener(vista -> {
+            try {
+                irFactura(vista);
+            } catch (AppException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        try {
+            establecerDatos();
+        } catch (AppException error) {
+            throw new RuntimeException(error);
+        }
     }
 
     /**
@@ -191,7 +207,6 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
             return;
         }
 
-
         Toast.makeText(this, "Habitación Reservada con éxito", Toast.LENGTH_SHORT).show();
         reservar();
         finish();
@@ -219,5 +234,22 @@ public class HabitacionDetallesActivity extends AppCompatActivity {
                 + habitacion.getNombre() + "$|&"
                 + fechaEntrada.getText().toString() + "$|&"
                 + fechaSalida.getText().toString() + "$|&";
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        LatLng coordenadas = new LatLng(hotel.getLatitud(), hotel.getLongitud());
+        vistaMapa = googleMap;
+        vistaMapa.addMarker(new MarkerOptions().position(coordenadas).title("Habitacion tal y cual"));
+        vistaMapa.moveCamera(CameraUpdateFactory.newLatLng(coordenadas));
+
+        this.vistaMapa.setOnMapClickListener(this);
+
+    }
+
+    @Override
+    public void onMapClick(@NonNull LatLng latLng) {
+//        Intent intent = new Intent(this, )
+
     }
 }

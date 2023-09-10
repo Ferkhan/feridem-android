@@ -20,7 +20,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value= "AIzaSyCXL_7KTINNBRcq-JjWD2juy_WeO4MLURk"/>
+            android:value= "AIzaSyBPCQsxUGGcbgu7-etmpm29vewlmqaHzIk"/>
 
         <activity
             android:name=".user_interface.PantallazoActivity"

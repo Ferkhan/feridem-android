@@ -82,11 +82,11 @@ public class RegistroSesionBL extends GestorBL {
             registroSesion.setEstadoSesion((cursorConsulta.getInt(3)));
             registroSesion.setFechaIngreso(cursorConsulta.getString(4));
             registroSesion.setFechaCierre(cursorConsulta.getString(5));
-            Log.i("AppException", "Si hay un registro conectado");
+
+            return registroSesion;
         }
 
-
-        return (registroSesion.getId() == 0) ? null : registroSesion;
+        return null;
     }
 
     /**

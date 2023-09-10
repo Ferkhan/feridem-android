@@ -51,10 +51,10 @@ public class RegistroSesionDAC extends GestorBaseDatos {
      * @throws AppException
      */
     public Cursor leerIdUsuarioConectado() throws AppException {
-        String consultaSQL =  " SELECT IdUsuario "
-                            + " FROM " + TABLA_REGISTRO_SESION
-                            + " WHERE ResultadoIngreso = 'OK' "
-                            + " AND   EstadoSesion = 1 ";
+        consultaSQL =  " SELECT IdUsuario "
+                    + " FROM " + TABLA_REGISTRO_SESION
+                    + " WHERE ResultadoIngreso = 'OK' "
+                    + " AND   EstadoSesion = 1 ";
         return obtenerConsulta(consultaSQL, null);
     }
 
@@ -64,10 +64,10 @@ public class RegistroSesionDAC extends GestorBaseDatos {
      * @throws AppException
      */
     public Cursor leerRegistroConectado() throws AppException {
-        String consultaSQL =  " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
-                            + " FROM " + TABLA_REGISTRO_SESION
-                            + " WHERE ResultadoIngreso = 'OK' "
-                            + " AND   EstadoSesion = 1 ";
+        consultaSQL =  " SELECT IdRegistroSesion, IdUsuario, ResultadoIngreso, EstadoSesion, FechaIngreso, FechaCierre "
+                    + " FROM " + TABLA_REGISTRO_SESION
+                    + " WHERE ResultadoIngreso = 'OK' "
+                    + " AND   EstadoSesion = 1 ";
         return obtenerConsulta(consultaSQL, null);
     }
 
