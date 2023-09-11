@@ -102,6 +102,7 @@ public class ActPerfilActivity extends AppCompatActivity {
 
 //        regresarActivity();
         finish();
+        onBackPressed();
     }
 
     /**
@@ -111,6 +112,12 @@ public class ActPerfilActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BarraNavegacionActivity.class);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, BarraNavegacionActivity.class);
+        startActivity(intent);
     }
 
 }

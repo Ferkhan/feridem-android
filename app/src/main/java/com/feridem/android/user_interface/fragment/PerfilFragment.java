@@ -106,6 +106,7 @@ public class PerfilFragment extends Fragment {
     public void irEditarPerfil(View view){
         Intent editPerfilIntent = new Intent(getActivity(), ActPerfilActivity.class);
         startActivity(editPerfilIntent);
+        requireActivity().finish();
     }
 
     /**
