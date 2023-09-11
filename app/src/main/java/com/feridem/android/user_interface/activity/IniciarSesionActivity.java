@@ -37,18 +37,16 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
         botonRegistrarse.setOnClickListener(this::irRegistro);
         botonIniciarSesion.setOnClickListener(this::irPrincipal);
-
     }
 
     /**
      * inicializarRecursos: Se encarga de iniciar TextView, Buttons, EditText, a partir de su id.
      */
     private void inicializarRecursos() {
-        ingresarCorreo = findViewById(R.id.ingresarCorreo);
-        ingresarContrasena = findViewById(R.id.ingresarContrasenia);
-        botonRegistrarse = findViewById(R.id.botonRegistrarse);
-        botonIniciarSesion = findViewById(R.id.botonIniciarSesion);
-
+        ingresarCorreo      = findViewById(R.id.ingresarCorreo);
+        ingresarContrasena  = findViewById(R.id.ingresarContrasenia);
+        botonRegistrarse    = findViewById(R.id.botonRegistrarse);
+        botonIniciarSesion  = findViewById(R.id.botonIniciarSesion);
     }
 
     /**
@@ -67,14 +65,9 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private void irPrincipal(View view) {
         Intent siguiente = new Intent(this, BarraNavegacionActivity.class);
 
-        // -------------------Hacks-------------------
-        if (activarHacks) startActivity(siguiente);
-        // -------------------------------------------
-
         if (!ValidarDatos.campoLleno(this, ingresarCorreo) ||
                 !ValidarDatos.campoLleno(this, ingresarContrasena))
             return;
-
 
         verificarDatos = new VerificarDatos(this);
         try {

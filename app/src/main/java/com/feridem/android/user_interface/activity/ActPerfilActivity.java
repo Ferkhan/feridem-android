@@ -22,7 +22,10 @@ import com.feridem.android.user_interface.fragment.PerfilFragment;
  * Esta es la ventana para acutalizar la información del usuario.
  */
 public class ActPerfilActivity extends AppCompatActivity {
-    private EditText nombreUsuarioAc, correoUsuarioAc,celularUsuarioAc;
+    private EditText
+            nombreUsuarioAc,
+            correoUsuarioAc,
+            celularUsuarioAc;
     private Button guardarInfo;
     private static final PerfilFragment pf = new PerfilFragment();
     private UsuarioBL usBL;

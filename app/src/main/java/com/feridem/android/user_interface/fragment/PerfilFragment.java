@@ -15,12 +15,13 @@ import android.widget.TextView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.entidades.RegistroSesion;
 import com.feridem.android.business_logic.entidades.Usuario;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
 import com.feridem.android.user_interface.activity.ActPerfilActivity;
 import com.feridem.android.user_interface.activity.IniciarSesionActivity;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,21 +34,23 @@ public class PerfilFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Button
+            editPerfil,
+            cerrarSesion;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private Button editPerfil, cerrarSesion;
+    private TextView
+            nomUsuario,
+            correoUs,
+            celularUs;
+    private String
+            mParam1,
+            mParam2;
+    private UsuarioBL usuarioBL;
+    private RegistroSesionBL registroSesionBL;
+    private Usuario usuario;
 
-    private TextView nomUsuario,correoUs,celularUs;
-    private UsuarioBL usBL;
-    private RegistroSesionBL rgBL;
-
-    private Usuario usuario ;
-    private RegistroSesion registroSesion;
-    private String nombUsuario,correoUsuario,celUsuario;
     public PerfilFragment() {
-
+        // Constructor vacío
     }
 
     /**
@@ -109,27 +112,16 @@ public class PerfilFragment extends Fragment {
         celularUs=view.findViewById(R.id.numUsuario2);
 
         try {
-            obtenerDatosPerfil();
-            nomUsuario.setText(nombUsuario);
-            correoUs.setText(correoUsuario);
-            celularUs.setText(celUsuario);
+            establecerDatosPerfil();
         } catch (AppException e) {
             throw new RuntimeException(e);
         }
-        editPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editarPerfil(view);
-            }
-        });
-        cerrarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    cerrarSesion(view);
-                } catch (AppException e) {
-                    throw new RuntimeException(e);
-                }
+        editPerfil.setOnClickListener(this::irEditarPerfil);
+        cerrarSesion.setOnClickListener(vista -> {
+            try {
+                cerrarSesion(vista);
+            } catch (AppException e) {
+                throw new RuntimeException(e);
             }
         });
 
@@ -140,27 +132,25 @@ public class PerfilFragment extends Fragment {
      * editarPerfil: Se encarga de lanzar a una ventana de Actualización de información del perfil, al aplastar un botón.
      * @param view
      */
-    public void editarPerfil (View view){
-        Context context = getActivity();
-        Intent editPerfilIntent = new Intent(context, ActPerfilActivity.class);
+    public void irEditarPerfil(View view){
+        Intent editPerfilIntent = new Intent(getActivity(), ActPerfilActivity.class);
         startActivity(editPerfilIntent);
-
-        }
+    }
 
     /**
      * mostrarDatosPerfil: Se encarga de obtener los datos que el usuario a ingresado en el Registro.
       * @throws AppException
      */
-    public void obtenerDatosPerfil() throws AppException {
+    public void establecerDatosPerfil() throws AppException {
         Context context = getActivity();
-        usBL= new UsuarioBL(context);
-        rgBL= new RegistroSesionBL(context);
+        usuarioBL = new UsuarioBL(context);
+        registroSesionBL = new RegistroSesionBL(context);
 
-        int usActivo= rgBL.obtenerIdUsuarioConectado();
-        usuario=usBL.obtenerPorId(usActivo);
-        nombUsuario = usuario.getNombre().toString();
-        correoUsuario=usuario.getCorreo().toString();
-        celUsuario=usuario.getCelular().toString();
+        int idUsuarioActivo= registroSesionBL.obtenerIdUsuarioConectado();
+        usuario = usuarioBL.obtenerPorId(idUsuarioActivo);
+        nomUsuario.setText(usuario.getNombre());
+        correoUs.setText(usuario.getCorreo());
+        celularUs.setText(usuario.getCelular());
     }
 
     /**
@@ -169,12 +159,13 @@ public class PerfilFragment extends Fragment {
      * @throws AppException
      */
     public void cerrarSesion(View view ) throws AppException {
-        Context context = getActivity();
-        rgBL= new RegistroSesionBL(context);
-        boolean verUsuarioConect = rgBL.desconectarUsuario();
-        if(verUsuarioConect){
-            Intent intent= new Intent(context, IniciarSesionActivity.class);
+        Context contexto = getActivity();
+        registroSesionBL = new RegistroSesionBL(contexto);
+
+        if(registroSesionBL.desconectarUsuario()){
+            Intent intent= new Intent(contexto, IniciarSesionActivity.class);
             startActivity(intent);
+            requireActivity().finish();
         }
     }
-    }
+}
