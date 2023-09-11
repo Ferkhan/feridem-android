@@ -18,10 +18,8 @@ import com.feridem.android.framework.AppException;
 import com.feridem.android.business_logic.entidades.Usuario;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
-import com.feridem.android.user_interface.activity.ActPerfilActivity;
+import com.feridem.android.user_interface.activity.ActualizarPerfilActivity;
 import com.feridem.android.user_interface.activity.IniciarSesionActivity;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,7 +102,7 @@ public class PerfilFragment extends Fragment {
      * @param view
      */
     public void irEditarPerfil(View view){
-        Intent editPerfilIntent = new Intent(getActivity(), ActPerfilActivity.class);
+        Intent editPerfilIntent = new Intent(getActivity(), ActualizarPerfilActivity.class);
         startActivity(editPerfilIntent);
         requireActivity().finish();
     }

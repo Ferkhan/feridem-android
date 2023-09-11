@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".user_interface.activity.ActPerfilActivity"
+            android:name=".user_interface.activity.ActualizarPerfilActivity"
             android:exported="false" />
         <activity
             android:name=".user_interface.activity.FacturaActivity"

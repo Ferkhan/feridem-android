@@ -8,9 +8,25 @@
         <item name="android:textSize">@dimen/texto_inicio_registro</item>
         <item name="android:textColor">@color/secundario</item>
         <item name="android:layout_weight">1</item>
-        <!--        <item name="android:layout_marginStart">@dimen/margenInicioRegistro</item>-->
         <item name="android:layout_marginTop">20dp</item>
+    </style>
 
+    <style name="texto_actualizar_datos">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">@dimen/texto_inicio_registro</item>
+        <item name="android:textColor">@color/secundario</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="ingreso_actualizar_datos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">@dimen/entrada_datos</item>
+        <item name="android:textColor">@color/ingreso_datos</item>
+        <item name="android:textColorHint">@color/texto_oculot</item>
     </style>
 
     <style name="ingreso_inicio_registro">
@@ -18,8 +34,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">@dimen/entrada_datos</item>
-        <item name="android:textColor">@color/ingresoDatos</item>
-        <item name="android:textColorHint">@color/textoOculto</item>
+        <item name="android:textColor">@color/ingreso_datos</item>
+        <item name="android:textColorHint">@color/texto_oculot</item>
         <item name="android:layout_weight">1</item>
     </style>
 
@@ -38,8 +54,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/ingresoDatos</item>
-        <item name="android:textColorHint">@color/textoOculto</item>
+        <item name="android:textColor">@color/ingreso_datos</item>
+        <item name="android:textColorHint">@color/texto_oculot</item>
         <!--        <item name="android:clickable">false</item>-->
     </style>
 

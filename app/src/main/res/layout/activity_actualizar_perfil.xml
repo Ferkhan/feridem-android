@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/principal"
+    android:orientation="vertical"
+    android:padding="@dimen/margen_pantalla"
+    tools:context=".user_interface.activity.ActualizarPerfilActivity">
+
+    <TextView
+        style="@style/texto_encabezado"
+        android:layout_gravity="center_horizontal"
+        android:text="Actualizar Datos"
+        android:layout_margin="15dp" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/imagen_editar_datos"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/nombreActualizar"
+        style="@style/texto_actualizar_datos"
+        android:text="Nombre y Apellido" />
+
+    <EditText
+        android:id="@+id/ingresarNombreAct"
+        style="@style/ingreso_actualizar_datos"
+        android:hint="Ingresa tu nombre"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/correoActualizar"
+        style="@style/texto_actualizar_datos"
+        android:text="Correo electrónico" />
+
+    <EditText
+        android:id="@+id/ingresarCorreoAct"
+        style="@style/ingreso_actualizar_datos"
+        android:hint="Ingresa tu correo"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/numeroCelularActualizar"
+        style="@style/texto_actualizar_datos"
+        android:text="Número de celular" />
+
+    <EditText
+        android:id="@+id/ingresarNumeroCelularAct"
+        style="@style/ingreso_actualizar_datos"
+        android:hint="Ingresa tu celular"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/guardarPerfil"
+        style="@style/boton_principal"
+        android:text="Guardar"
+        android:layout_marginVertical="30dp"/>
+
+</LinearLayout>

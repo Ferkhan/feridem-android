@@ -3,7 +3,7 @@
     <dimen name="texto_inicio_registro">18sp</dimen>
     <dimen name="feridem">35sp</dimen>
     <dimen name="entrada_datos">16sp</dimen>
-    <dimen name="margen_inicio_registro">30sp</dimen>
+    <dimen name="margen_pantalla">20sp</dimen>
     <dimen name="texto_boton">23sp</dimen>
     <dimen name="dimesion_boton">250dp</dimen>
     <dimen name="margen_horizontal">20dp</dimen>

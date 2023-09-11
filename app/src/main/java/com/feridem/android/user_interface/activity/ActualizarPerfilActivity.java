@@ -16,12 +16,11 @@ import com.feridem.android.business_logic.ValidarDatos;
 import com.feridem.android.business_logic.entidades.Usuario;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
-import com.feridem.android.user_interface.fragment.PerfilFragment;
 
 /**
  * Esta es la ventana para actualizar la información del usuario.
  */
-public class ActPerfilActivity extends AppCompatActivity {
+public class ActualizarPerfilActivity extends AppCompatActivity {
     private EditText
             nombreUsuarioAc,
             correoUsuarioAc,
@@ -39,7 +38,7 @@ public class ActPerfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_perfil);
+        setContentView(R.layout.activity_actualizar_perfil);
 
         try {
             inicializarRecursos();
@@ -100,18 +99,8 @@ public class ActPerfilActivity extends AppCompatActivity {
         usuarioBL.actualizarRegistro(usuarioActivo.getIdRol(), nombreUsuario, correoUsuario, celularUsuario);
         Toast.makeText(this, "Datos actualizados con éxito", Toast.LENGTH_SHORT).show();
 
-//        regresarActivity();
         finish();
         onBackPressed();
-    }
-
-    /**
-     * regresarActivity: Se encarga de cargar una nueva ventana, una vez que se terminó el proceso de actualizar información.
-     */
-    private void regresarActivity() {
-        Intent intent = new Intent(this, BarraNavegacionActivity.class);
-        startActivity(intent);
-
     }
 
     @Override

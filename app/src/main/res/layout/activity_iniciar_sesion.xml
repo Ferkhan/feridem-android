@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/principal"
-    android:paddingHorizontal="@dimen/margen_inicio_registro"
+    android:paddingHorizontal="@dimen/margen_pantalla"
     tools:context=".user_interface.activity.IniciarSesionActivity">
 
 
@@ -67,7 +67,7 @@
             android:ems="10"
             android:hint="Ingresa tu contraseña"
             android:inputType="textPassword"
-            android:textColor="@color/ingresoDatos" />
+            android:textColor="@color/ingreso_datos" />
 
     </LinearLayout>
 
