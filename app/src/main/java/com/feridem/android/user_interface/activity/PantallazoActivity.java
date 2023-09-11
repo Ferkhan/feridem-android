@@ -20,7 +20,6 @@ import java.util.TimerTask;
  */
 public class PantallazoActivity extends AppCompatActivity {
     private RegistroSesionBL registroSesionBL;
-    private static final PerfilFragment pf = new PerfilFragment();
     private RegistroSesion registroSesion;
 
     /**
@@ -54,21 +53,16 @@ public class PantallazoActivity extends AppCompatActivity {
 
                     registroSesion = registroSesionBL.obtenerRegistroConectado();
                     if(registroSesion != null ) {
-                        Log.i("AppException","registroSesion conectado");
                         intent= new Intent( PantallazoActivity.this, BarraNavegacionActivity.class);
                         finish();
                     }else {
                         intent= new Intent( PantallazoActivity.this, IniciarSesionActivity.class);
-                        Log.i("AppException","registroSesion nulo");
                         finish();
                     }
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.i("AppException","catch error");
-
                 }
-
-                Log.i("AppException","Entrando al splash");
             }
         };
 

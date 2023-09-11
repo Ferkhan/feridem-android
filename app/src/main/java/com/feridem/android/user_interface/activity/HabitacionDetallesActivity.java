@@ -3,9 +3,11 @@ package com.feridem.android.user_interface.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +25,6 @@ import com.feridem.android.business_logic.entidades.Habitacion;
 import com.feridem.android.business_logic.fachada.RegistroSesionBL;
 import com.feridem.android.business_logic.entidades.Hotel;
 import com.feridem.android.business_logic.fachada.UsuarioBL;
-import com.feridem.android.user_interface.activity.FacturaActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -38,13 +39,14 @@ import java.util.Calendar;
  */
 public class HabitacionDetallesActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
     private ImageView imagen;
+    SupportMapFragment soporteMapa;
     private TextView
             nombreCuarto,
             nombreHotel,
-            direccion,
             precioNoche,
             descripcion,
-            totalNoches;
+            totalNoches,
+            precioTotalText;
     private EditText
             fechaEntrada,
             fechaSalida;
@@ -65,8 +67,6 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
     private Hotel hotel;
     private Usuario usuario;
     private Habitacion habitacion;
-    private GoogleMap vistaMapa;
-    private SupportMapFragment soporteMapa;
 
     /**
      * onCreate: Se encarga de crear la ventana denominada HabitacionDetalles
@@ -86,17 +86,19 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
      * inicalizarRecursos: Se encarga de iniciar recursos correspondientes a TexteView,EditText, Buttons, Calendar, etc.
      */
     private void inicializarRecursos() {
+
         imagen          = findViewById(R.id.imagen_habitacion);
         nombreCuarto    = findViewById(R.id.nombre_habitacion);
         nombreHotel     = findViewById(R.id.nombre_hotel);
-        direccion       = findViewById(R.id.direccion);
         precioNoche     = findViewById(R.id.precio_habitacion);
         descripcion     = findViewById(R.id.descripcion);
         totalNoches     = findViewById(R.id.total_noches);
         fechaEntrada    = findViewById(R.id.fecha_entrada);
         fechaSalida     = findViewById(R.id.fecha_salida);
+        precioTotalText = findViewById(R.id.precio_total);
         botonReserva    = findViewById(R.id.boton_reservar);
         soporteMapa     = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
+
         calendario  = calendarioEntrada = calendarioSalida = Calendar.getInstance();
         anioEntrada = calendario.get(Calendar.YEAR);
         mesEntrada  = mesSalida = calendario.get(Calendar.MONTH);
@@ -169,66 +171,83 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
 
     /**
      * actualizarCampoFecha: Se encarga de actualizar la información en los campos de fechas para la reservación y el número de noches.
-     * @param campoFecha
+     * @param campoFecha almacenta
      */
+    @SuppressLint("DefaultLocale")
     private void actualizarCampoFecha(EditText campoFecha) {
+
         if (calendarioEntrada.after(calendarioSalida)|| calendarioSalida.equals(calendarioEntrada))
             campoFecha.setText("");
 
         if (fechaEntrada.getText().toString().isEmpty() || fechaSalida.getText().toString().isEmpty()) {
-            totalNoches.setText("");
+            totalNoches.setText("Noches totales 0");
+            precioTotalText.setText("Precio total de $ 0");
         } else {
             diasEntreFechas = (calendarioSalida.getTimeInMillis() - calendarioEntrada.getTimeInMillis());
             diasEntreFechas =  diasEntreFechas / (24 * 60 * 60 * 1000);
-            totalNoches.setText(String.valueOf(diasEntreFechas));
+            totalNoches.setText(String.format("Noches totales %d", diasEntreFechas));
+            precioTotalText.setText(String.format("Precio total de $ %.2f", diasEntreFechas * habitacion.getPrecioNoche()));
         }
     }
 
     /**
-     * establecerDatos: Se encarga de establecer la información para el nombre del cuarto, el precio, la descripción, el nombre del hotel y la dirección.
+     * establecerDatos: Se encarga de establecer la informacion para el nombre del cuarto, el precio, la descripcion, el nombre del hotel y la direccion.
      * @throws AppException
      */
+    @SuppressLint("DefaultLocale")
     private void establecerDatos() throws AppException {
         habitacion = (Habitacion) getIntent().getSerializableExtra("habitacion_seleccionada");
         HotelBL hotelBL = new HotelBL(this);
         hotel = hotelBL.obtenerPorId(habitacion.getIdHotel());
         int imagenResource = getResources().getIdentifier(habitacion.getImagen(), "drawable", getPackageName());
-
         imagen.setImageResource(imagenResource);
         nombreCuarto.setText(habitacion.getNombre());
-        precioNoche.setText(String.format("$%.0f Por noche", habitacion.getPrecioNoche()));
-        descripcion.setText(habitacion.getDescripcion());
         nombreHotel.setText(hotel.getNombre());
-        direccion.setText("Ubicado en " + hotel.getDireccion());
+        descripcion.setText(habitacion.getDescripcion());
+        precioNoche.setText(String.format("$%.0f por noche", habitacion.getPrecioNoche()));
+        totalNoches.setText("Noches totales 0");
+        precioTotalText.setText("Precio total de $ 0");
     }
 
+    /**
+     * Evalua y crea el intent para poder ir a la ventana de la factura.
+     * @param vista
+     * @throws AppException
+     */
     private void irFactura(View vista) throws AppException {
         if (fechaEntrada.getText().toString().isEmpty() || fechaSalida.getText().toString().isEmpty()) {
             Toast.makeText(this, "Llene todos los campos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Toast.makeText(this, "Habitación Reservada con éxito", Toast.LENGTH_SHORT).show();
         reservar();
+        Toast.makeText(this, "Habitación Reservada con éxito", Toast.LENGTH_SHORT).show();
         finish();
     }
 
+    /**
+     * reservar: establece los datos del usuario y la habitacion para hacer la reserva
+     * @throws AppException
+     */
     private void reservar() throws AppException {
-        double precioTotal = (Integer.parseInt(totalNoches.getText().toString()) * habitacion.getPrecioNoche());
+        double precioTotal = diasEntreFechas * habitacion.getPrecioNoche();
 
         usuario = new UsuarioBL(this).obtenerPorId(new RegistroSesionBL(this).obtenerIdUsuarioConectado());
 
         long id = new HabitacionReservadaBL(this).ingresarRegistro(
-                habitacion.getId(), usuario.getId(), fechaEntrada.getText().toString(),
-                fechaSalida.getText().toString(), Integer.parseInt(totalNoches.getText().toString()),
-                habitacion.getPrecioNoche(), precioTotal, generarTextoQr());
+                        habitacion.getId(), usuario.getId(), fechaEntrada.getText().toString(),
+                        fechaSalida.getText().toString(), (int) diasEntreFechas,
+                        habitacion.getPrecioNoche(), precioTotal, generarTextoQr());
         Intent irActivity = new Intent(this, FacturaActivity.class);
         HabitacionReservada habitacionReservada = new HabitacionReservadaBL(this).obtenerPorId((int) id);
         irActivity.putExtra("reservacion_seleccionada", habitacionReservada);
         startActivity(irActivity);
-
     }
 
+    /**
+     * generarTextoQR: genera el texto para que pueda ser empaquetado por un código qr
+     * @return un string con el texto junto
+     */
     private String generarTextoQr() {
         return usuario.getNombre() + "$|&"
                 + hotel.getNombre() + "$|&"
@@ -240,12 +259,10 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         LatLng coordenadas = new LatLng(hotel.getLatitud(), hotel.getLongitud());
-        vistaMapa = googleMap;
-        vistaMapa.addMarker(new MarkerOptions().position(coordenadas));
-        vistaMapa.moveCamera(CameraUpdateFactory.newLatLng(coordenadas));
+        googleMap.addMarker(new MarkerOptions().position(coordenadas));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(coordenadas));
 
-        this.vistaMapa.setOnMapClickListener(this);
-
+        googleMap.setOnMapClickListener(this);
     }
 
     @Override
@@ -254,6 +271,5 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
         intent.putExtra("latitud", hotel.getLatitud());
         intent.putExtra("longitud", hotel.getLongitud());
         startActivity(intent);
-
     }
 }
