@@ -74,11 +74,11 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        editPerfil = view.findViewById(R.id.editPerfil);
-        cerrarSesion=view.findViewById(R.id.cerrarSesion);
-        nomUsuario=view.findViewById(R.id.nombreUsuario2);
-        correoUs=view.findViewById(R.id.correoUsuario2);
-        celularUs=view.findViewById(R.id.numUsuario2);
+        editPerfil = view.findViewById(R.id.editar_perfil);
+        cerrarSesion=view.findViewById(R.id.cerrar_sesion);
+        nomUsuario=view.findViewById(R.id.nombre_usuario);
+        correoUs=view.findViewById(R.id.correo_usuario);
+        celularUs=view.findViewById(R.id.numero_celular);
 
         try {
             establecerDatosPerfil();
