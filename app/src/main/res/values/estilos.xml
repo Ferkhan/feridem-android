@@ -26,7 +26,7 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">@dimen/entrada_datos</item>
         <item name="android:textColor">@color/ingreso_datos</item>
-        <item name="android:textColorHint">@color/texto_oculot</item>
+        <item name="android:textColorHint">@color/texto_oculto</item>
     </style>
 
     <style name="ingreso_inicio_registro">
@@ -35,7 +35,7 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">@dimen/entrada_datos</item>
         <item name="android:textColor">@color/ingreso_datos</item>
-        <item name="android:textColorHint">@color/texto_oculot</item>
+        <item name="android:textColorHint">@color/texto_oculto</item>
         <item name="android:layout_weight">1</item>
     </style>
 
@@ -47,6 +47,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#000000</item>
         <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="texto_editar_perfil">
@@ -67,7 +68,8 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/ingreso_datos</item>
-        <item name="android:textColorHint">@color/texto_oculot</item>
+        <item name="android:textColorHint">@color/texto_oculto</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="boton_principal">

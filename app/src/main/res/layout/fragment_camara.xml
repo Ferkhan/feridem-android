@@ -18,7 +18,7 @@
 
         <TextView
             style="@style/texto_encabezado"
-            android:text="Escanear QR" />
+            android:text="Escáner QR" />
 
     </LinearLayout>
 
@@ -48,7 +48,7 @@
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Reservación a nombre de:" />
+                android:text="Reservación a nombre de" />
 
             <EditText
                 android:id="@+id/usuario"
@@ -62,7 +62,7 @@
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hospedaje en el Hotel:" />
+                android:text="Hospedaje en el Hotel" />
 
             <EditText
                 android:id="@+id/nombre_hotel"
@@ -76,7 +76,7 @@
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Habitación reservada:" />
+                android:text="Habitación reservada" />
 
             <EditText
                 android:id="@+id/nombre_habitacion"
@@ -90,7 +90,7 @@
                 style="@style/texto_escaner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Estado de la reservación:" />
+                android:text="Estado de la reservación" />
 
             <EditText
                 android:id="@+id/estado_reservacion"
