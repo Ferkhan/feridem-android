@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/reservacion_tarjeta"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="175dp"
     android:animateLayoutChanges="true"
     android:backgroundTint="@color/secundario"
     android:clickable="true"
@@ -32,21 +32,25 @@
             <TextView
                 android:id="@+id/nombre_habitacion"
                 style="@style/texto_lista_reservaciones"
+                android:textSize="15sp"
                 android:text="Nombre Habitacion" />
 
             <TextView
                 android:id="@+id/nombre_hotel"
                 style="@style/texto_lista_reservaciones"
+                android:textSize="13sp"
                 android:text="Nombre Hotel" />
 
             <TextView
                 android:id="@+id/fecha_entrada"
                 style="@style/texto_lista_reservaciones"
+                android:textSize="11sp"
                 android:text="Fecha Entrada" />
 
             <TextView
                 android:id="@+id/fecha_salida"
                 style="@style/texto_lista_reservaciones"
+                android:textSize="11sp"
                 android:text="Fecha Salida" />
 
 
