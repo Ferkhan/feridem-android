@@ -10,11 +10,11 @@ import android.widget.EditText;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.ValidarDatos;
-import com.feridem.android.business_logic.VerificarDatos;
+import com.feridem.android.business_logic.utilities.ValidarDatos;
+import com.feridem.android.business_logic.utilities.VerificarDatos;
 
 /**
- * Esta es la ventana de inicio de sesión.
+ * Esta es la ventana de inicio de sesion.
  */
 public class IniciarSesionActivity extends AppCompatActivity {
     private EditText ingresarCorreo;
@@ -25,7 +25,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private boolean activarHacks = false;
 
     /**
-     * onCreate: Se encarga de crear la ventana de iniciar sesión
+     * onCreate: Se encarga de crear la ventana de iniciar sesion
      * @param savedInstanceState
      */
     @Override
@@ -50,7 +50,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     }
 
     /**
-     * irRegistro: Se encarga de ir al activity registro, cuando se presione un botón.
+     * irRegistro: Se encarga de ir al activity registro, cuando se presione un boton.
      * @param view
      */
     private void irRegistro(View view) {
@@ -59,7 +59,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     }
 
     /**
-     * irPrincipal: Se encarga de ir a la barra de navegación, cuando se presione un botón.
+     * irPrincipal: Se encarga de ir a la barra de navegacion, cuando se presione un boton.
      * @param view
      */
     private void irPrincipal(View view) {
@@ -80,6 +80,4 @@ public class IniciarSesionActivity extends AppCompatActivity {
         startActivity(siguiente);
         finish();
     }
-
-
 }

@@ -19,7 +19,8 @@ public class RegistroSesionDAC extends GestorBaseDatos {
 
     /**
      * leerRegistros: Se encarga de leer los registros de la Tabla, "Registro Sesion".
-     * @return cursorConsulta: Es la tabla de registros con un resultado de ingreso exitoso, obtenida a partir de la consulta del query.
+     * @return cursorConsulta: Es la tabla de registros con un resultado de ingreso exitoso, obtenida
+     * a partir de la consulta del query.
      * @throws AppException
      */
     @Override
@@ -31,9 +32,11 @@ public class RegistroSesionDAC extends GestorBaseDatos {
     }
 
     /**
-     * leerPorId: Se encarga de leer los registors de la tabla  "Registro Sesion", a partir del Id del registro de la sesión.
+     * leerPorId: Se encarga de leer los registors de la tabla  "Registro Sesion", a partir del Id del
+     * registro de la sesión.
      * @param idRegistro: Representa el Id del registro de la sesión.
-     * @return cursorConsulta: Es la tabla de registros , obtenida  a partir de la consulta del query y un Id de registro sesion específico.
+     * @return cursorConsulta: Es la tabla de registros , obtenida  a partir de la consulta del query
+     * y un Id de registro sesion especifico.
      * @throws AppException
      */
     @Override
@@ -46,8 +49,10 @@ public class RegistroSesionDAC extends GestorBaseDatos {
     }
 
     /**
-     * leerIdUsuarioConectado: Se encarga de leer el usuario que se encuentra con un registro en "OK" y un estado de sesion "activo".
-     * @return cursorConsulta: Es la tabla de registros con un resultado de ingreso exitoso y un estado de sesión activo, obtenida a partir de la consulta del query.
+     * leerIdUsuarioConectado: Se encarga de leer el usuario que se encuentra con un registro en "OK"
+     * y un estado de sesion "activo".
+     * @return cursorConsulta: Es la tabla de registros con un resultado de ingreso exitoso y un estado
+     * de sesion activo, obtenida a partir de la consulta del query.
      * @throws AppException
      */
     public Cursor leerIdUsuarioConectado() throws AppException {
@@ -60,7 +65,8 @@ public class RegistroSesionDAC extends GestorBaseDatos {
 
     /**
      * leerRegistroConectado: Se encarga de leer los registros que han tenido un resultado de ingresio exitoso.
-     * @return cursorConsulta: Es la tabla de registros con un resultado de ingreso exitoso y un estado de sesión activo, obtenida a partir de la consulta del query.
+     * @return cursorConsulta: Es la tabla de registros con un resultado de ingreso exitoso y un estado
+     * de sesion activo, obtenida a partir de la consulta del query.
      * @throws AppException
      */
     public Cursor leerRegistroConectado() throws AppException {
@@ -73,11 +79,11 @@ public class RegistroSesionDAC extends GestorBaseDatos {
 
     /**
      * insertarRegistro: Se encarga de insertar nuevos registros en la tabla "Registro Sesion", para esto
-     *                  toma como parámetros, idUsuario,resultadoIngreso,estadoSesion.
+     * toma como parametros, idUsuario,resultadoIngreso,estadoSesion.
      * @param idUsuario: Representa el Id de usuario que ha realizado un registro.
      * @param resultadoIngreso: Representa el resultado de ingreso, ya sea exitoso o fallido.
-     * @param estadoSesion: Representa el estado de la sesión (activo o inactivo).
-     * @return long:  identificador del nuevo registro que se ha insertado en la tabla.
+     * @param estadoSesion: Representa el estado de la sesion (activo o inactivo).
+     * @return long: identificador del nuevo registro que se ha insertado en la tabla.
      */
     public long insertarRegistro(int idUsuario, String resultadoIngreso, int estadoSesion) {
         valoresContenido = new ContentValues();
@@ -88,11 +94,11 @@ public class RegistroSesionDAC extends GestorBaseDatos {
     }
 
     /**
-     * actualizarConexion: Se encarga de cambiar el estado de sesión de un usuario, toma como parametros el Id del registro de sesión
-     *                      y la fecha de cierre.
-     * @param idRegistro: Representa al Id del registro de la sesión
+     * actualizarConexion: Se encarga de cambiar el estado de sesión de un usuario, toma como parametros
+     * el Id del registro de sesion y la fecha de cierre.
+     * @param idRegistro: Representa al Id del registro de la sesion
      * @param fechaCierre: Representa a la fecha en la que se desconecto al usuario.
-     * @return int: Retorna el número de registros que se han actializado en la tabla.
+     * @return int: Retorna el numero de registros que se han actializado en la tabla.
      */
     public int actualizarConexion(int idRegistro, String fechaCierre) {
         String[] valores = new String[] {String.valueOf(idRegistro)};

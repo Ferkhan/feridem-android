@@ -1,4 +1,4 @@
-package com.feridem.android.business_logic;
+package com.feridem.android.business_logic.utilities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
 import com.feridem.android.user_interface.activity.FacturaActivity;
-import com.feridem.android.business_logic.entidades.HabitacionReservada;
+import com.feridem.android.business_logic.entities.HabitacionReservada;
 
 import java.util.List;
 
@@ -46,8 +46,8 @@ public class AdaptadorReservaciones extends RecyclerView.Adapter<ReservacionesVi
     }
 
     /**
-     * onBindViewHolder:  vincula los datos de un elemento de la lista de reservaciones con la vista correspondiente
-     * y configura un OnClickListener en la vista para permitir la interacción del usuario
+     * onBindViewHolder: vincula los datos de un elemento de la lista de reservaciones con la vista correspondiente
+     * y configura un OnClickListener en la vista para permitir la interaccion del usuario
      * @param soporte The ViewHolder which should be updated to represent the contents of the
      *        item at the given position in the data set.
      * @param posicion The position of the item within the adapter's data set.
@@ -63,8 +63,8 @@ public class AdaptadorReservaciones extends RecyclerView.Adapter<ReservacionesVi
     }
 
     /**
-     * seleccionarReservacion:  inicia la actividad FacturaActivity
-     * y pasa la información de la reservación seleccionada a esa actividad para que pueda mostrar los detalles de la factura
+     * seleccionarReservacion: inicia la actividad FacturaActivity y pasa la informacion de
+     * la reservacion seleccionada a esa actividad para que pueda mostrar los detalles de la factura
      * @param habitacionReservada
      */
     private void seleccionarReservacion(HabitacionReservada habitacionReservada) {

@@ -1,19 +1,18 @@
-package com.feridem.android.business_logic.fachada;
+package com.feridem.android.business_logic.managers;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.data_access.RegistroSesionDAC;
-import com.feridem.android.business_logic.entidades.RegistroSesion;
+import com.feridem.android.business_logic.entities.RegistroSesion;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Corresponde a la lógica de neogocios para el registro de la sesión.
+ * Corresponde a la logica de neogocios para el registro de la sesion.
  */
 public class RegistroSesionBL extends GestorBL {
     RegistroSesion registroSesion;
@@ -27,7 +26,7 @@ public class RegistroSesionBL extends GestorBL {
 
     /**
      * obtenerRegistroExito: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
-     * De esta manera, obtiene la información y la envía a la entidad registroSesion.
+     * De esta manera, obtiene la informacion y la envia a la entidad registroSesion.
      * @return listaRegistros: Representa al conjunto de registros exitosos.
      * @throws AppException
      */
@@ -91,7 +90,7 @@ public class RegistroSesionBL extends GestorBL {
 
     /**
      * desconectarUsuario: Se encarga de cambiar el estado de sesión del usuario.
-     * @return boolean: Retorna true si se ha desconectado con éxito y false si se ha generado algun error.
+     * @return boolean: Retorna true si se ha desconectado con exito y false si se ha generado algun error.
      * @throws AppException
      */
     public boolean desconectarUsuario() throws AppException {

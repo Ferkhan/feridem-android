@@ -1,17 +1,17 @@
-package com.feridem.android.business_logic.fachada;
+package com.feridem.android.business_logic.managers;
 
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.data_access.HabitacionReservadaDAC;
-import com.feridem.android.business_logic.entidades.HabitacionReservada;
+import com.feridem.android.business_logic.entities.HabitacionReservada;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Corresponde a la lógica de negocios de habitación reservada.
+ * Corresponde a la logica de negocios de habitacion reservada.
  */
 public class HabitacionReservadaBL extends GestorBL {
     private HabitacionReservadaDAC habitacionReservadaDAC;
@@ -25,7 +25,7 @@ public class HabitacionReservadaBL extends GestorBL {
 
     /**
      * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
-     *  De esta manera, obtiene la información y la envía a la entidad habitacionReservada.
+     *  De esta manera, obtiene la informacion y la envia a la entidad habitacionReservada.
      * @return listaHabitaciones: Representa el conjunto de habitaciones reservadas.
      * @throws AppException
      */
@@ -62,8 +62,8 @@ public class HabitacionReservadaBL extends GestorBL {
     }
 
     /**
-     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la información de una habitación reservada específica.
-     * De esta manera, enviía dicha informacion a la entidad habitacionReservada.
+     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la informacion de una habitacion reservada especifica.
+     * De esta manera, envia dicha informacion a la entidad habitacionReservada.
      * @param idReservacion
      * @return habitacionReservada
      * @throws AppException
@@ -96,16 +96,16 @@ public class HabitacionReservadaBL extends GestorBL {
     }
 
     /**
-     * ingresarRegistro: Permite ingresar un nuevo registro sobre una habitación que ha sido rentada, para esto llama al metodo
+     * ingresarRegistro: Permite ingresar un nuevo registro sobre una habitacion que ha sido rentada, para esto llama al metodo
      * insertarRegistro que esta en la DAC.
      * @param idHabitacion: Representa al Id de la habitacion que se ha rentado.
-     * @param idUsuario: Representa al usuario que rentó la habitación.
-     * @param fechaEntrada: Representa la fecha de inicio, en la que se rentó la habitación.
-     * @param fechaSalida: Representa la fecha fianl, en la que se rentó la habitación.
+     * @param idUsuario: Representa al usuario que reserva la habitacion.
+     * @param fechaEntrada: Representa la fecha de inicio, en la que se reserva la habitacion.
+     * @param fechaSalida: Representa la fecha fianl, en la que se reserva la habitacion.
      * @param totalNoches: Representa el numero de noches que hay entre la fecha inicio y la fecha final.
-     * @param precioNoche: Representa el precio de la noche, de acuerdo a la habitación que se ha rentado.
+     * @param precioNoche: Representa el precio de la noche, de acuerdo a la habitacion que se ha rentado.
      * @param precioTotal: Representa el precio total, de acuerdo al numero de noches.
-     * @param codigoQR: Representa al Texto único, para el código QR.
+     * @param codigoQR: Representa al Texto unico, para el codigo QR.
      * @return: long: Representa el identificador del registro que ha sido insertado.
      */
     public long ingresarRegistro(int idHabitacion, int idUsuario, String fechaEntrada, String fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {

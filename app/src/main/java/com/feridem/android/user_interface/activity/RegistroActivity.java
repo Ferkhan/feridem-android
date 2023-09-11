@@ -11,14 +11,13 @@ import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.ValidarDatos;
-import com.feridem.android.business_logic.VerificarDatos;
-import com.feridem.android.business_logic.fachada.UsuarioBL;
-import com.feridem.android.business_logic.fachada.UsuarioCredencialBL;
-import com.feridem.android.user_interface.activity.IniciarSesionActivity;
+import com.feridem.android.business_logic.utilities.ValidarDatos;
+import com.feridem.android.business_logic.utilities.VerificarDatos;
+import com.feridem.android.business_logic.managers.UsuarioBL;
+import com.feridem.android.business_logic.managers.UsuarioCredencialBL;
 
 /**
- * Esta es la ventana para registrarse en la aplicación.
+ * Esta es la ventana para registrarse en la aplicacion.
  */
 public class RegistroActivity extends AppCompatActivity {
     private Button
@@ -62,7 +61,8 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     /**
-     * irIniciarSesión: Llama al metodo onBackPressed para poder movernos hacia atras de acuerdo a la jerarquía de los activities.
+     * irIniciarSesión: Llama al metodo onBackPressed para poder movernos hacia atras de acuerdo a la
+     * jerarquia de los activities.
      * @param vista
      */
     private void irIniciarSesion(View vista) {
@@ -70,7 +70,8 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     /**
-     * irPrincipal: Se encarga de llevar al usuario a la ventana de iniciar sesión, una vez se hayan llenado todos los campos para crear la cuenta.
+     * irPrincipal: Se encarga de llevar al usuario a la ventana de iniciar sesion, una vez se hayan
+     * llenado todos los campos para crear la cuenta.
      * @param view
      */
     private void irPrincipal(View view){

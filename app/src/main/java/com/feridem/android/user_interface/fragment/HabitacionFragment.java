@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.fachada.HabitacionBL;
-import com.feridem.android.business_logic.entidades.Habitacion;
-import com.feridem.android.business_logic.AdaptadorHabitaciones;
+import com.feridem.android.business_logic.managers.HabitacionBL;
+import com.feridem.android.business_logic.entities.Habitacion;
+import com.feridem.android.business_logic.utilities.AdaptadorHabitaciones;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class HabitacionFragment extends Fragment {
     }
 
     /**
-     * onCreate: Se encarga de crear el framento "HabitacionFragment", en el activity barra de navegación.
+     * onCreate: Se encarga de crear el framento "HabitacionFragment", en el activity barra de navegacion.
      * @param savedInstanceState If the fragment is being re-created from
      * a previous saved state, this is the state.
      */
@@ -100,16 +100,4 @@ public class HabitacionFragment extends Fragment {
 
         return vista;
     }
-
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//        // Agregar el fragmento a la pila de retroceso (back stack)
-//        requireActivity().getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.fragmento_contenedor, this)
-//                .addToBackStack(null)
-//                .commit();
-//    }
 }

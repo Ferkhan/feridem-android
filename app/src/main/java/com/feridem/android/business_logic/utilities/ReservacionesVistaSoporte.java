@@ -1,4 +1,4 @@
-package com.feridem.android.business_logic;
+package com.feridem.android.business_logic.utilities;
 
 import android.content.Context;
 import android.view.View;
@@ -9,12 +9,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.entidades.HabitacionReservada;
-import com.feridem.android.business_logic.fachada.HabitacionBL;
-import com.feridem.android.business_logic.fachada.HotelBL;
-import com.feridem.android.business_logic.entidades.Habitacion;
+import com.feridem.android.business_logic.entities.HabitacionReservada;
+import com.feridem.android.business_logic.managers.HabitacionBL;
+import com.feridem.android.business_logic.managers.HotelBL;
+import com.feridem.android.business_logic.entities.Habitacion;
 import com.feridem.android.R;
-import com.feridem.android.business_logic.entidades.Hotel;
+import com.feridem.android.business_logic.entities.Hotel;
 
 /**
  * Corresponde a la vista de las reservaciones.
@@ -50,7 +50,8 @@ public class ReservacionesVistaSoporte extends RecyclerView.ViewHolder {
     }
 
     /**
-     * desplegar: oma una instancia de HabitacionReservada como entrada y utiliza sus propiedades para llenar diferentes vistas de la interfaz de usuario con la información de la habitación reservada
+     * desplegar: oma una instancia de HabitacionReservada como entrada y utiliza sus propiedades para
+     * llenar diferentes vistas de la interfaz de usuario con la informacion de la habitacion reservada
      * y el hotel al que pertenece.
      * @param habitacionReservada
      * @throws AppException

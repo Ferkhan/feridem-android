@@ -14,13 +14,13 @@ import android.widget.TextView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.entidades.Habitacion;
-import com.feridem.android.business_logic.entidades.HabitacionReservada;
-import com.feridem.android.business_logic.entidades.Hotel;
-import com.feridem.android.business_logic.entidades.Usuario;
-import com.feridem.android.business_logic.fachada.HabitacionBL;
-import com.feridem.android.business_logic.fachada.HotelBL;
-import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.business_logic.entities.Habitacion;
+import com.feridem.android.business_logic.entities.HabitacionReservada;
+import com.feridem.android.business_logic.entities.Hotel;
+import com.feridem.android.business_logic.entities.Usuario;
+import com.feridem.android.business_logic.managers.HabitacionBL;
+import com.feridem.android.business_logic.managers.HotelBL;
+import com.feridem.android.business_logic.managers.UsuarioBL;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -30,7 +30,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.io.ByteArrayOutputStream;
 
 /**
- * Esta es la ventana correspondiente a la factura de una reservación.
+ * Esta es la ventana correspondiente a la factura de una reservacion.
  */
 public class FacturaActivity extends AppCompatActivity {
     private TextView
@@ -47,7 +47,7 @@ public class FacturaActivity extends AppCompatActivity {
     private Bitmap qrBitmap;
 
     /**
-     * onCreate: Se encarga de crear la ventana o activitym en este caso la Factura.
+     * onCreate: Se encarga de crear la ventana o activity en este caso la Factura.
      * @param savedInstanceState
      */
     @Override
@@ -83,15 +83,15 @@ public class FacturaActivity extends AppCompatActivity {
     }
 
     /**
-     * irBarraNavegacion: Permite navegar hacia atrás teniendo en cuenta la jerarquía de los fragmentos.
-     * @param vista : representa el diseño de un fragmento en la interfaz de usuario.
+     * irBarraNavegacion: Permite navegar hacia atras teniendo en cuenta la jerarquía de los fragmentos.
+     * @param vista : representa el disenio de un fragmento en la interfaz de usuario.
      */
     private void irBarraNavegacion(View vista) {
         onBackPressed();
     }
 
     /**
-     * establecerDatos: Establece la información sobre habitación, hotel, usuario.
+     * establecerDatos: Establece la informacion sobre habitacion, hotel, usuario.
      * @throws AppException
      */
     private void establecerDatos() throws AppException {
@@ -112,8 +112,9 @@ public class FacturaActivity extends AppCompatActivity {
     }
 
     /**
-     * generarQr:Se encarga de generar un código QR a partir de un texto proporcionado como parámetro y mostrarlo en una vista de imagen
-     * @param textoQR: Texto único correpondiente a la reservación.
+     * generarQr:Se encarga de generar un codigo QR a partir de un texto proporcionado como parametro
+     * y mostrarlo en una vista de imagen
+     * @param textoQR: Texto único correpondiente a la reservacion.
      * @throws AppException
      */
     private void generarQR(String textoQR) throws AppException {
@@ -130,24 +131,22 @@ public class FacturaActivity extends AppCompatActivity {
     }
 
     /**
-     * compartirQr: Se encarga de compartir una imagen del código QR a través de aplicaciones y servicios de uso compartido disponibles en el dispositivo
+     * compartirQr: Se encarga de compartir una imagen del código QR a traves de aplicaciones y
+     * servicios de uso compartido disponibles en el dispositivo
      * @param vista
      */
     private void compartirQR(View vista) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("image/png"); // Cambia el tipo de datos según el formato de tu código QR
+        shareIntent.setType("image/png");
 
-        // Agrega la imagen del código QR al intent
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         qrBitmap.compress(Bitmap.CompressFormat.PNG, 250, bytes);
         String path = MediaStore.Images.Media.insertImage(getContentResolver(), qrBitmap, "QR Code", null);
         Uri qrCodeUri = Uri.parse(path);
         shareIntent.putExtra(Intent.EXTRA_STREAM, qrCodeUri);
 
-        // Puedes agregar un mensaje opcional
         shareIntent.putExtra(Intent.EXTRA_TEXT, "¡Mira este código QR!");
 
-        // Abre la actividad de compartir
         startActivity(Intent.createChooser(shareIntent, "Compartir código QR usando..."));
     }
 }

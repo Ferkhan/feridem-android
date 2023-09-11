@@ -1,13 +1,13 @@
-package com.feridem.android.business_logic;
+package com.feridem.android.business_logic.utilities;
 
 import android.widget.Toast;
 
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.fachada.RegistroSesionBL;
-import com.feridem.android.business_logic.fachada.UsuarioBL;
-import com.feridem.android.business_logic.fachada.UsuarioCredencialBL;
-import com.feridem.android.business_logic.entidades.Usuario;
-import com.feridem.android.business_logic.entidades.UsuarioCredencial;
+import com.feridem.android.business_logic.managers.RegistroSesionBL;
+import com.feridem.android.business_logic.managers.UsuarioBL;
+import com.feridem.android.business_logic.managers.UsuarioCredencialBL;
+import com.feridem.android.business_logic.entities.Usuario;
+import com.feridem.android.business_logic.entities.UsuarioCredencial;
 
 import android.content.Context;
 
@@ -34,8 +34,8 @@ public class VerificarDatos {
     }
 
     /**
-     * verificarCuentaUsuario: verifica las credenciales de un usuario durante el inicio de sesión,
-     * buscando un usuario con el correo proporcionado y luego verificando si la contraseña coincide.
+     * verificarCuentaUsuario: verifica las credenciales de un usuario durante el inicio de sesion,
+     * buscando un usuario con el correo proporcionado y luego verificando si la contrasenia coincide.
      * @param ingresarCorreo
      * @param ingresarContrasenia
      * @return
@@ -60,10 +60,11 @@ public class VerificarDatos {
     }
 
     /**
-     * encriptarContrasenia:este método toma una contraseña en formato de texto claro, la encripta utilizando el algoritmo de resumen MD5
-     * y devuelve la representación hexadecimal de la contraseña encriptada.
+     * encriptarContrasenia:este método toma una contrasenia en formato de texto claro, la encripta
+     * utilizando el algoritmo de resumen MD5 y devuelve la representacion hexadecimal de la
+     * contrasenia encriptada.
      * @param contrasenia
-     * @return
+     * @return un string con la contrasenia encriptada
      * @throws AppException
      */
     public String encriptarContrasenia(String contrasenia) throws AppException {
@@ -85,7 +86,8 @@ public class VerificarDatos {
     }
 
     /**
-     * verificarContrasenia:este método se utiliza para verificar si una contraseña proporcionada coincide con la contraseña almacenada después de aplicar el mismo proceso de encriptación.
+     * verificarContrasenia:este metodo se utiliza para verificar si una contraseña proporcionada
+     * coincide con la contrasenia almacenada despues de aplicar el mismo proceso de encriptacion.
      * @param contrasenia
      * @param contraseniaEncriptada
      * @return
@@ -95,7 +97,4 @@ public class VerificarDatos {
         contrasenia = encriptarContrasenia(contrasenia);
         return contrasenia.equals(contraseniaEncriptada);
     }
-
-
-
 }

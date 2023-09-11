@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Esta es la base de datos
+ * Conexion a la base de datos para las operaciones de CRUD
  */
 public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     private static final int BASEDATOS_VERSION = 1;
@@ -42,7 +42,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
     /**
-     * onCreate: Crea la base de datos.
+     * onCreate: Crea la base de datos
      * @param sqLiteDatabase
      */
     @Override
@@ -50,7 +50,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
     /**
-     *
+     * Actualiza la base de datos
      * @param sqLiteDatabase
      * @param i
      * @param i1
@@ -64,8 +64,9 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
     /**
-     * copiarBaseDatos:  se utiliza para copiar una base de datos desde los activos de la aplicación a una ubicación en el dispositivo,
-     * lo que permite a la aplicación acceder y utilizar la base de datos en su funcionamiento.
+     * copiarBaseDatos:  se utiliza para copiar una base de datos desde los activos de la aplicacion
+     * a una ubicacion en el dispositivo, lo que permite a la aplicacion acceder y utilizar la base
+     * de datos en su funcionamiento.
      * @throws AppException
      */
     public void copiarBaseDatos() throws AppException {
@@ -84,7 +85,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
     /**
-     * comprobarBaseDatos:  comprueba si la base de datos existe y puede abrirse en la ubicación especificada.
+     * comprobarBaseDatos:  comprueba si la base de datos existe y puede abrirse en la ubicacion especificada.
      * @throws AppException
      */
     public void comprobarBaseDatos() throws AppException {
@@ -99,7 +100,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
     }
 
     /**
-     * obtenerConsulta:  facilita la ejecución de consultas SQL en la base de datos
+     * obtenerConsulta:  facilita la ejecucion de consultas SQL en la base de datos
      * y devuelve un Cursor que permite acceder a los resultados de la consulta.
      * @param consultaSQL
      * @param valores
@@ -115,10 +116,7 @@ public abstract class GestorBaseDatos extends SQLiteOpenHelper {
         }
     }
 
-
     public abstract Cursor leerRegistros() throws AppException;
 
     public abstract Cursor leerPorId(int idRegistro) throws AppException;
-
-
 }

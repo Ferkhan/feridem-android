@@ -15,9 +15,9 @@ import android.widget.TextView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.entidades.Usuario;
-import com.feridem.android.business_logic.fachada.RegistroSesionBL;
-import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.business_logic.entities.Usuario;
+import com.feridem.android.business_logic.managers.RegistroSesionBL;
+import com.feridem.android.business_logic.managers.UsuarioBL;
 import com.feridem.android.user_interface.activity.ActualizarPerfilActivity;
 import com.feridem.android.user_interface.activity.IniciarSesionActivity;
 
@@ -46,7 +46,7 @@ public class PerfilFragment extends Fragment {
     }
 
     /**
-     * onCreate: Se encarga de crear el fragmento "perfil", dentro de la ventana barra de navegación.
+     * onCreate: Se encarga de crear el fragmento "perfil", dentro de la ventana barra de navegacion.
      * @param savedInstanceState If the fragment is being re-created from
      * a previous saved state, this is the state.
      */
@@ -98,7 +98,8 @@ public class PerfilFragment extends Fragment {
     }
 
     /**
-     * editarPerfil: Se encarga de lanzar a una ventana de Actualización de información del perfil, al aplastar un botón.
+     * editarPerfil: Se encarga de lanzar a una ventana de Actualizacion de informacion del perfil,
+     * al aplastar un boton.
      * @param view
      */
     public void irEditarPerfil(View view){
@@ -124,7 +125,7 @@ public class PerfilFragment extends Fragment {
     }
 
     /**
-     * cerrarSesion: Se encarga de cerrar la sesión y lanzar el activity de iniciar sesión.
+     * cerrarSesion: Se encarga de cerrar la sesión y lanzar el activity de iniciar sesion.
      * @param view
      * @throws AppException
      */

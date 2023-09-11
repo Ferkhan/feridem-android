@@ -1,10 +1,10 @@
-package com.feridem.android.business_logic.fachada;
+package com.feridem.android.business_logic.managers;
 
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.data_access.HotelDAC;
-import com.feridem.android.business_logic.entidades.Hotel;
+import com.feridem.android.business_logic.entities.Hotel;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class HotelBL extends GestorBL {
 
     /**
      * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
-     *  De esta manera, obtiene la información y la envía a la entidad habitacionReservada.
+     *  De esta manera, obtiene la informacion y la envia a la entidad habitacionReservada.
      * @return: listaHoteles: Representa el conjunto de hoteles.
      * @throws AppException
      */
@@ -57,8 +57,8 @@ public class HotelBL extends GestorBL {
     }
 
     /**
-     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la información de un hotel especifíco.
-     * De esta manera, enviía dicha informacion a la entidad hotel.
+     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la informacion de un hotel especifico.
+     * De esta manera, envia dicha informacion a la entidad hotel.
      * @param idHotel
      * @return hotel.
      * @throws AppException

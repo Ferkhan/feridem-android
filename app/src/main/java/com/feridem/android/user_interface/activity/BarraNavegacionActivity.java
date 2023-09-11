@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 
-//import com.feridem.android.databinding.ActivityMainBinding;
 import com.feridem.android.R;
 import com.feridem.android.user_interface.fragment.CamaraFragment;
 import com.feridem.android.user_interface.fragment.HabitacionFragment;
@@ -22,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 /**
- * Esta es ventana que tiene la barra de navegación.
+ * Esta es ventana que tiene la barra de navegacion.
  */
 public class BarraNavegacionActivity extends AppCompatActivity {
     private static final HabitacionFragment hf = new HabitacionFragment();
@@ -32,9 +31,6 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     static BottomNavigationView bn;
     FragmentManager gestorFragmento;
     Fragment fragmentoActual;
-    Button botonEscanear;
-    Context contexto = this;
-//    ActivityMainBinding binding;
 
     /**
      * onCreate: Se encarga se crear la ventana o activity.
@@ -49,11 +45,10 @@ public class BarraNavegacionActivity extends AppCompatActivity {
 
         inicializarRecursos();
 
-
     }
 
     /**
-     * inicializarRecursos: Se encarga de inicar la barra de navegación y el item de la barra seleccionado.
+     * inicializarRecursos: Se encarga de inicar la barra de navegacion y el item de la barra seleccionado.
      */
     private void inicializarRecursos() {
         bn = findViewById(R.id.barraNavegacion);
@@ -62,7 +57,7 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     }
 
     /**
-     * onBackPressed: Se encarga
+     * onBackPressed: Se encarga de gestionar cuando se presiona regresar
      */
     @Override
     public void onBackPressed() {
@@ -81,7 +76,7 @@ public class BarraNavegacionActivity extends AppCompatActivity {
     }
 
     /**
-     * Método asignado a un botón, para el cambio entre framentos dentro de una ventana.
+     * Metodo asignado a un boton, para el cambio entre framentos dentro de una ventana.
      */
     private final NavigationBarView.OnItemSelectedListener itemSeleccionado = new NavigationBarView.OnItemSelectedListener() {
         @Override

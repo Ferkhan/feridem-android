@@ -1,17 +1,17 @@
-package com.feridem.android.business_logic.fachada;
+package com.feridem.android.business_logic.managers;
 
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.data_access.UsuarioCredencialDAC;
-import com.feridem.android.business_logic.entidades.UsuarioCredencial;
+import com.feridem.android.business_logic.entities.UsuarioCredencial;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Corresponde a la lógoca de negocios correspondiente a Usuario Credencial.
+ * Corresponde a la logica de negocios correspondiente a Usuario Credencial.
  */
 public class UsuarioCredencialBL extends GestorBL {
     private UsuarioCredencialDAC usuarioCredencialDAC;
@@ -23,7 +23,7 @@ public class UsuarioCredencialBL extends GestorBL {
 
     /**
      * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
-     * De esta manera, obtiene la información y la envía a la entidad usuarioCredencial.
+     * De esta manera, obtiene la informacion y la envia a la entidad usuarioCredencial.
      * @return listaCredenciales: Representa a las credenciales de los usuarios que estan activos.
      * @throws AppException
      */
@@ -53,10 +53,10 @@ public class UsuarioCredencialBL extends GestorBL {
     }
 
     /**
-     * obtenerPorId: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos de una credencial en específico.
-     *  De esta manera, obtiene la información y la envía a la entidad usuarioCredencial.
+     * obtenerPorId: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos de una credencial en especifico.
+     *  De esta manera, obtiene la informacion y la envia a la entidad usuarioCredencial.
      * @param idRegistro: Representa al Id del registro.
-     * @return usuarioCredencial.
+     * @return usuarioCredencial en caso de encontrarse, sino retorna null
      * @throws AppException
      */
     public UsuarioCredencial obtenerPorId(int idRegistro) throws AppException {

@@ -30,9 +30,9 @@ public class HotelDAC extends GestorBaseDatos {
     }
 
     /**
-     * leerPorId: Se encarga de leer los registrs de la tabla Hotel, pero tomando en cuenta el Id del "hotel".
+     * leerPorId: Se encarga de leer los registros de la tabla Hotel, pero tomando en cuenta el Id del "hotel".
      * @param idRegistro: Representa el "Id" del hotel.
-     * @return cursorConsulta: Es la tabla de registros con Estado "Activo" y Id de hotel específico, obtenida a partir de la consulta del query.
+     * @return cursorConsulta: Es la tabla de registros con Estado "Activo" y Id de hotel especifico, obtenida a partir de la consulta del query.
      * @throws AppException
      */
     @Override

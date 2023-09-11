@@ -1,4 +1,4 @@
-package com.feridem.android.business_logic;
+package com.feridem.android.business_logic.utilities;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -99,8 +99,4 @@ public class ValidarDatos {
         Toast.makeText(contexto, mensaje, Toast.LENGTH_SHORT).show();
         return false;
     }
-
-
-
-
 }

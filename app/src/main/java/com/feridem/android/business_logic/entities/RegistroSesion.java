@@ -1,4 +1,4 @@
-package com.feridem.android.business_logic.entidades;
+package com.feridem.android.business_logic.entities;
 
 
 public class RegistroSesion {

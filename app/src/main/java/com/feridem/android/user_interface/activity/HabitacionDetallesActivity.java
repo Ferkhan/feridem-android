@@ -7,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,14 +16,14 @@ import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.entidades.HabitacionReservada;
-import com.feridem.android.business_logic.entidades.Usuario;
-import com.feridem.android.business_logic.fachada.HabitacionReservadaBL;
-import com.feridem.android.business_logic.fachada.HotelBL;
-import com.feridem.android.business_logic.entidades.Habitacion;
-import com.feridem.android.business_logic.fachada.RegistroSesionBL;
-import com.feridem.android.business_logic.entidades.Hotel;
-import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.business_logic.entities.HabitacionReservada;
+import com.feridem.android.business_logic.entities.Usuario;
+import com.feridem.android.business_logic.managers.HabitacionReservadaBL;
+import com.feridem.android.business_logic.managers.HotelBL;
+import com.feridem.android.business_logic.entities.Habitacion;
+import com.feridem.android.business_logic.managers.RegistroSesionBL;
+import com.feridem.android.business_logic.entities.Hotel;
+import com.feridem.android.business_logic.managers.UsuarioBL;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -35,7 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Calendar;
 
 /**
- * Esta es la ventana que tiene los detalles sobre la habitación.
+ * Esta es la ventana que tiene los detalles sobre la habitacion.
  */
 public class HabitacionDetallesActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
     private ImageView imagen;
@@ -83,7 +82,7 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
 
 
     /**
-     * inicalizarRecursos: Se encarga de iniciar recursos correspondientes a TexteView,EditText, Buttons, Calendar, etc.
+     * inicalizarRecursos: Se encarga de inicializar los recursos y componentes.
      */
     private void inicializarRecursos() {
 
@@ -108,6 +107,9 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
         soporteMapa.getMapAsync(this);
     }
 
+    /**
+     * establecerEscuchadores: gestiona y activa los listenings para los botones
+     */
     private void establecerEscuchadores() {
         fechaEntrada.setOnClickListener(this::seleccionarFechaEntrada);
         fechaSalida.setOnClickListener(this::seleccionarFechaSalida);
@@ -127,7 +129,8 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
     }
 
     /**
-     * seleccionarFechaEntrada: Se encarga de crear un DatePickerDialog, para que el usuario seleccione la fecha de entrada.
+     * seleccionarFechaEntrada: Se encarga de crear un DatePickerDialog, para que el usuario seleccione
+     * la fecha de entrada.
      * @param vista: Representa la vista que fue interactuada para mostrar el DatePickerDialog
      */
     private void seleccionarFechaEntrada(View vista) {
@@ -148,7 +151,8 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
     }
 
     /**
-     * seleccionarFechaSalida:Se encarga de crear un DatePickerDialog, para que el usuario seleccione la fecha de salida.
+     * seleccionarFechaSalida:Se encarga de crear un DatePickerDialog, para que el usuario seleccione
+     * la fecha de salida.
      * @param vista: Representa la vista que fue interactuada para mostrar el DatePickerDialog
      */
     private void seleccionarFechaSalida(View vista) {
@@ -170,7 +174,8 @@ public class HabitacionDetallesActivity extends AppCompatActivity implements OnM
     }
 
     /**
-     * actualizarCampoFecha: Se encarga de actualizar la información en los campos de fechas para la reservación y el número de noches.
+     * actualizarCampoFecha: Se encarga de actualizar la informacion en los campos de fechas para la
+     * reservacion y el numero de noches.
      * @param campoFecha almacenta
      */
     @SuppressLint("DefaultLocale")

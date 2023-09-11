@@ -1,14 +1,16 @@
-package com.feridem.android.business_logic.entidades;
+package com.feridem.android.business_logic.entities;
 
 import java.util.Date;
 
-public class UsuarioCredencial {
+public class Usuario {
     private int id;
-    private String contrasena;
+    private int idRol;
+    private String nombre;
+    private String correo;
+    private String celular;
     private int estado;
     private Date fechaRegistro;
     private Date fechaModificacion;
-
     public int getId() {
         return id;
     }
@@ -17,12 +19,36 @@ public class UsuarioCredencial {
         this.id = id;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public int getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(int idRol) {
+        this.idRol = idRol;
     }
 
     public int getEstado() {

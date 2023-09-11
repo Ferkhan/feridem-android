@@ -2,6 +2,9 @@ package com.feridem.android.framework;
 
 import android.util.Log;
 
+/**
+ * Clase que se encarga de la gestion de errores.
+ */
 public class AppException extends Exception {
 
     public AppException(Throwable cause, Object className, String mesagge) {

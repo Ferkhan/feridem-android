@@ -19,7 +19,8 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
 
     /**
      * leerRegistros: Se encarga de leer lo registros de la tabla Habitación Reservada.
-     * @return cursorConsulta: Es la tabla de registros con estado "Activo",  obtenida a partir de la consulta del query.
+     * @return cursorConsulta: Es la tabla de registros con estado "Activo",  obtenida a partir de
+     * la consulta del query.
      * @throws AppException
      */
     @Override
@@ -31,9 +32,11 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
     }
 
     /**
-     * leerPorId: Se encarga de leer lo registros de la tabla Habitación Reservada, pero tomando como parámetro el Id del registro.
+     * leerPorId: Se encarga de leer lo registros de la tabla Habitación Reservada, pero tomando como
+     * parametro el Id del registro.
      * @param idRegistro
-     * @return cursorConsulta: Es la tabla de registros con estado "Activo" y  Id de Reservacion específico, obtenida a partir de la consulta del query
+     * @return cursorConsulta: Es la tabla de registros con estado "Activo" y  Id de Reservacion especifico,
+     * obtenida a partir de la consulta del query
      * @throws AppException
      */
     @Override
@@ -47,17 +50,18 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
     }
 
     /**
-     * insertarRegistro: Se encarga de insertar un registro en la tabla Habitación Reservada,tomando como parámetros el idHabitacion,
-     *                   idUsuario,fechaEntrada,fechaSalida,totalNoches,precioNoche,precioTotal,codigoQR
-     * @param idHabitacion: Define el Id de la habitación reservada
-     * @param idUsuario: Representa le Id del usuario que reservo la habitación
+     * insertarRegistro: Se encarga de insertar un registro en la tabla Habitación Reservada
+     * @param idHabitacion: Define el Id de la habitacion reservada
+     * @param idUsuario: Representa le Id del usuario que reservo la habitacion
      * @param fechaEntrada: Reprsenta la fecha de inicio de la reserva
      * @param fechaSalida: Representa la fecha final para la reserva
-     * @param totalNoches: Representa la cantidad de noches de reserva que existen entre la fecha salida y la fecha entrada.
+     * @param totalNoches: Representa la cantidad de noches de reserva que existen entre la fecha
+     * salida y la fecha entrada.
      * @param precioNoche: Representa el precio de la reserva, por cada noche.
      * @param precioTotal: Representa el precio total por la cantidad de noches reservadas.
-     * @param codigoQR: Representa el código único generado por la reserva.
-     * @return long: Retorna un valor "long", que representa el identificador del nuevo registro que se ha insertado en la tabla.
+     * @param codigoQR: Representa el codigo único generado por la reserva.
+     * @return long: Retorna un valor "long", que representa el identificador del nuevo registro que
+     * se ha insertado en la tabla.
      */
     public long insertarRegistro(int idHabitacion, int idUsuario, String fechaEntrada, String fechaSalida, int totalNoches, double precioNoche, double precioTotal, String codigoQR) {
         valoresContenido = new ContentValues();
@@ -73,9 +77,11 @@ public class HabitacionReservadaDAC extends GestorBaseDatos {
     }
 
     /**
-     * LeerRegistroUsuario: Se encarga de leer los registros de la tabla Habitación reservada, pero tomando como parámetro el Id del usuario.
-     * @param idUsuario:  Representa le Id del usuario que reservo la habitación
-     * @return cursorConsulta: Es la tabla de registros con estado  "Activo" y  Id de usuario específico,  obtenida a partir de la consulta del query.
+     * LeerRegistroUsuario: Se encarga de leer los registros de la tabla Habitacion reservada, pero
+     * tomando como parámetro el Id del usuario.
+     * @param idUsuario  Representa le Id del usuario que reservo la habitacion
+     * @return cursorConsulta Es la tabla de registros con estado  "Activo" y  Id de usuario especifico,
+     * obtenida a partir de la consulta del query.
      * @throws AppException
      */
     public Cursor leerRegistrosUsuario(int idUsuario) throws AppException {

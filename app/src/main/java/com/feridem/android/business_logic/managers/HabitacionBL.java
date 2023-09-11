@@ -1,17 +1,17 @@
-package com.feridem.android.business_logic.fachada;
+package com.feridem.android.business_logic.managers;
 
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.data_access.HabitacionDAC;
-import com.feridem.android.business_logic.entidades.Habitacion;
+import com.feridem.android.business_logic.entities.Habitacion;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Correponde a la l+ógica de negocios de habitación.
+ * Correponde a la logica de negocios de habitacion.
  */
 public class HabitacionBL extends GestorBL {
     private HabitacionDAC habitacionDAC;
@@ -23,7 +23,7 @@ public class HabitacionBL extends GestorBL {
 
     /**
      * obtenerRegistrosActivos: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
-     * De esta manera, obtiene la información y la envía a la entidad habitación.
+     * De esta manera, obtiene la informacion y la envia a la entidad habitacion.
      * @return listaHabitaciones: Reprsenta a un conjunto de habitaciones.
      * @throws AppException
      */
@@ -57,8 +57,8 @@ public class HabitacionBL extends GestorBL {
     }
 
     /**
-     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la información de una habitación específica.
-     * De esta manera, enviía dicha informacion a la entidad habitación.
+     * obtenerPorId: Se encarga de llamar al metodo leerPorId en la DAC, para poder obtener la informacion de una habitacion especifica.
+     * De esta manera, envia dicha informacion a la entidad habitacion.
      * @param idHabitacion
      * @return habitacion
      * @throws AppException

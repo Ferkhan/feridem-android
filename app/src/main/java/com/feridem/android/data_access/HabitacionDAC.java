@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import com.feridem.android.framework.AppException;
 
 /**
- * Este es el DAC para habitación
+ * Este es el DAC para habitacion
  */
 public class HabitacionDAC extends GestorBaseDatos {
 
@@ -17,7 +17,7 @@ public class HabitacionDAC extends GestorBaseDatos {
     }
 
     /**
-     * leerRegistros: Se encarga de leer los registros en la tabla habitación.
+     * leerRegistros: Se encarga de leer los registros en la tabla habitacion.
      * @return cursorConsulta: Es la tabla de datos obtenida a partir de la consulta del query.
      * @throws AppException
      */
@@ -30,9 +30,9 @@ public class HabitacionDAC extends GestorBaseDatos {
     }
 
     /**
-     * leerPorId: Leer los registros de la tabla Habitación, pero tomando como parámetro el Id del registro.
+     * leerPorId: Leer los registros de la tabla Habitacion, pero tomando como parametro el Id del registro.
      * @param idRegistro
-     * @return cursorConsulta: Es la tabla de datos obtenida a partir de la consulta del query.
+     * @return cursorConsulta Es la tabla de datos obtenida a partir de la consulta del query.
      * @throws AppException
      */
     @Override

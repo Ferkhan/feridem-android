@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.ValidarDatos;
-import com.feridem.android.business_logic.entidades.Usuario;
-import com.feridem.android.business_logic.fachada.RegistroSesionBL;
-import com.feridem.android.business_logic.fachada.UsuarioBL;
+import com.feridem.android.business_logic.utilities.ValidarDatos;
+import com.feridem.android.business_logic.entities.Usuario;
+import com.feridem.android.business_logic.managers.RegistroSesionBL;
+import com.feridem.android.business_logic.managers.UsuarioBL;
 
 /**
  * Esta es la ventana para actualizar la información del usuario.
@@ -31,7 +31,7 @@ public class ActualizarPerfilActivity extends AppCompatActivity {
     private RegistroSesionBL registroSesionBL;
 
     /**
-     * onCreate: Se encarga de la creación del activity.
+     * onCreate: Se encarga de la creacion del activity.
      * @param savedInstanceState
      */
     @SuppressLint("MissingInflatedId")

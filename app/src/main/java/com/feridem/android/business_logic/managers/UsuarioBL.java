@@ -1,17 +1,17 @@
-package com.feridem.android.business_logic.fachada;
+package com.feridem.android.business_logic.managers;
 
 import android.content.Context;
 
 import com.feridem.android.framework.AppException;
 import com.feridem.android.data_access.UsuarioDAC;
-import com.feridem.android.business_logic.entidades.Usuario;
+import com.feridem.android.business_logic.entities.Usuario;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Corresponde a la lógica de negocios correspondiente a usuario.
+ * Corresponde a la logica de negocios correspondiente a usuario.
  */
 public class UsuarioBL extends GestorBL{
     private Usuario usuario;
@@ -26,7 +26,7 @@ public class UsuarioBL extends GestorBL{
 
     /**
      * obtenerRegistrosActivos:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos.
-     * De esta manera, obtiene la información y la envía a la entidad Usuario.
+     * De esta manera, obtiene la informacion y la envia a la entidad Usuario.
      * @return listaUsuario: Representa el conjunto de usuarios activos.
      * @throws AppException
      */
@@ -58,8 +58,8 @@ public class UsuarioBL extends GestorBL{
     }
 
     /**
-     * obtenerPorId:Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos de un usuario en específico.
-     *      * De esta manera, obtiene la información y la envía a la entidad Usuario.
+     * obtenerPorId: Se encarga de llamar a la lectura de registros en la DAC, para poder obtener los registros Activos de un usuario en especifico.
+     * De esta manera, obtiene la informacion y la envia a la entidad Usuario.
      * @param idUsuario: Representa al Id del usuario.
      * @return usuario
      * @throws AppException

@@ -15,9 +15,9 @@ import android.widget.ImageView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.AdaptadorReservaciones;
-import com.feridem.android.business_logic.entidades.HabitacionReservada;
-import com.feridem.android.business_logic.fachada.HabitacionReservadaBL;
+import com.feridem.android.business_logic.utilities.AdaptadorReservaciones;
+import com.feridem.android.business_logic.entities.HabitacionReservada;
+import com.feridem.android.business_logic.managers.HabitacionReservadaBL;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -109,7 +109,8 @@ public class ReservacionFragment extends Fragment {
     }
 
     /**
-     * generarQr: Se encarga generar un código QR basado en la cadena de texto reservaInfo y mostrándolo en un ImageView
+     * generarQr: Se encarga generar un código QR basado en la cadena de texto reservaInfo y mostrandolo
+     * en un ImageView
      * @param vista
      */
     private void generarQR(View vista) {

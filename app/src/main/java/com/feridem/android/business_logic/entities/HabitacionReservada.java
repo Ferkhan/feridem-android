@@ -1,4 +1,4 @@
-package com.feridem.android.business_logic.entidades;
+package com.feridem.android.business_logic.entities;
 
 import java.io.Serializable;
 import java.util.Date;

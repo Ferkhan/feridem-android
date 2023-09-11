@@ -19,7 +19,8 @@ public class UsuarioCredencialDAC extends GestorBaseDatos {
 
     /**
      * leerRegistros: Se encarga de leer los registros de la tabla "Usuario Credencial" con un estado activo.
-     * @return cursorConsulta: Es la tabla de registros  un estado  activo, obtenida a partir de la consulta del query.
+     * @return cursorConsulta: Es la tabla de registros  un estado  activo, obtenida a partir de la
+     * consulta del query.
      * @throws AppException
      */
     @Override
@@ -32,9 +33,9 @@ public class UsuarioCredencialDAC extends GestorBaseDatos {
 
     /**
      * leerPorId: Se encarga de leer los registros de la tabla "Usuario Credencial" que tienen un estado activo
-     *          y un Id de usuario específico.
+     * y un Id de usuario especifico.
      * @param idRegistro: Representa el Id del usuario.
-     * @return cursorConsulta: Es la tabla de registros con un estado activo y un Id de usuario específico.
+     * @return cursorConsulta: Es la tabla de registros con un estado activo y un Id de usuario especifico.
      * @throws AppException
      */
     @Override
@@ -48,8 +49,8 @@ public class UsuarioCredencialDAC extends GestorBaseDatos {
     }
 
     /**
-     * insertarRegistro: Se encarga de insertar en la tabla "Usuario Credencial" nuevos registros
-     *                  Toma como parametros el Id del usuario y la contraseña.
+     * insertarRegistro: Se encarga de insertar en la tabla "Usuario Credencial" nuevos registros,
+     * Toma como parametros el Id del usuario y la contrasenia.
      * @param idUsuario: Representa el Id del usuario
      * @param contrasena: Representa la contraseña del usuario.
      * @return long: Representa el identificador del registro insertado.

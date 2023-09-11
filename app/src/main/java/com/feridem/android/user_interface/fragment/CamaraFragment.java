@@ -114,6 +114,10 @@ public class CamaraFragment extends Fragment {
         return vista;
     }
 
+    /**
+     * iniciarRecursos: inicializa los componentes y recursos.
+     * @param vista
+     */
     private void iniciarRecursos(View vista) {
         botonEscanear = vista.findViewById(R.id.boton_escaner);
         usuario       = vista.findViewById(R.id.usuario);
@@ -140,6 +144,10 @@ public class CamaraFragment extends Fragment {
                 });
     }
 
+    /**
+     * escanearCodigo: gestiona la parte de abrir la camara y escanear el codigo QR
+     * @param vista
+     */
     private void escanearCodigo(View vista) {
         ScanOptions integrador = new ScanOptions();
 
@@ -159,7 +167,9 @@ public class CamaraFragment extends Fragment {
     }
 
 
-
+    /**
+     * limpiarInformacion: limpia de la ventana la informacion en caso de que no se escanee algo
+     */
     private void limpiarInformacion() {
         usuario.setText("");
         hotel.setText("");
@@ -167,6 +177,11 @@ public class CamaraFragment extends Fragment {
         vigencia.setText("");
     }
 
+    /**
+     * decodficarQR: se encarga de extraer la cadena de string del codigo QR
+     * @param codigo cadena de QR
+     * @throws AppException
+     */
     private void decodificarQR(String codigo) throws AppException {
         String[] decodificado = codigo.split("\\$\\|&");
         if (decodificado.length == 5) {
@@ -180,6 +195,13 @@ public class CamaraFragment extends Fragment {
         }
     }
 
+    /**
+     * compararFechas: compara las fechas de entrada y salida para determinar si es un intevalo valido.
+     * @param entrada fecha de entrada
+     * @param salida fecha de salida
+     * @return 1 si esta adelantado, -1 si esta retrasado y 0 si son iguales
+     * @throws AppException
+     */
     private int compararFechas (String entrada, String salida) throws AppException {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
@@ -202,6 +224,10 @@ public class CamaraFragment extends Fragment {
         return 0;
     }
 
+    /**
+     * establecerVigencia: verifica el intervalo de reservacion y la fecha actual
+     * @param comparador el numero otorgado por compararFechas()
+     */
     private void establecerVigencia(int comparador) {
         Log.i("AppException", comparador + ": comparador");
         if (comparador > 0) {

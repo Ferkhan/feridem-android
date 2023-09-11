@@ -15,6 +15,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.feridem.android.databinding.ActivityMapaBinding;
 
+/**
+ * Clase que genera una ventana para poder visualizar el mapa de Google.
+ */
 public class MapaActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;

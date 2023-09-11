@@ -1,4 +1,4 @@
-package com.feridem.android.business_logic;
+package com.feridem.android.business_logic.utilities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
-import com.feridem.android.business_logic.entidades.Habitacion;
+import com.feridem.android.business_logic.entities.Habitacion;
 import com.feridem.android.user_interface.activity.HabitacionDetallesActivity;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class AdaptadorHabitaciones extends RecyclerView.Adapter<HabitacionesVist
     }
 
     /**
-     * onCreateViewHolder:  crear una nueva vista (basada en el diseño XML) que representará un elemento de la lista en un RecyclerView.
+     * onCreateViewHolder:  crear una nueva vista (basada en el diseño XML) que representara un elemento de la lista en un RecyclerView.
      * @param padre The ViewGroup into which the new View will be added after it is bound to
      *               an adapter position.
      * @param tipoVista The view type of the new View.
@@ -45,7 +45,8 @@ public class AdaptadorHabitaciones extends RecyclerView.Adapter<HabitacionesVist
     }
 
     /**
-     * onBindViewHolder:  Se utiliza para enlazar los datos de un elemento en la posición posicion de la lista de datos con la vista que representa ese elemento.
+     * onBindViewHolder:  Se utiliza para enlazar los datos de un elemento en la posicion de la lista
+     * de datos con la vista que representa ese elemento.
      * @param soporte The ViewHolder which should be updated to represent the contents of the
      *        item at the given position in the data set.
      * @param posicion The position of the item within the adapter's data set.
@@ -61,7 +62,8 @@ public class AdaptadorHabitaciones extends RecyclerView.Adapter<HabitacionesVist
     }
 
     /**
-     * seleccionarHabitacion: Se encarga de realizar una acción cuando se selecciona una habitación en la interfaz de usuario.
+     * seleccionarHabitacion: Se encarga de realizar una accion cuando se selecciona una habitacion
+     * en la interfaz de usuario.
      * @param habitacion
      */
     private void seleccionarHabitacion (Habitacion habitacion) {
