@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/variacion_principal"
+    android:background="@color/principal"
     tools:context=".user_interface.activity.FacturaActivity">
 
     <ScrollView
@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="20sp" >
+        android:scrollbars="none"
+        android:paddingHorizontal="20sp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,10 +24,10 @@
 
             <TextView
                 android:id="@+id/nombre_habitacion"
-                style="@style/texto_factura"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
+                style="@style/texto_encabezado"
+                android:layout_marginVertical="30dp"
+                android:layout_gravity="center_horizontal"
+
                 android:text="Nombre Habitacion" />
 
             <TextView
@@ -62,26 +63,21 @@
             <TextView
                 android:id="@+id/precio_total"
                 style="@style/texto_factura"
-                android:text="Precio Total $699" />
+                android:text="Precio Total $ 699" />
 
             <ImageView
                 android:id="@+id/codigo_qr"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center" />
-
-
-
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="30dp"/>
 
             <Button
                 android:id="@+id/boton_aceptar"
                 style="@style/boton_principal"
+                android:layout_marginVertical="@dimen/margen"
                 android:text="Aceptar" />
 
-
         </LinearLayout>
-
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

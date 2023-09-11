@@ -33,10 +33,6 @@ import java.io.ByteArrayOutputStream;
  * Esta es la ventana correspondiente a la factura de una reservación.
  */
 public class FacturaActivity extends AppCompatActivity {
-    private HabitacionReservada habitacionReservada;
-    private Habitacion habitacion;
-    private Hotel hotel;
-    private Usuario usuario;
     private TextView
             nombreHabitacion,
             nombreHotel,
@@ -99,20 +95,20 @@ public class FacturaActivity extends AppCompatActivity {
      * @throws AppException
      */
     private void establecerDatos() throws AppException {
-        habitacionReservada = (HabitacionReservada) getIntent().getSerializableExtra("reservacion_seleccionada");
-        habitacion = new HabitacionBL(this).obtenerPorId(habitacionReservada.getIdHabitacion());
-        hotel = new HotelBL(this).obtenerPorId(habitacion.getIdHotel());
-        usuario = new UsuarioBL(this).obtenerPorId(habitacionReservada.getIdUsuario());
+        HabitacionReservada habitacionReservada = (HabitacionReservada) getIntent().getSerializableExtra("reservacion_seleccionada");
+        Habitacion habitacion   = new HabitacionBL(this).obtenerPorId(habitacionReservada.getIdHabitacion());
+        Hotel hotel             = new HotelBL(this).obtenerPorId(habitacion.getIdHotel());
+        Usuario usuario         = new UsuarioBL(this).obtenerPorId(habitacionReservada.getIdUsuario());
 
         generarQR(habitacionReservada.getCodigoQR());
         nombreHabitacion.setText(habitacion.getNombre());
         nombreHotel.setText(hotel.getNombre());
-        nombreUsuario.setText(usuario.getNombre());
+        nombreUsuario.setText(String.format("Reservado por %s", usuario.getNombre()));
         direccion.setText(hotel.getDireccion());
-        fechaEntrada.setText(habitacionReservada.getFechaEntrada());
-        fechaSalida.setText(habitacionReservada.getFechaSalida());
-        totalNoches.setText(String.valueOf(habitacionReservada.getTotalNoches()));
-        precioTotal.setText(String.format("$%.0f", habitacionReservada.getPrecioTotal()));
+        fechaEntrada.setText(String.format("Entrada %s desde las 2pm", habitacionReservada.getFechaEntrada()));
+        fechaSalida.setText(String.format("Salida %s hasta las 12pm", habitacionReservada.getFechaSalida()));
+        totalNoches.setText(String.format("Reservado por %s noches", habitacionReservada.getTotalNoches()));
+        precioTotal.setText(String.format("Precio total a pagar $%.2f", habitacionReservada.getPrecioTotal()));
     }
 
     /**
