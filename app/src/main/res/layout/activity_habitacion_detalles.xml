@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/principal"
+    android:background="@color/variacion_principal"
     tools:context=".user_interface.activity.HabitacionDetallesActivity">
 
     <ScrollView
@@ -38,13 +38,20 @@
                     android:id="@+id/nombre_habitacion"
                     style="@style/texto_reservar"
                     android:text="Nombre de la habitación"
-                    android:textColor="@color/secundario"
+                    android:textColor="@color/black"
+                    android:layout_width="352dp"
+                    android:gravity="center"
+                    android:background="@drawable/textview_tipo1"
                     android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/nombre_hotel"
                     style="@style/texto_reservar"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/textview_tipo1"
                     android:text="Hotel" />
 
                 <TextView
@@ -52,12 +59,17 @@
                     style="@style/texto_reservar"
                     android:layout_gravity="right"
                     android:text="Precio"
+                    android:background="@drawable/textview_tipo2"
                     android:textColor="@color/secundario" />
 
                 <TextView
                     android:id="@+id/descripcion"
                     style="@style/texto_reservar"
                     android:textAlignment="inherit"
+                    android:textColor="@color/black"
+                    android:background="@drawable/textview_tipo1"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
                     android:text="Descripcion" />
 
                 <androidx.cardview.widget.CardView
@@ -76,8 +88,11 @@
 
                 <TextView
                     style="@style/texto_reservar"
+                    android:background="@drawable/textview_tipo1"
                     android:text="Seleccione las fechas de reservación"
-                    android:textColor="@color/secundario"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -94,8 +109,10 @@
                         android:clickable="false"
                         android:focusable="false"
                         android:hint="Entrada"
+                        android:padding="5dp"
                         android:textAlignment="center"
                         android:textColorHint="#6A6A6A"
+                        android:background="@drawable/textview_tipo2"
                         android:textColor="#ffffff" />
 
                     <EditText
@@ -106,8 +123,10 @@
                         android:clickable="false"
                         android:focusable="false"
                         android:hint="Salida"
+                        android:padding="5dp"
                         android:textColorHint="#6A6A6A"
                         android:textAlignment="center"
+                        android:background="@drawable/textview_tipo2"
                         android:textColor="#ffffff" />
 
                 </LinearLayout>
@@ -115,18 +134,22 @@
                 <TextView
                     style="@style/texto_reservar"
                     android:layout_marginVertical="10dp"
+                    android:background="@drawable/textview_tipo1"
+                    android:textColor="@color/black"
                     android:text="Check in desde las 2pm.\nCheck out hasta las 12pm." />
 
                 <TextView
                     android:id="@+id/total_noches"
                     style="@style/texto_reservar"
                     android:text="Noches totales "
+                    android:background="@drawable/textview_tipo2"
                     android:textColor="@color/secundario" />
 
                 <TextView
                     android:id="@+id/precio_total"
                     style="@style/texto_reservar"
                     android:text="Precio total de "
+                    android:background="@drawable/textview_tipo2"
                     android:textColor="@color/secundario" />
 
                 <Button

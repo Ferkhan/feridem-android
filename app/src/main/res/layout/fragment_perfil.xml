@@ -47,18 +47,21 @@
                 android:id="@+id/nombre_usuario"
                 style="@style/texto_editar_perfil"
                 android:text="Nombre de prueba"
+                android:background="@drawable/textview_tipo1"
                 android:focusable="false" />
 
             <EditText
                 android:id="@+id/correo_usuario"
                 style="@style/texto_editar_perfil"
                 android:text="Correo de usuairo"
+                android:background="@drawable/textview_tipo1"
                 android:focusable="false" />
 
             <EditText
                 android:id="@+id/numero_celular"
                 style="@style/texto_editar_perfil"
                 android:text="Numero de celular"
+                android:background="@drawable/textview_tipo1"
                 android:focusable="false" />
 
             <Button

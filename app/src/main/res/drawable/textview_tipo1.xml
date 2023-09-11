@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ExtraText,MissingDefaultResource">
+    <solid android:color="@color/secundario" /> <!-- Color de fondo -->
+    <stroke android:color="@color/black"
+        android:width="2dp" /> <!-- Ancho del contorno -->
+    <corners android:radius="5dp" /> <!-- Radio de las esquinas -->
+</shape>

@@ -10,67 +10,103 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:paddingHorizontal="20sp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scrollbars="none"
-        android:paddingHorizontal="20sp" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/nombre_habitacion"
                 style="@style/texto_encabezado"
-                android:layout_marginVertical="30dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="30dp"
 
                 android:text="Nombre Habitacion" />
 
             <TextView
                 android:id="@+id/nombre_hotel"
                 style="@style/texto_factura"
-                android:text="Nombre Hotel" />
+                android:layout_width="match_parent"
+                android:background="@drawable/textview_tipo1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Nombre Hotel"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/direccion"
                 style="@style/texto_factura"
-                android:text="Direccion" />
+                android:layout_width="match_parent"
+                android:background="@drawable/textview_tipo1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Direccion"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/usuario"
                 style="@style/texto_factura"
-                android:text="Reservado por: Usuario" />
+                android:layout_width="match_parent"
+                android:background="@drawable/textview_tipo1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Reservado por: Usuario"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/dia_entrada"
                 style="@style/texto_factura"
-                android:text="Entrada 28/09/2023 a partir de ls 2pm" />
+                android:layout_width="match_parent"
+                android:background="@drawable/textview_tipo1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Entrada 28/09/2023 a partir de ls 2pm"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/dia_salida"
                 style="@style/texto_factura"
-                android:text="Salida 28/09/2023 hasta las 12pm" />
+                android:layout_width="match_parent"
+                android:background="@drawable/textview_tipo1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Salida 28/09/2023 hasta las 12pm"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/total_noches"
                 style="@style/texto_factura"
-                android:text="Reservado por 4 noches" />
+                android:layout_width="match_parent"
+                android:background="@drawable/textview_tipo1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Reservado por 4 noches"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/precio_total"
                 style="@style/texto_factura"
-                android:text="Precio Total $ 699" />
+                android:layout_width="match_parent"
+                android:layout_gravity="right"
+                android:background="@drawable/textview_tipo2"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Precio Total $ 699"
+                android:textColor="@color/secundario" />
 
             <ImageView
                 android:id="@+id/codigo_qr"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:layout_marginVertical="30dp"/>
+                android:layout_marginVertical="30dp" />
 
             <Button
                 android:id="@+id/boton_aceptar"
