@@ -1,7 +1,6 @@
 package com.feridem.android.user_interface.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.feridem.android.R;
 import com.feridem.android.framework.AppException;
@@ -19,7 +19,7 @@ import com.feridem.android.business_logic.fachada.UsuarioBL;
 import com.feridem.android.user_interface.fragment.PerfilFragment;
 
 /**
- * Esta es la ventana para acutalizar la información del usuario.
+ * Esta es la ventana para actualizar la información del usuario.
  */
 public class ActPerfilActivity extends AppCompatActivity {
     private EditText
@@ -27,12 +27,9 @@ public class ActPerfilActivity extends AppCompatActivity {
             correoUsuarioAc,
             celularUsuarioAc;
     private Button guardarInfo;
-    private static final PerfilFragment pf = new PerfilFragment();
-    private UsuarioBL usBL;
-    private RegistroSesionBL rgBL;
-
-    private Usuario usuario ;
-    private String nombUsuario,correoUsuario,celUsuario;
+    private Usuario usuarioActivo;
+    private UsuarioBL usuarioBL;
+    private RegistroSesionBL registroSesionBL;
 
     /**
      * onCreate: Se encarga de la creación del activity.
@@ -43,60 +40,77 @@ public class ActPerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_perfil);
-        nombreUsuarioAc=(EditText) findViewById(R.id.ingresarNombreAct);
-        correoUsuarioAc=(EditText) findViewById(R.id.ingresarCorreoAct);
-        celularUsuarioAc=(EditText) findViewById(R.id.ingresarNumeroCelularAct);
-        guardarInfo=(Button) findViewById(R.id.guardarPerfil);
 
+        try {
+            inicializarRecursos();
+        } catch (AppException e) {
+            throw new RuntimeException(e);
+        }
+
+        guardarInfo.setOnClickListener(view -> {
+            try {
+                guardarInfo(view);
+            } catch (AppException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
-     * guardarInfo: Se encarga de guardar la información que el usuario quiero Actualizar.
+     * inicializarRecursos: se encarga de emparejar el identificador con el componente
+     */
+    private void inicializarRecursos() throws AppException {
+        int idUsuario;
+
+        nombreUsuarioAc     = findViewById(R.id.ingresarNombreAct);
+        correoUsuarioAc     = findViewById(R.id.ingresarCorreoAct);
+        celularUsuarioAc    = findViewById(R.id.ingresarNumeroCelularAct);
+        guardarInfo         = findViewById(R.id.guardarPerfil);
+
+        usuarioBL           = new UsuarioBL(this);
+        registroSesionBL    = new RegistroSesionBL(this);
+        idUsuario           = registroSesionBL.obtenerIdUsuarioConectado();
+        usuarioActivo       = usuarioBL.obtenerPorId(idUsuario);
+
+        nombreUsuarioAc.setText(usuarioActivo.getNombre());
+        correoUsuarioAc.setText(usuarioActivo.getCorreo());
+        celularUsuarioAc.setText(usuarioActivo.getCelular());
+    }
+
+    /**
+     * guardarInfo: Se encarga de guardar la informacion que el usuario quiero Actualizar.
      * @param view
      * @throws AppException
      */
-    @SuppressLint("SuspiciousIndentation")
-    public void guardarInfo(View view) throws AppException {
+    private void guardarInfo(View view) throws AppException {
         if (!ValidarDatos.campoLleno(this, nombreUsuarioAc) ||
                 !ValidarDatos.campoLleno(this, correoUsuarioAc) ||
                 !ValidarDatos.campoLleno(this, celularUsuarioAc))
-        return;
+            return;
+
         if (!ValidarDatos.longitudTextoMaxMin(this, nombreUsuarioAc, "El nombre", 3, 25) ||
                 !ValidarDatos.validarCorreo(this,correoUsuarioAc ) ||
                 !ValidarDatos.longitudCelular(this, celularUsuarioAc, 10))
             return;
 
-        nombUsuario=nombreUsuarioAc.getText().toString();
-        correoUsuario=correoUsuarioAc.getText().toString();
-        celUsuario=celularUsuarioAc.getText().toString();
-        actualizarInfo(nombUsuario,correoUsuario,celUsuario);
-        cargarActivity(pf);
+        String nombreUsuario  = nombreUsuarioAc.getText().toString();
+        String correoUsuario  = correoUsuarioAc.getText().toString();
+        String celularUsuario = celularUsuarioAc.getText().toString();
+
+        usuarioBL.actualizarRegistro(usuarioActivo.getIdRol(), nombreUsuario, correoUsuario, celularUsuario);
+        Toast.makeText(this, "Datos actualizados con éxito", Toast.LENGTH_SHORT).show();
+
+//        regresarActivity();
+        finish();
     }
 
     /**
-     * actualizarInfo: Se encarga de actualizar la informacion nueva que ha estipulado el usuario, en la base de datos.
-     * @param nombre1
-     * @param correo2
-     * @param celular2
-     * @throws AppException
+     * regresarActivity: Se encarga de cargar una nueva ventana, una vez que se terminó el proceso de actualizar información.
      */
-    public void actualizarInfo(String nombre1, String correo2, String celular2) throws AppException {
-        usBL= new UsuarioBL(this);
-        rgBL= new RegistroSesionBL(this);
-        int usActivo= rgBL.obtenerIdUsuarioConectado();
-        usuario=usBL.obtenerPorId(usActivo);
-        int idRol= usuario.getIdRol();
-        usBL.actualizarRegistro(idRol,nombre1,correo2,celular2);
-
-    }
-
-    /**
-     * cargarActivity: Se encarga de cargar una nueva ventana, una vez que se terminó el proceso de actualizar información.
-     * @param fragmento
-     */
-    private void cargarActivity(Fragment fragmento) {
-        Intent intent= new Intent(this, BarraNavegacionActivity.class);
+    private void regresarActivity() {
+        Intent intent = new Intent(this, BarraNavegacionActivity.class);
         startActivity(intent);
+
     }
 
 }

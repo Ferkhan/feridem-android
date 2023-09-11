@@ -67,7 +67,7 @@ public class PerfilFragment extends Fragment {
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
      *
-     * @return
+     * @return a element of type view
      */
     @SuppressLint("MissingInflatedId")
     @Override
